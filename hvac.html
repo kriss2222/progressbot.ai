@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<!--
+  ProgressBot.AI - HVAC industry page (FINAL)
+  Static, self-contained: HTML + CSS + vanilla JS inline. No build step.
+  Deploy as: public_html/v2/hvac/index.html
+  TEMPLATE NOTE: built from the roofing template by swapping the
+  "[industry capsule]" zones - structure and design untouched.
+  Only external dependency: Google Fonts.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Answering Service &amp; Phone Agents for HVAC Companies | ProgressBot.AI</title>
+<meta name="description" content="Six AI agents built for HVAC: answer the 2 AM no-heat call, absorb heat-wave call surges, book service windows, work the tune-up list, and follow up after the sale — 24/7.">
+<meta name="theme-color" content="#F3F4F1">
+<!-- Canonical assumes deployment at /v2/hvac - adjust if the path changes -->
+<link rel="canonical" href="https://progressbot.ai/v2/hvac">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://progressbot.ai/v2/hvac">
+<meta property="og:site_name" content="ProgressBot.AI">
+<meta property="og:title" content="No Heat at 2 AM. Answered. — AI Phone Agents for HVAC">
+<meta property="og:description" content="HVAC runs on emergencies — and homeowners call whoever picks up first. Six AI agents answer every call, book the window, and work the tune-up list, 24/7.">
+<!-- TODO: add og:image + twitter:image (1200x630) - a framed screenshot of the HVAC dispatch board is the obvious candidate -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No Heat at 2 AM. Answered. — AI Phone Agents for HVAC">
+<meta name="twitter:description" content="Emergency calls answered in 3 rings, heat-wave surges absorbed, tune-up season booked — AI phone agents tuned to HVAC, live in 1–2 weeks.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230E7B43'/%3E%3Cg transform='translate(3.2 3.2) scale(0.73)'%3E%3Cpath d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Big+Shoulders+Display:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS (design-system contract) ============ */
+:root{
+  --paper:#F3F4F1;
+  --card:#FFFFFF;
+  --ink:#14181D;
+  --ink2:#454D48;
+  --mut:#68716B;
+  --line:#DCE0DA;
+  --green:#0E7B43;
+  --green-d:#0B6236;
+  --green-t:#E4F0E7;
+  --green-br:#37B071;
+  --red:#C6392B;
+  --red-b:#E04A3A;
+  --gold:#DE9A26;
+  --dk:#14181D;
+  --dk-line:#262D34;
+  --phone:#0D1116;
+  --pline:#232A31;
+  --disp:'Big Shoulders Display', Impact, 'Arial Narrow', sans-serif;
+  --body:'Barlow', 'Helvetica Neue', Arial, sans-serif;
+  --mono:'IBM Plex Mono', 'Courier New', monospace;
+}
+
+/* ============ BASE ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);
+  font-size:17px;
+  line-height:1.6;
+  color:var(--ink);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--green);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.sec{padding:104px 0}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--green);
+  display:flex;align-items:center;gap:12px;
+}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--green);flex:none}
+h2{
+  font-family:var(--disp);
+  font-weight:800;
+  text-transform:uppercase;
+  font-size:clamp(2.2rem,4.4vw,3.7rem);
+  line-height:.95;
+  letter-spacing:.005em;
+  margin:16px 0 18px;
+}
+.sub{font-size:18px;color:var(--ink2);max-width:660px}
+.mono{font-family:var(--mono)}
+
+/* ============ BUTTONS ============ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--body);font-weight:600;font-size:16.5px;
+  padding:15px 24px;border-radius:9px;border:2px solid transparent;
+  cursor:pointer;text-decoration:none;line-height:1;
+  transition:background .18s ease,transform .18s ease,border-color .18s ease,color .18s ease;
+}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-primary{background:var(--green);color:#fff}
+.btn-primary:hover{background:var(--green-d);transform:translateY(-1px)}
+.btn-ghost{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-ghost:hover{background:var(--ink);color:#fff}
+.btn-ghost.on-dark{border-color:#454E56;color:#fff}
+.btn-ghost.on-dark:hover{background:#fff;color:var(--ink);border-color:#fff}
+.btn-sm{padding:11px 18px;font-size:15px}
+.btn-block{width:100%}
+
+/* ============ SECTION CTA ============ */
+.sec-cta{
+  display:flex;flex-wrap:wrap;align-items:center;gap:16px 22px;
+  margin-top:44px;padding-top:26px;border-top:1px solid var(--line);
+}
+.sc-note{font-size:16.5px;font-weight:600}
+#crew,#math,#moments,#proof,#faq,#cta{scroll-margin-top:84px}
+
+/* ============ HEADER ============ */
+.site-head{
+  position:sticky;top:0;z-index:70;
+  border-bottom:1px solid var(--line);background:var(--paper);
+}
+.site-head.scrolled{box-shadow:0 10px 24px -18px rgba(20,24,29,.3)}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:66px}
+.brand{
+  font-family:var(--disp);font-weight:800;font-size:22px;
+  letter-spacing:.03em;text-decoration:none;text-transform:uppercase;flex:none;
+}
+.brand span{color:var(--green)}
+.nav{display:flex;align-items:center;gap:26px;margin-right:auto;margin-left:36px}
+.nav a{font-size:15px;font-weight:600;text-decoration:none;color:var(--ink2)}
+.nav a:hover{color:var(--green)}
+.head-right{display:flex;align-items:center;gap:22px}
+.onshift{
+  font-family:var(--mono);font-size:11px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);
+  display:flex;align-items:center;gap:8px;
+}
+.pdot{width:8px;height:8px;border-radius:50%;background:var(--green);flex:none;animation:pdot 1.8s ease infinite}
+@keyframes pdot{0%,100%{box-shadow:0 0 0 0 rgba(14,123,67,.45)}55%{box-shadow:0 0 0 7px rgba(14,123,67,0)}}
+.head-tel{font-weight:600;font-size:15px;text-decoration:none;color:var(--ink)}
+.head-tel:hover{color:var(--green)}
+
+/* ============ HERO ============ */
+.hero{padding:72px 0 88px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center}
+.hero h1{
+  font-family:var(--disp);font-weight:800;text-transform:uppercase;
+  font-size:clamp(3.2rem,6.3vw,5.9rem);
+  line-height:.92;letter-spacing:.005em;margin:20px 0 22px;
+}
+.hero h1 span{color:var(--green)}
+.lede{font-size:19px;color:var(--ink2);max-width:560px;margin-bottom:30px}
+.lede strong{color:var(--ink)}
+.hero-btns{display:flex;flex-wrap:wrap;gap:16px}
+
+/* ============ DISPATCH BOARD (hero signature) ============ */
+.hero-right{display:flex;flex-direction:column;gap:14px}
+.dispatch{
+  background:var(--phone);border:1px solid #1E242B;border-radius:20px;overflow:hidden;
+  color:#E9EDEB;box-shadow:0 40px 80px -30px rgba(20,24,29,.55);
+}
+.dp-head{
+  display:flex;align-items:center;gap:10px;padding:14px 18px;
+  border-bottom:1px solid var(--pline);
+  font-family:var(--mono);font-size:11px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:#8B948E;
+}
+.dp-title{color:#E9EDEB}
+.dp-clock{margin-left:auto;color:#8B948E}
+.feed{
+  position:relative;height:452px;padding:12px 14px 0;
+  display:flex;flex-direction:column;gap:8px;overflow:hidden;
+}
+.feed::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:64px;
+  background:linear-gradient(to bottom,rgba(13,17,22,0),#0D1116);pointer-events:none;
+}
+.ev{
+  display:flex;align-items:center;gap:11px;flex:none;
+  background:#141A20;border:1px solid var(--pline);border-radius:11px;
+  padding:10px 12px;
+  opacity:0;transform:translateY(-8px);
+  transition:opacity .35s ease,transform .35s ease;
+}
+.ev.show{opacity:1;transform:none}
+.ev.done{opacity:.5}
+.ev-ic{
+  width:28px;height:28px;flex:none;border-radius:8px;
+  background:#1C232B;color:#8B948E;display:grid;place-items:center;
+}
+.ev-ic svg{width:14px;height:14px}
+.ev.live .ev-ic{background:rgba(14,123,67,.28);color:var(--green-br)}
+.ev-body{flex:1;min-width:0}
+.ev-agent,.ev-label{display:block}
+.ev-agent{
+  font-family:var(--mono);font-size:9.5px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--green-br);
+}
+.ev-label{
+  color:#C9CFCA;font-size:12.5px;line-height:1.35;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.ev-state{
+  flex:none;display:flex;align-items:center;gap:6px;
+  font-family:var(--mono);font-size:9.5px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;color:#AEB6B0;white-space:nowrap;
+}
+.ev-state i{width:6px;height:6px;border-radius:50%;background:var(--green-br);flex:none;animation:pdot 1.4s ease infinite}
+.ev.resolved .ev-state{
+  color:var(--green-br);background:rgba(14,123,67,.18);
+  padding:4px 9px;border-radius:5px;
+}
+.dp-cap{
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--mut);text-align:center;
+}
+
+/* ============ CREW CARD LIFE ============ */
+.agent-card{transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.agent-card:hover{transform:translateY(-3px);box-shadow:0 16px 32px -20px rgba(20,24,29,.3)}
+.agent-status span{display:inline-block;transition:opacity .28s ease}
+.agent-status.swap span{opacity:0}
+/* ============ CREW BOARD ============ */
+.board{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:48px}
+.stage{display:flex;flex-direction:column;gap:16px;transition:opacity .25s ease}
+@media (hover:hover){
+  .board:hover .stage:not(:hover){opacity:.5}
+  .stage:hover .agent-card{border-color:var(--green)}
+}
+.stage-h{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:11px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink);
+  border-top:2px solid var(--ink);padding-top:12px;
+}
+.stage-h b{color:var(--green);font-weight:600}
+.stage-arrow{width:14px;height:14px;color:var(--mut);margin-left:auto}
+.stage:last-child .stage-arrow{display:none}
+.agent-card{
+  position:relative;background:var(--card);border:1px solid var(--line);
+  border-radius:15px;padding:22px;display:flex;flex-direction:column;gap:0;
+}
+.badge{
+  position:absolute;top:16px;right:16px;
+  font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--green);background:var(--green-t);
+  border-radius:4px;padding:3px 8px;
+}
+.agent-name{
+  font-family:var(--disp);font-weight:700;text-transform:uppercase;
+  font-size:27px;letter-spacing:.02em;line-height:1;
+}
+.agent-role{
+  font-family:var(--mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--green);
+  margin:7px 0 12px;
+}
+.agent-card p{font-size:14.5px;color:var(--ink2);line-height:1.5}
+.agent-status{
+  display:flex;align-items:center;gap:7px;
+  font-family:var(--mono);font-size:10px;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--mut);
+  margin:14px 0;
+}
+.agent-status i{width:7px;height:7px;border-radius:50%;background:var(--green);flex:none;animation:pdot 1.8s ease infinite}
+.alink{
+  display:inline-flex;align-items:center;gap:7px;margin-top:auto;
+  font-size:14px;font-weight:600;color:var(--green);text-decoration:none;
+}
+.alink svg{width:14px;height:14px;transition:transform .18s ease}
+.alink:hover svg{transform:translateX(3px)}
+.mini-recap{background:var(--phone);border:1px solid var(--pline);border-radius:10px;padding:11px 13px;margin:14px 0 2px}
+.mr-head{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8B948E;margin-bottom:5px}
+.mr-row{font-size:12px;color:#C9CFCA;line-height:1.45}
+.mr-book{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--green-br);margin-top:4px}
+
+/* ============ RED LINE (single red moment) ============ */
+.redline{
+  background:var(--card);border:1px solid var(--line);border-left:3px solid var(--red);
+  border-radius:12px;padding:18px 22px;margin-top:52px;
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;
+  font-size:16px;color:var(--ink2);
+}
+.redline strong{color:var(--red);font-weight:700}
+.redline a{
+  display:inline-flex;align-items:center;gap:7px;margin-left:auto;
+  font-weight:600;color:var(--green);text-decoration:none;white-space:nowrap;
+}
+.redline a svg{width:14px;height:14px}
+.redline a:hover{color:var(--green-d)}
+
+/* ============ CALL LOG (recordings) ============ */
+.calllog{
+  background:var(--phone);border-radius:18px;padding:10px 26px;margin-top:48px;color:#E9EDEB;
+}
+.player{
+  display:grid;grid-template-columns:auto 1fr auto;gap:8px 18px;align-items:center;
+  padding:22px 0;border-top:1px solid var(--pline);
+}
+.player:first-child{border-top:none}
+.pbtn{
+  grid-row:span 2;width:50px;height:50px;border-radius:50%;border:none;cursor:pointer;
+  background:var(--green);color:#fff;display:grid;place-items:center;
+  transition:background .18s ease;
+}
+.pbtn:hover{background:var(--green-d)}
+.pbtn svg{width:20px;height:20px}
+.pbtn .ic-pause{display:none}
+.player.playing .ic-play{display:none}
+.player.playing .ic-pause{display:block}
+.ptitle{font-size:16.5px;font-weight:600;color:#fff;line-height:1.3}
+.pmeta{
+  font-family:var(--mono);font-size:10.5px;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:#8B948E;margin-top:3px;
+}
+.ptime{
+  grid-row:span 2;font-family:var(--mono);font-size:12px;color:#8B948E;
+  white-space:nowrap;justify-self:end;
+}
+.pbar{grid-column:2 / 4;width:100%}
+.pbar input[type="range"]{
+  -webkit-appearance:none;appearance:none;width:100%;height:5px;border-radius:3px;
+  background:linear-gradient(to right,var(--green-br) 0%,#2A323A 0%);
+  outline-offset:4px;cursor:pointer;
+}
+.pbar input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;width:15px;height:15px;border-radius:50%;
+  background:var(--green-br);border:none;
+}
+.pbar input[type="range"]::-moz-range-thumb{
+  width:15px;height:15px;border-radius:50%;background:var(--green-br);border:none;
+}
+.pfall{grid-column:1 / 4;font-size:15px;color:#C9CFCA;padding:4px 0}
+.pfall a{color:var(--green-br);font-weight:600;text-decoration:none}
+.pfall a:hover{text-decoration:underline}
+.log-cap{
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--mut);margin-top:16px;
+}
+
+/* ============ COVERAGE: TYPES + OUTCOMES ============ */
+.cov-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:26px;margin-top:48px;align-items:start}
+.types{display:flex;flex-direction:column;gap:14px}
+.trow{
+  display:flex;gap:16px;align-items:flex-start;
+  background:var(--card);border:1px solid var(--line);border-radius:15px;padding:18px 20px;
+}
+.trow-ic{
+  width:46px;height:46px;flex:none;border-radius:11px;
+  background:var(--green-t);color:var(--green);display:grid;place-items:center;
+}
+.trow-ic svg{width:22px;height:22px}
+.trow h3{font-size:17px;font-weight:700;line-height:1.3}
+.trow p{font-size:14.5px;color:var(--ink2);margin-top:2px}
+.outcard{
+  background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 26px;
+  position:sticky;top:24px;
+}
+.outcard h3{
+  font-family:var(--mono);font-size:12px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin-bottom:18px;
+}
+.outcard ul{list-style:none;display:flex;flex-direction:column;gap:13px}
+.outcard li{display:flex;align-items:flex-start;gap:11px;font-size:16px;font-weight:500}
+.outcard li svg{width:17px;height:17px;flex:none;color:var(--green);margin-top:4px}
+.outcard .btn{margin-top:24px}
+
+/* ============ PROCESS ============ */
+.proc{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-top:48px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:24px 22px}
+.step-n{font-family:var(--disp);font-weight:800;font-size:42px;line-height:1;color:var(--green)}
+.step h3{font-size:17px;font-weight:700;margin:11px 0 7px;line-height:1.3}
+.step p{font-size:14px;color:var(--ink2);line-height:1.5}
+
+/* ============ TRUST STRIP ============ */
+.trust{background:#EAEDE7;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust-grid{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center}
+.trust-stat .stat-n{font-family:var(--disp);font-weight:800;font-size:clamp(3.4rem,6vw,5.4rem);line-height:.95}
+.trust-stat .stat-l{font-size:15.5px;color:var(--ink2);max-width:240px;margin-top:6px}
+.trust-chips{display:grid;grid-template-columns:1fr 1fr;gap:14px 28px;list-style:none}
+.trust-chips li{
+  display:flex;align-items:center;gap:11px;
+  font-family:var(--mono);font-size:12px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);
+}
+.trust-chips svg{width:17px;height:17px;flex:none;color:var(--green)}
+
+/* ============ FINAL CTA ============ */
+.cta{background:var(--dk);color:#fff}
+.cta h2{color:#fff}
+.cta .sub{color:#B9C0BB}
+.cta .eyebrow{color:var(--green-br)}
+.cta .eyebrow::before{background:var(--green-br)}
+.cta-btns{display:flex;flex-wrap:wrap;gap:16px;margin-top:34px}
+
+/* ============ FOOTER ============ */
+.site-foot{background:#0F1317;color:#9AA39C;font-size:14.5px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding:64px 0 48px}
+.foot-brand .brand{color:#fff;font-size:24px}
+.foot-brand p{margin-top:12px;max-width:280px;line-height:1.55}
+.site-foot h4{
+  font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:#68716B;margin-bottom:16px;
+}
+.site-foot ul{list-style:none}
+.site-foot li{margin-bottom:10px}
+.site-foot a{text-decoration:none;color:#B7BEB8}
+.site-foot a:hover{color:var(--green-br)}
+.foot-bottom{
+  border-top:1px solid #1E242B;padding:22px 0;font-size:13px;
+  display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;align-items:center;
+}
+.foot-legal{display:flex;gap:22px}
+
+/* ============ STICKY MOBILE CTA ============ */
+.sticky-cta{
+  display:none;position:fixed;left:12px;right:12px;z-index:60;
+  bottom:calc(12px + env(safe-area-inset-bottom));
+  transition:transform .3s ease,opacity .3s ease;
+}
+.sticky-cta .btn{width:100%;box-shadow:0 12px 30px -8px rgba(20,24,29,.5)}
+.sticky-cta.hide{transform:translateY(140%);opacity:0;pointer-events:none}
+
+
+/* ============ ROOFING PAGE ADDITIONS ============ */
+.eq{
+  background:var(--dk);color:#DEE3DE;border-radius:13px;
+  font-family:var(--mono);font-size:clamp(13.5px,2vw,17.5px);
+  padding:20px 24px;margin:38px 0 26px;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 16px;text-align:center;
+}
+.eq b{color:var(--red-b);font-weight:600}
+.eq .op{color:#78827B}
+.quote{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:34px 32px;display:flex;flex-direction:column;max-width:760px;margin-top:44px}
+.quote p{font-family:var(--disp);font-weight:600;font-size:clamp(1.4rem,2.4vw,1.9rem);line-height:1.18;text-transform:none}
+.attr{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-top:22px}
+.qa{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:12px;overflow:hidden}
+.qa summary{display:flex;align-items:center;gap:14px;padding:18px 20px;cursor:pointer;font-size:17px;font-weight:600;color:var(--ink);list-style:none}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary svg{width:16px;height:16px;flex:none;margin-left:auto;color:var(--green);transition:transform .25s ease}
+.qa[open] summary svg{transform:rotate(45deg)}
+.qa .ans{padding:0 20px 18px;font-size:15.5px;color:var(--ink2);line-height:1.6;max-width:760px}
+.qa-more{margin-top:18px;font-weight:600}
+.qa-more a{color:var(--green);text-decoration:none;display:inline-flex;align-items:center;gap:7px}
+.qa-more a:hover{color:var(--green-d)}
+.qa-more svg{width:14px;height:14px}
+
+/* ============ REVEALS ============ */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.rv.in{opacity:1;transform:none}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:960px){
+  .sec{padding:76px 0}
+  .hero{padding:64px 0 64px}
+  .nav{display:none}
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .feed{height:396px}
+  .board{grid-template-columns:1fr 1fr}
+  .stage-arrow{display:none}
+  .cov-grid{grid-template-columns:1fr}
+  .outcard{position:static}
+  .proc{grid-template-columns:repeat(3,1fr)}
+  .trust-grid{grid-template-columns:1fr;gap:34px}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:34px}
+}
+@media (max-width:860px){
+  .sticky-cta{display:block}
+  body{padding-bottom:86px}
+  .onshift{display:none}
+  .site-head{position:static}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .feed{height:336px}
+  .board{grid-template-columns:1fr}
+  .proc{grid-template-columns:1fr}
+  .trust-chips{grid-template-columns:1fr}
+  .head-tel{display:none}
+  .calllog{padding:6px 18px}
+  .player{grid-template-columns:auto 1fr;gap:6px 14px}
+  .ptime{grid-row:auto;grid-column:2;justify-self:start}
+  .pbar{grid-column:1 / 3}
+  .redline a{margin-left:0}
+  .foot-grid{grid-template-columns:1fr;gap:30px}
+}
+
+/* ============ REDUCED MOTION ============ */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Service",
+   "name": "AI phone answering and sales agents for HVAC companies",
+   "serviceType": "AI answering service and phone sales agents",
+   "provider": {
+    "@type": "Organization",
+    "name": "ProgressBot.AI",
+    "url": "https://progressbot.ai/",
+    "telephone": "(863) 356-0181"
+   },
+   "areaServed": "United States",
+   "description": "Six AI agents that work HVAC company phones 24/7 - emergency no-heat and no-AC calls answered in 3 rings, heat-wave surges absorbed, tune-up lists worked, welcome calls and customer updates after the sale."
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Can it handle emergency calls at 2 AM?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes - the agents answer 24/7 within 3 rings, with no voicemail and no queue. Urgent calls get booked straight onto your calendar, and anything that needs a human gets transferred."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What happens during a heat wave or cold snap?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Volume surges get absorbed - every call still gets a live answer while your techs run jobs. Bookings land on the calendar and your team gets a summary of every conversation."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can it book maintenance and tune-ups?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes - outbound calls follow up new estimates and re-engage dormant contacts, and appointments get booked directly onto your calendar. That's how shoulder season stays full."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Will it route calls to the right person?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "It routes and triages to the right team member automatically, hands off to a human when a conversation needs one, and updates your CRM after every call."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What does it cost compared to staffing the phones?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Typically 70-90% less all-in than covering the same seats with human reps - with nights, weekends, and emergency hours included at no extra cost."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="https://progressbot.ai/">ProgressBot<span>.AI</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="https://progressbot.ai/v2/home3">Home</a>
+      <a href="https://progressbot.ai/v2/faq2">FAQ</a>
+      <a href="#crew">The crew</a>
+    </nav>
+    <div class="head-right">
+      <span class="onshift"><i class="pdot" aria-hidden="true"></i>6 agents on shift</span>
+      <a class="head-tel" href="tel:+18633560181">(863) 356-0181</a>
+      <a class="btn btn-primary btn-sm" href="https://progressbot.ai/v2/botty-landing2?utm_source=hvac_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=header#top">Get started</a>
+    </div>
+  </div>
+</header>
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+
+    <div class="hero-copy">
+      <!-- [industry capsule] hero copy -->
+      <p class="eyebrow">AI phone agents — built for HVAC</p>
+      <h1>No heat at 2 AM.<br><span>Answered.</span></h1>
+      <p class="lede">HVAC runs on emergencies — the furnace dies on the coldest night, the AC quits mid–heat wave, and the homeowner calls <strong>whoever picks up first.</strong> Your techs are in attics and crawlspaces all day. Six AI agents answer every call, book the service window, work the tune-up list, and keep customers posted. 24/7, tuned to HVAC.</p>
+      <div class="hero-btns">
+        <a class="btn btn-primary" href="tel:+18633560181">Book a strategy call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+        <a class="btn btn-ghost" href="https://progressbot.ai/v2/botty-landing2?utm_source=hvac_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=hero#top">Hear the voice AI live</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="dispatch" role="img" aria-label="Simulated live dispatch board showing all six ProgressBot agents answering, making, and resolving HVAC calls around the clock.">
+        <div aria-hidden="true">
+          <div class="dp-head">
+            <i class="pdot"></i>
+            <span class="dp-title">Dispatch — live</span>
+            <span class="dp-clock">24/7</span>
+          </div>
+          <!-- [industry capsule] static no-JS feed rows -->
+          <div class="feed" id="feed">
+            <div class="ev show resolved">
+              <span class="ev-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/><path d="M22 2l-6 6"/><path d="M16 4v4h4"/></svg></span>
+              <span class="ev-body"><span class="ev-agent">Zoe · Inbound</span><span class="ev-label">No heat — furnace died overnight</span></span>
+              <span class="ev-state">Booked 7:30 AM</span>
+            </div>
+            <div class="ev show resolved">
+              <span class="ev-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/><path d="M16 8l6-6"/><path d="M22 6V2h-4"/></svg></span>
+              <span class="ev-body"><span class="ev-agent">Banx · Outbound</span><span class="ev-label">Fall tune-up list · dormant estimates</span></span>
+              <span class="ev-state">Tune-up booked</span>
+            </div>
+            <div class="ev show resolved">
+              <span class="ev-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/><path d="M22 2l-6 6"/><path d="M16 4v4h4"/></svg></span>
+              <span class="ev-body"><span class="ev-agent">Botty · Inbound</span><span class="ev-label">Replacement estimate — 15-yr-old unit</span></span>
+              <span class="ev-state">Proposal delivered</span>
+            </div>
+            <div class="ev show resolved">
+              <span class="ev-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/><path d="M16 8l6-6"/><path d="M22 6V2h-4"/></svg></span>
+              <span class="ev-body"><span class="ev-agent">Frank · Outbound</span><span class="ev-label">Welcome call — signed replacement</span></span>
+              <span class="ev-state">Contract confirmed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="dp-cap">Simulated HVAC traffic · Six real agent roles</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ THE HVAC MATH ============ -->
+<section class="sec" id="math">
+  <div class="wrap">
+    <div class="rv">
+      <p class="eyebrow">The math</p>
+      <h2>One missed call can be<br>a $10,000 replacement.</h2>
+      <p class="sub">And the no-AC caller doesn’t leave a voicemail — they dial the next company while your phone is still ringing. Miss one closable call a week and that’s <strong>$500,000+ a year</strong> handed to whoever picked up.</p>
+    </div>
+    <p class="eq rv"><span>52 weeks</span><span class="op">×</span><span>1 missed call</span><span class="op">×</span><span>$10,000 job</span><span class="op">=</span><b>a $520,000 problem</b></p>
+    <div class="sec-cta rv" style="margin-top:0;border-top:none;padding-top:0">
+      <p class="sc-note">Those are our numbers. Run yours — the calculator opens pre-set for HVAC.</p>
+      <!-- [industry capsule] calculator prefill (jv/cr match this trade) -->
+      <a class="btn btn-primary" href="https://progressbot.ai/v2/calculator?tab=calls&amp;mc=3&amp;cr=40&amp;jv=8000&amp;utm_source=hvac_page&amp;utm_medium=internal&amp;utm_campaign=calculator&amp;utm_content=math#calc">Run your HVAC numbers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CREW BOARD (HVAC lens) ============ -->
+<section class="sec features" id="crew">
+  <div class="wrap">
+    <div class="rv">
+      <p class="eyebrow">The crew</p>
+      <h2>Six agents.<br>Every stage of the job.</h2>
+      <p class="sub">From the panicked midnight call to the post-install follow-up — the whole phone line, covered, in HVAC terms.</p>
+    </div>
+    <!-- [industry capsule] agent one-liners -->
+    <div class="board">
+
+      <div class="stage rv">
+        <p class="stage-h"><b>01</b> Outbound
+          <svg class="stage-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </p>
+        <article class="agent-card" data-agent="BANX">
+          <h3 class="agent-name">Banx</h3>
+          <p class="agent-role">The cold caller</p>
+          <p>Works your aged estimates and dormant contacts — books the tune-ups and follow-ups that keep shoulder season full.</p>
+          <p class="agent-status"><i aria-hidden="true"></i><span>On shift · 24/7</span></p>
+          <a class="alink" href="#cta">Talk with us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </article>
+      </div>
+
+      <div class="stage rv">
+        <p class="stage-h"><b>02</b> Inbound
+          <svg class="stage-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </p>
+        <article class="agent-card" data-agent="ZOE">
+          <h3 class="agent-name">Zoe</h3>
+          <p class="agent-role">The phone receptionist</p>
+          <p>Answers the 2 AM no-heat call and the heat-wave flood — routes it, books the service window, or handles it herself.</p>
+          <p class="agent-status"><i aria-hidden="true"></i><span>On shift · 24/7</span></p>
+          <a class="alink" href="#cta">Talk with us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </article>
+        <article class="agent-card" data-agent="BRENDA">
+          <h3 class="agent-name">Brenda</h3>
+          <p class="agent-role">The web help bot</p>
+          <p>Catches homeowners pricing a replacement on your site at 10 PM — answers the questions, books the visit.</p>
+          <p class="agent-status"><i aria-hidden="true"></i><span>On shift · 24/7</span></p>
+          <a class="alink" href="#cta">Talk with us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </article>
+      </div>
+
+      <div class="stage rv">
+        <p class="stage-h"><b>03</b> The sale
+          <svg class="stage-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </p>
+        <article class="agent-card live" data-agent="BOTTY">
+          <span class="badge">Live demo</span>
+          <h3 class="agent-name">Botty</h3>
+          <p class="agent-role">The AI sales rep</p>
+          <p>Runs the replacement conversation — system age, symptoms, timeline, budget — then delivers the proposal or hands off to your comfort advisor. The public demo runs our default roofing flow; <strong>your build gets trained on HVAC.</strong></p>
+          <div class="mini-recap" aria-hidden="true">
+            <p class="mr-head">Recap · texted to you</p>
+            <p class="mr-row">Rosa M. · Orlando FL · 15-yr system</p>
+            <p class="mr-book">Booked: Tue 8:00 AM</p>
+          </div>
+          <p class="agent-status"><i aria-hidden="true"></i><span>On shift · 24/7</span></p>
+          <a class="alink" href="https://progressbot.ai/v2/botty-landing2?utm_source=hvac_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=crew_card#top">Hear her live <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </article>
+      </div>
+
+      <div class="stage rv">
+        <p class="stage-h"><b>04</b> After the sale
+          <svg class="stage-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </p>
+        <article class="agent-card" data-agent="FRANK">
+          <h3 class="agent-name">Frank</h3>
+          <p class="agent-role">The welcome bot</p>
+          <p>Calls right after the signed replacement — confirms equipment, financing, and every rep promise before buyer’s remorse becomes a cancellation.</p>
+          <p class="agent-status"><i aria-hidden="true"></i><span>On shift · 24/7</span></p>
+          <a class="alink" href="https://progressbot.ai/v2/frank">Meet Frank <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </article>
+        <article class="agent-card" data-agent="ULA">
+          <h3 class="agent-name">Ula</h3>
+          <p class="agent-role">The updater</p>
+          <p>Unit delivered, install scheduled, permit closed out — homeowners hear it from you before they call asking.</p>
+          <p class="agent-status"><i aria-hidden="true"></i><span>On shift · 24/7</span></p>
+          <a class="alink" href="https://progressbot.ai/ula-the-ai-updater/">Meet Ula <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ HVAC'S WORST DAYS ============ -->
+<section class="sec" id="moments">
+  <div class="wrap">
+    <div class="rv">
+      <p class="eyebrow">Built for the bad days</p>
+      <h2>HVAC’s worst nights<br>are the phone’s busiest.</h2>
+    </div>
+    <!-- [industry capsule] moments list -->
+    <div class="cov-grid" style="grid-template-columns:1fr 1fr">
+      <div class="types">
+        <div class="trow rv">
+          <div class="trow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <div><h3>The first cold snap</h3><p>Furnaces fail in batches, and every panicked homeowner calls at once. Each one still gets a live answer within 3 rings while your techs run calls.</p></div>
+        </div>
+        <div class="trow rv">
+          <div class="trow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/><path d="M22 2l-6 6"/><path d="M16 4v4h4"/></svg></div>
+          <div><h3>The 2 AM emergency</h3><p>No heat with kids in the house doesn’t wait for office hours. The call gets answered, calmed, and booked for the first slot.</p></div>
+        </div>
+      </div>
+      <div class="types">
+        <div class="trow rv">
+          <div class="trow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div><h3>Attics and crawlspaces</h3><p>Your techs are physically unreachable from 7 to 5. The phones don’t notice — answered, qualified, booked, summarized.</p></div>
+        </div>
+        <div class="trow rv">
+          <div class="trow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
+          <div><h3>Shoulder season</h3><p>Between the seasons, Banx works the tune-up lists and dormant estimates — so the schedule stays full when the weather goes quiet.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROOF ============ -->
+<section class="sec features" id="proof">
+  <div class="wrap">
+    <div class="rv">
+      <p class="eyebrow">From the field</p>
+      <h2>Florida HVAC crews<br>run this every day.</h2>
+      <p class="sub">The same six agents trusted by Florida roofing, solar, and HVAC contractors — trained on your services, your service area, and your dispatch rules.</p>
+    </div>
+    <ul class="trust-chips rv" style="margin-top:38px">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Live in 1–2 weeks</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>TCPA · GDPR · CCPA compliant</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="7" r="4"/><path d="M2 21c0-3.5 3-5.5 7-5.5s7 2 7 5.5"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M22 21c0-2.6-1.7-4.1-3.5-4.8"/></svg>Human handoff built in</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>Works with your CRM &amp; phone system</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ HVAC FAQ ============ -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="rv">
+      <p class="eyebrow">HVAC questions</p>
+      <h2>Asked from the truck.</h2>
+    </div>
+    <!-- [industry capsule] mini-FAQ -->
+    <div class="rv" style="margin-top:40px">
+<details class="qa"><summary>Can it handle emergency calls at 2 AM?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Yes — the agents answer 24/7 within 3 rings, with no voicemail and no queue. Urgent calls get booked straight onto your calendar, and anything that needs a human gets transferred.</div></details>
+<details class="qa"><summary>What happens during a heat wave or cold snap?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Volume surges get absorbed — every call still gets a live answer while your techs run jobs. Bookings land on the calendar and your team gets a summary of every conversation.</div></details>
+<details class="qa"><summary>Can it book maintenance and tune-ups?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Yes — outbound calls follow up new estimates and re-engage dormant contacts, and appointments get booked directly onto your calendar. That’s how shoulder season stays full.</div></details>
+<details class="qa"><summary>Will it route calls to the right person?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">It routes and triages to the right team member automatically, hands off to a human when a conversation needs one, and updates your CRM after every call.</div></details>
+<details class="qa"><summary>What does it cost compared to staffing the phones?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Typically 70–90% less all-in than covering the same seats with human reps — with nights, weekends, and emergency hours included at no extra cost.</div></details>
+      <p class="qa-more"><a href="https://progressbot.ai/v2/faq2">All 19 answers — read the full FAQ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="sec cta" id="cta">
+  <div class="wrap rv">
+    <p class="eyebrow">Next step</p>
+    <h2>The next cold snap<br>is coming.</h2>
+    <p class="sub">Book 15 minutes and we’ll map the crew to your dispatch — emergencies, surges, tune-up season, follow-ups. Or hear the voice tech first: the public demo runs our default roofing flow, and your build gets trained on HVAC.</p>
+    <div class="cta-btns">
+      <a class="btn btn-primary" href="tel:+18633560181">Book a strategy call · (863) 356-0181</a>
+      <a class="btn btn-ghost on-dark" href="https://progressbot.ai/v2/botty-landing2?utm_source=hvac_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=final_cta#top">Hear the voice AI live</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="https://progressbot.ai/">ProgressBot<span>.AI</span></a>
+        <p>AI phone bots for home service companies. Six agents on shift, 24/7 — never miss a lead again.</p>
+      </div>
+      <div>
+        <h4>AI agents</h4>
+        <ul>
+          <li><a href="https://progressbot.ai/v2/botty-landing2?utm_source=hvac_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=footer#top">Botty — live demo</a></li>
+          <li><a href="https://progressbot.ai/v2/frank">Frank — the welcome bot</a></li>
+          <li><a href="https://progressbot.ai/ula-the-ai-updater/">Ula — the updater</a></li>
+          <li><a href="tel:+18633560181">Full suite — talk with us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://progressbot.ai/v2/faq2">FAQ</a></li>
+          <li><a href="https://progressbot.ai/v2/calculator">Cost calculator</a></li>
+          <li><a href="https://progressbot.ai/franks-welcome-call-faq">Frank's FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+18633560181">(863) 356-0181</a></li>
+          <li><a href="mailto:contact@progressbot.ai">contact@progressbot.ai</a></li>
+          <li><a href="https://www.linkedin.com/company/progress-bot-ai/">LinkedIn</a></li>
+          <li><a href="https://www.facebook.com/ProgressBotAI/">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 ProgressBot.AI. All rights reserved.</p>
+      <p class="foot-legal"><a href="https://progressbot.ai/terms-and-conditions/">Terms and Conditions</a><a href="https://progressbot.ai/privacy.html">Privacy Policy</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ STICKY MOBILE CTA ============ -->
+<div class="sticky-cta" id="stickyCta">
+  <a class="btn btn-primary" href="https://progressbot.ai/v2/botty-landing2?utm_source=hvac_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=sticky#top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Hear Botty call you live
+  </a>
+</div>
+<script>
+(function(){
+  'use strict';
+  var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function qs(s, el){ return (el || document).querySelector(s); }
+  function qsa(s, el){ return Array.prototype.slice.call((el || document).querySelectorAll(s)); }
+
+  /* ---------- Live dispatch board (hero) ---------- */
+  var feed = qs('#feed');
+  var dpClock = qs('#dpClock');
+
+  function setClk(){
+    if (!dpClock) return;
+    var d = new Date();
+    var h = d.getHours() % 12; if (h === 0) h = 12;
+    var m = d.getMinutes();
+    dpClock.textContent = h + ':' + (m < 10 ? '0' : '') + m;
+  }
+  setClk();
+  setInterval(setClk, 30000);
+
+  var IC = {
+    'in':  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/><path d="M22 2l-6 6"/><path d="M16 4v4h4"/></svg>',
+    'out': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/><path d="M16 8l6-6"/><path d="M22 6V2h-4"/></svg>',
+    'web': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>'
+  };
+  var DIRL = { 'in': 'Inbound', 'out': 'Outbound', 'web': 'Web chat' };
+
+  /* [industry capsule] dispatch events */
+  var EVENTS = [
+    { a: 'Zoe',    d: 'in',  l: 'No heat — furnace died overnight',     ring: 2, live: 6, r: 'Booked 7:30 AM' },
+    { a: 'Banx',   d: 'out', l: 'Fall tune-up list · dormant estimates', ring: 0, live: 7, r: 'Tune-up booked' },
+    { a: 'Brenda', d: 'web', l: 'Pricing a replacement — financing',    ring: 0, live: 5, r: 'Lead saved' },
+    { a: 'Botty',  d: 'in',  l: 'Replacement estimate — 15-yr unit',    ring: 2, live: 8, r: 'Proposal delivered' },
+    { a: 'Frank',  d: 'out', l: 'Welcome call — signed replacement',    ring: 0, live: 6, r: 'Contract confirmed' },
+    { a: 'Ula',    d: 'out', l: 'Update — unit delivered',              ring: 0, live: 4, r: 'Homeowner updated' },
+    { a: 'Zoe',    d: 'in',  l: '2:14 AM — no heat, kids in the house', ring: 2, live: 5, r: 'Booked first slot' },
+    { a: 'Zoe',    d: 'in',  l: 'Heat wave — AC blowing warm',          ring: 1, live: 4, r: 'Booked 2:40 PM' },
+    { a: 'Botty',  d: 'in',  l: 'Repair vs. replace question',              ring: 2, live: 7, r: 'Handed to a rep' },
+    { a: 'Ula',    d: 'out', l: 'Update — install scheduled',           ring: 0, live: 4, r: 'Recap texted' }
+  ];
+
+  var dTimers = [];
+  var dRunning = false;
+  var dIdx = 0;
+  function dLater(fn, ms){ dTimers.push(setTimeout(fn, ms)); }
+  function dStop(){
+    dTimers.forEach(clearTimeout);
+    dTimers = [];
+    dRunning = false;
+  }
+  function buildRow(e){
+    var row = document.createElement('div');
+    row.className = 'ev';
+    row.innerHTML =
+      '<span class="ev-ic">' + IC[e.d] + '</span>' +
+      '<span class="ev-body">' +
+        '<span class="ev-agent">' + e.a + ' · ' + DIRL[e.d] + '</span>' +
+        '<span class="ev-label">' + e.l + '</span>' +
+      '</span>' +
+      '<span class="ev-state">' + (e.ring ? 'Ring 1' : 'Dialing') + '</span>';
+    return row;
+  }
+  function trimFeed(){
+    var rows = qsa('.ev', feed);
+    while (rows.length > 7){
+      var last = rows.pop();
+      if (last.parentNode) last.parentNode.removeChild(last);
+    }
+  }
+  function runEvent(e){
+    var row = buildRow(e);
+    feed.insertBefore(row, feed.firstChild);
+    trimFeed();
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ row.classList.add('show'); });
+    });
+    var state = qs('.ev-state', row);
+    var t = 300;
+    for (var i = 2; i <= e.ring; i++){
+      (function(n, at){ dLater(function(){ state.textContent = 'Ring ' + n; }, at); })(i, t);
+      t += 1050;
+    }
+    if (e.ring) t += 700;
+    dLater(function(){
+      row.classList.add('live');
+      state.innerHTML = '<i></i>Live 0:00';
+    }, t);
+    for (var s = 1; s <= e.live; s++){
+      (function(n, at){
+        dLater(function(){
+          state.innerHTML = '<i></i>Live 0:' + (n < 10 ? '0' : '') + n;
+        }, at);
+      })(s, t + s * 1000);
+    }
+    t += e.live * 1000 + 500;
+    dLater(function(){
+      row.classList.remove('live');
+      row.classList.add('resolved');
+      state.textContent = e.r;
+    }, t);
+    dLater(function(){ row.classList.add('done'); }, t + 5200);
+  }
+  function spawn(){
+    if (!dRunning) return;
+    runEvent(EVENTS[dIdx % EVENTS.length]);
+    dIdx++;
+    dLater(spawn, 3600 + Math.random() * 2800);
+  }
+  function startDispatch(){
+    dStop();
+    dRunning = true;
+    feed.innerHTML = '';
+    spawn();
+  }
+  function staticDispatch(){
+    feed.innerHTML = '';
+    for (var i = 0; i < 6; i++){
+      var e = EVENTS[i];
+      var row = buildRow(e);
+      row.classList.add('show', 'resolved');
+      qs('.ev-state', row).textContent = e.r;
+      feed.appendChild(row);
+    }
+  }
+  if (feed){
+    if (RM){
+      staticDispatch();
+    } else if ('IntersectionObserver' in window){
+      var dIO = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if (en.isIntersecting){
+            if (!dRunning) startDispatch();
+          } else {
+            dStop();
+          }
+        });
+      }, { threshold: 0.2 });
+      dIO.observe(qs('.dispatch'));
+    } else {
+      startDispatch();
+    }
+  }
+
+  /* ---------- Crew card ambient status ---------- */
+  /* [industry capsule] crew statuses */
+  var STATS = {
+    BANX:   ['Working the tune-up list…', 'On a call', 'Tune-up booked', 'On shift · 24/7'],
+    ZOE:    ['No-heat call — ring 2', 'On a call', 'Booked · 7:30 AM', 'On shift · 24/7'],
+    BRENDA: ['Chatting on your site', 'Lead saved', 'On shift · 24/7'],
+    BOTTY:  ['Replacement call live', 'Proposal delivered', 'On shift · 24/7'],
+    FRANK:  ['Confirming a close', 'Contract confirmed', 'On shift · 24/7'],
+    ULA:    ['Delivery update call', 'Recap texted', 'On shift · 24/7']
+  };
+  var crewCards = qsa('.agent-card[data-agent]');
+  if (!RM && crewCards.length){
+    var ci = 0;
+    var cPos = {};
+    var rotOn = false;
+    var boardEl = qs('.board');
+    if ('IntersectionObserver' in window && boardEl){
+      var rIO = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){ rotOn = en.isIntersecting; });
+      }, { threshold: 0.15 });
+      rIO.observe(boardEl);
+    } else {
+      rotOn = true;
+    }
+    setInterval(function(){
+      if (!rotOn) return;
+      var card = crewCards[ci % crewCards.length];
+      ci++;
+      var key = card.getAttribute('data-agent');
+      var list = STATS[key];
+      var p = qs('.agent-status', card);
+      var span = p ? qs('span', p) : null;
+      if (!list || !span) return;
+      cPos[key] = ((cPos[key] || 0) + 1) % list.length;
+      p.classList.add('swap');
+      setTimeout(function(){
+        span.textContent = list[cPos[key]];
+        p.classList.remove('swap');
+      }, 290);
+    }, 2600);
+  }
+
+  /* ---------- Sticky header shadow ---------- */
+  var head = qs('.site-head');
+  window.addEventListener('scroll', function(){
+    head.classList.toggle('scrolled', window.scrollY > 4);
+  }, { passive: true });
+
+  /* ---------- Sticky mobile CTA (hidden whenever another CTA is on screen) ---------- */
+  var sticky = qs('#stickyCta');
+  var watch = [qs('#cta'), qs('.hero-btns')];
+  if ('IntersectionObserver' in window && sticky){
+    var vis = [false, false];
+    var stickyIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var i = watch.indexOf(e.target);
+        if (i > -1) vis[i] = e.isIntersecting;
+      });
+      sticky.classList.toggle('hide', vis[0] || vis[1]);
+    }, { threshold: 0.2 });
+    watch.forEach(function(el){ if (el) stickyIO.observe(el); });
+  }
+
+  /* ---------- Scroll reveals ---------- */
+  var rvs = qsa('.rv');
+  if (RM || !('IntersectionObserver' in window)){
+    rvs.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var rvIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){
+          e.target.classList.add('in');
+          rvIO.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    rvs.forEach(function(el){ rvIO.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>
