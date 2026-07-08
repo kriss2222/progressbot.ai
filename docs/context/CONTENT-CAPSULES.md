@@ -47,8 +47,70 @@ live old page before using it.
   welcome calls, cancellations have dropped by about 20%."
 - Pricing model (from Frank's FAQ): setup fee + per-call. Voicemail → Frank retries.
 - Frank's FAQ has **20 Q&As**; five are preserved on `/v2/frank` (call speed,
-  voicemail retry, escalation, bot disclosure, pricing). For the frank-faq rebuild,
-  fetch the live page — do not reconstruct the other 15 from memory.
+  voicemail retry, escalation, bot disclosure, pricing). Full set fetched live
+  2026-07-08 — see next section.
+
+## Frank's FAQ — full 20 Q&As (fetched live 2026-07-08 from `/franks-welcome-call-faq`)
+
+Page title: "FAQs for Frank the Confirmation AI Agent". Intro: "Everything you
+need to know about our AI welcome call service". Page phone: (863) 356-0181.
+CTA: "Schedule a Demo with Frank". Answers verbatim:
+
+1. What does Frank actually do? — "Frank makes automated welcome calls (sometimes
+   called Confirmation Calls) to your new solar customers to confirm key details,
+   reduce cancellations, and ensure smooth post-sale handoff."
+2. How does Frank reduce cancellations? — "By calling the homeowner quickly after
+   the sale, Frank reinforces the decision, answers questions, and ensures there's
+   no confusion about next steps—reducing buyer's remorse."
+3. What kind of information does Frank confirm? — "Frank verifies homeowner name,
+   system size, adders, financing terms, rep promises, roof condition, and next
+   steps, such as a site survey or install date."
+4. Can Frank be trained on our specific sales process? — "Yes. Frank must be
+   customized for each solar company to match the company's terminology, process,
+   and internal handoff requirements."
+5. Can Frank be integrated with our CRM? — "Yes. Frank can receive deal data
+   directly from your CRM or sales tools, so there's no need for manual input."
+6. Will homeowners know they're talking to a bot? — "Frank uses natural language
+   voice AI and polite phrasing. Many homeowners assume they're speaking to a
+   friendly assistant. You control how he introduces himself."
+7. What happens if the homeowner asks a question Frank can't answer? — "Frank
+   flags the call for human follow-up and can escalate via email or internal
+   system. He doesn't guess."
+8. How quickly does Frank make the call after the sale? — "Frank can call within
+   minutes of receiving the copy of the contract. Most companies have him call
+   while the rep is still in the home."
+9. What happens if the homeowner doesn't answer? — "Frank leaves a friendly
+   voicemail and will retry the call at scheduled intervals."
+10. Does Frank speak Spanish (or other languages)? — "Yes. Frank can be trained to
+    speak multiple languages, including Spanish, based on your customer base."
+11. Can we hear samples of Frank in action? — "Yes. We provide real call
+    recordings and can simulate a custom demo for your company."
+12. What's the biggest benefit of using Frank? — "Frank reduces cancellations,
+    improves handoff quality, and ensures reps don't forget critical steps—
+    protecting your revenue. Frank also checks if the sales reps documented all
+    parts of the agreement."
+13. Does Frank handle compliance or disclosures? — "Yes. If you have specific
+    phrases or scripts required by financing, insurance, or HOA rules, Frank can
+    be trained to include them."
+14. Can Frank collect additional data from the homeowner? — "Yes. He can ask
+    follow-up questions, collect info (like preferred install time or insurance
+    status), and update your system."
+15. Will this replace our sales reps? — "No. Frank supports your reps by ensuring
+    no details fall through the cracks after the sale."
+16. How much setup is required? — "Setup takes a few days to a couple of weeks.
+    We train Frank on your workflows, connect to your CRM, and run test calls
+    before launch."
+17. Is Frank secure and compliant with data privacy regulations? — "Yes. We use
+    secure, encrypted systems and follow industry best practices for customer data."
+18. How much does it cost? — "Pricing depends on your call volume and features.
+    We charge an initial set-up fee and then a cost per call additional."
+19. What makes Frank different from a regular IVR or phone bot? — "Frank is
+    proactive, human-like, and tailored for post-sale verification—not a passive
+    menu system. He's trained on your data and sounds like a helpful team member."
+20. Can Frank send text messages, emails, or transfer the call to a human? —
+    "Yes, he can! Frank can do anything a person can do on the phone, including
+    texting, emailing, or transferring calls. And he can interact with software
+    such as CRMs, spreadsheets, and most business software."
 
 ## Audio assets (own domain — allowed external requests)
 

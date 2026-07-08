@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<!--
+  ProgressBot.AI - Frank's welcome-call FAQ page (FINAL)
+  Static, self-contained: all CSS and vanilla JavaScript inline in this one
+  file. No build step, no frameworks - safe for shared hosting: just upload.
+  Deploy as: public_html/v2/frank-faq/index.html  (adjust path + canonical below
+  if you deploy elsewhere)
+  Only external dependency: Google Fonts. Includes FAQPage JSON-LD for search.
+  Content source: live /franks-welcome-call-faq (fetched 2026-07-08, see
+  docs/context/CONTENT-CAPSULES.md).
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frank&rsquo;s Welcome Call FAQ — AI Confirmation Calls for Solar | ProgressBot.AI</title>
+<meta name="description" content="Every question about Frank's AI welcome calls, answered: what he confirms after a solar sale, how fast he calls, voicemail retries, CRM integration, languages, compliance, and pricing.">
+<meta name="theme-color" content="#F3F4F1">
+<!-- Canonical assumes deployment at /v2/frank-faq - adjust if the path changes -->
+<link rel="canonical" href="https://progressbot.ai/v2/frank-faq">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://progressbot.ai/v2/frank-faq">
+<meta property="og:site_name" content="ProgressBot.AI">
+<meta property="og:title" content="Frank’s Welcome Call FAQ — Every Question, Answered Straight">
+<meta property="og:description" content="What Frank confirms, how fast he dials after a solar sale, what happens when nobody answers, and what he costs — the full welcome-call FAQ, no fluff.">
+<!-- TODO: add og:image + twitter:image (1200x630) once an asset exists -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Frank’s Welcome Call FAQ — Every Question, Answered Straight">
+<meta name="twitter:description" content="AI welcome calls for solar: what Frank confirms, voicemail retries, CRM sync, Spanish, compliance, setup fee + per-call pricing — answered without the fluff.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230E7B43'/%3E%3Cg transform='translate(3.2 3.2) scale(0.73)'%3E%3Cpath d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Big+Shoulders+Display:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS (design-system contract) ============ */
+:root{
+  --paper:#F3F4F1;
+  --card:#FFFFFF;
+  --ink:#14181D;
+  --ink2:#454D48;
+  --mut:#68716B;
+  --line:#DCE0DA;
+  --green:#0E7B43;
+  --green-d:#0B6236;
+  --green-t:#E4F0E7;
+  --green-br:#37B071;
+  --red:#C6392B;
+  --red-b:#E04A3A;
+  --gold:#DE9A26;
+  --dk:#14181D;
+  --dk-line:#262D34;
+  --phone:#0D1116;
+  --pline:#232A31;
+  --disp:'Big Shoulders Display', Impact, 'Arial Narrow', sans-serif;
+  --body:'Barlow', 'Helvetica Neue', Arial, sans-serif;
+  --mono:'IBM Plex Mono', 'Courier New', monospace;
+}
+
+/* ============ BASE ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);
+  font-size:17px;
+  line-height:1.6;
+  color:var(--ink);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--green);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.sec{padding:104px 0}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--green);
+  display:flex;align-items:center;gap:12px;
+}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--green);flex:none}
+h2{
+  font-family:var(--disp);
+  font-weight:800;
+  text-transform:uppercase;
+  font-size:clamp(2.2rem,4.4vw,3.7rem);
+  line-height:.95;
+  letter-spacing:.005em;
+  margin:16px 0 18px;
+}
+.sub{font-size:18px;color:var(--ink2);max-width:660px}
+.mono{font-family:var(--mono)}
+
+/* ============ BUTTONS ============ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--body);font-weight:600;font-size:16.5px;
+  padding:15px 24px;border-radius:9px;border:2px solid transparent;
+  cursor:pointer;text-decoration:none;line-height:1;
+  transition:background .18s ease,transform .18s ease,border-color .18s ease,color .18s ease;
+}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-primary{background:var(--green);color:#fff}
+.btn-primary:hover{background:var(--green-d);transform:translateY(-1px)}
+.btn-ghost{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-ghost:hover{background:var(--ink);color:#fff}
+.btn-ghost.on-dark{border-color:#454E56;color:#fff}
+.btn-ghost.on-dark:hover{background:#fff;color:var(--ink);border-color:#fff}
+.btn-sm{padding:11px 18px;font-size:15px}
+.btn-block{width:100%}
+
+/* ============ SECTION CTA ============ */
+.sec-cta{
+  display:flex;flex-wrap:wrap;align-items:center;gap:16px 22px;
+  margin-top:44px;padding-top:26px;border-top:1px solid var(--line);
+}
+.sc-note{font-size:16.5px;font-weight:600}
+#what,#call,#setup,#cost,#cta{scroll-margin-top:84px}
+
+/* ============ HEADER ============ */
+.site-head{
+  position:sticky;top:0;z-index:70;
+  border-bottom:1px solid var(--line);background:var(--paper);
+}
+.site-head.scrolled{box-shadow:0 10px 24px -18px rgba(20,24,29,.3)}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:66px}
+.brand{
+  font-family:var(--disp);font-weight:800;font-size:22px;
+  letter-spacing:.03em;text-decoration:none;text-transform:uppercase;flex:none;
+}
+.brand span{color:var(--green)}
+.nav{display:flex;align-items:center;gap:26px;margin-right:auto;margin-left:36px}
+.nav a{font-size:15px;font-weight:600;text-decoration:none;color:var(--ink2)}
+.nav a:hover{color:var(--green)}
+.head-right{display:flex;align-items:center;gap:22px}
+.onshift{
+  font-family:var(--mono);font-size:11px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);
+  display:flex;align-items:center;gap:8px;
+}
+.pdot{width:8px;height:8px;border-radius:50%;background:var(--green);flex:none;animation:pdot 1.8s ease infinite}
+@keyframes pdot{0%,100%{box-shadow:0 0 0 0 rgba(14,123,67,.45)}55%{box-shadow:0 0 0 7px rgba(14,123,67,0)}}
+.head-tel{font-weight:600;font-size:15px;text-decoration:none;color:var(--ink)}
+.head-tel:hover{color:var(--green)}
+
+/* ============ HERO ============ */
+.hero{padding:72px 0 88px;overflow:hidden}
+.hero h1{
+  font-family:var(--disp);font-weight:800;text-transform:uppercase;
+  font-size:clamp(3.2rem,6.3vw,5.9rem);
+  line-height:.92;letter-spacing:.005em;margin:20px 0 22px;
+}
+.hero h1 span{color:var(--green)}
+.lede{font-size:19px;color:var(--ink2);max-width:560px;margin-bottom:30px}
+.lede strong{color:var(--ink)}
+.hero-btns{display:flex;flex-wrap:wrap;gap:16px}
+
+/* ============ FINAL CTA ============ */
+.cta{background:var(--dk);color:#fff}
+.cta h2{color:#fff}
+.cta .sub{color:#B9C0BB}
+.cta .eyebrow{color:var(--green-br)}
+.cta .eyebrow::before{background:var(--green-br)}
+.cta-btns{display:flex;flex-wrap:wrap;gap:16px;margin-top:34px}
+
+/* ============ FOOTER ============ */
+.site-foot{background:#0F1317;color:#9AA39C;font-size:14.5px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding:64px 0 48px}
+.foot-brand .brand{color:#fff;font-size:24px}
+.foot-brand p{margin-top:12px;max-width:280px;line-height:1.55}
+.site-foot h4{
+  font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:#68716B;margin-bottom:16px;
+}
+.site-foot ul{list-style:none}
+.site-foot li{margin-bottom:10px}
+.site-foot a{text-decoration:none;color:#B7BEB8}
+.site-foot a:hover{color:var(--green-br)}
+.foot-bottom{
+  border-top:1px solid #1E242B;padding:22px 0;font-size:13px;
+  display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;align-items:center;
+}
+.foot-legal{display:flex;gap:22px}
+
+/* ============ STICKY MOBILE CTA ============ */
+.sticky-cta{
+  display:none;position:fixed;left:12px;right:12px;z-index:60;
+  bottom:calc(12px + env(safe-area-inset-bottom));
+  transition:transform .3s ease,opacity .3s ease;
+}
+.sticky-cta .btn{width:100%;box-shadow:0 12px 30px -8px rgba(20,24,29,.5)}
+.sticky-cta.hide{transform:translateY(140%);opacity:0;pointer-events:none}
+
+
+/* ============ FAQ PAGE ============ */
+.jump{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.jump a{
+  font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink2);text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-radius:99px;padding:8px 15px;transition:border-color .18s ease,color .18s ease;
+}
+.jump a:hover{border-color:var(--green);color:var(--green)}
+.faqcat{margin-top:56px}
+.cat-h{
+  display:flex;align-items:center;gap:10px;margin-bottom:20px;
+  font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);
+  border-top:2px solid var(--ink);padding-top:12px;
+}
+.cat-h b{color:var(--green);font-weight:600}
+.qa{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:12px;overflow:hidden}
+.qa summary{
+  display:flex;align-items:center;gap:14px;padding:18px 20px;cursor:pointer;
+  font-size:17px;font-weight:600;color:var(--ink);list-style:none;
+}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary svg{width:16px;height:16px;flex:none;margin-left:auto;color:var(--green);transition:transform .25s ease}
+.qa[open] summary svg{transform:rotate(45deg)}
+.qa .ans{padding:0 20px 18px;font-size:15.5px;color:var(--ink2);line-height:1.6;max-width:760px}
+.qa .ans a{color:var(--green);font-weight:600;text-decoration:none}
+.qa .ans a:hover{color:var(--green-d)}
+
+/* ============ REVEALS ============ */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.rv.in{opacity:1;transform:none}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:960px){
+  .sec{padding:76px 0}
+  .hero{padding:64px 0 64px}
+  .nav{display:none}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:34px}
+}
+@media (max-width:860px){
+  .sticky-cta{display:block}
+  body{padding-bottom:86px}
+  .onshift{display:none}
+  .site-head{position:static}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .head-tel{display:none}
+  .foot-grid{grid-template-columns:1fr;gap:30px}
+}
+
+/* ============ REDUCED MOTION ============ */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "What does Frank actually do?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Frank makes automated welcome calls - some companies call them confirmation calls - to your new solar customers: he confirms the key details of the deal, reduces cancellations, and makes sure the post-sale handoff goes smoothly."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How does Frank reduce cancellations?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "By calling the homeowner quickly after the sale. Frank reinforces the decision, answers questions, and clears up any confusion about next steps - before buyer's remorse gets a vote."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What kind of information does Frank confirm?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Homeowner name, system size, adders, financing terms, rep promises, roof condition, and next steps - like the site survey or install date."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What's the biggest benefit of using Frank?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Fewer cancellations, cleaner handoffs, and no forgotten steps - Frank also checks that the sales rep documented every part of the agreement. It's revenue protection."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What makes Frank different from a regular IVR or phone bot?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Frank is proactive, human-like, and built for post-sale verification - not a passive menu system. He's trained on your data and sounds like a helpful team member."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How quickly does Frank call after the sale?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Within minutes of receiving the contract. Most companies have him call while the rep is still in the home - before doubts have time to grow."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What happens if the homeowner doesn't answer?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Frank leaves a friendly voicemail and retries the call at scheduled intervals. No new customer slips through."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What if the homeowner asks something Frank can't answer?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "He doesn't guess. Frank flags the call for human follow-up and escalates by email or through your internal system."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Will homeowners know they're talking to a bot?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Frank uses natural voice AI and polite phrasing - many homeowners assume a friendly assistant. You control exactly how he introduces himself."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does Frank speak Spanish or other languages?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Frank can be trained to speak multiple languages, including Spanish, based on your customer base."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can Frank collect additional data from the homeowner?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. He can ask follow-up questions, collect details like preferred install time or insurance status, and update your system with the answers."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can Frank send texts, emails, or transfer the call to a human?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Frank can do anything a person can do on the phone - text, email, or transfer the call - and he works with CRMs, spreadsheets, and most business software."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can Frank be trained on our specific sales process?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes - he has to be. Frank is customized for each solar company to match your terminology, your process, and your internal handoff requirements."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can Frank be integrated with our CRM?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Frank receives deal data directly from your CRM or sales tools - no manual input needed."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How much setup is required?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "A few days to a couple of weeks. We train Frank on your workflows, connect your CRM, and run test calls before launch."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does Frank handle compliance or disclosures?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. If financing, insurance, or HOA rules require specific phrases or scripts, Frank can be trained to include them on every call."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How much does Frank cost?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Pricing depends on call volume and features: an initial setup fee, then a cost per call. Book a strategy call and we'll scope it for your close rate."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is Frank secure and compliant with data privacy regulations?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. We use secure, encrypted systems and follow industry best practices for customer data."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Will this replace our sales reps?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. Frank backs your reps up - he makes sure no detail falls through the cracks after the sale."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can we hear samples of Frank in action?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. There's a real welcome call on the Frank page - Frank walking Juan through his brand-new system - and we can simulate a custom demo for your company."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="https://progressbot.ai/v2/home3">ProgressBot<span>.AI</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="https://progressbot.ai/v2/home3">Home</a>
+      <a href="https://progressbot.ai/v2/frank">Frank</a>
+      <a href="https://progressbot.ai/v2/faq2">General FAQ</a>
+    </nav>
+    <div class="head-right">
+      <span class="onshift"><i class="pdot" aria-hidden="true"></i>Frank is on shift</span>
+      <a class="head-tel" href="tel:+18633560181">(863) 356-0181</a>
+      <a class="btn btn-primary btn-sm" href="https://progressbot.ai/v2/botty-landing2?utm_source=frank_faq_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=header#top">Get started</a>
+    </div>
+  </div>
+</header>
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Frank — the welcome bot · FAQ</p>
+    <h1>The welcome call,<br>explained.</h1>
+    <p class="lede">Everything you need to know about Frank’s AI welcome-call service — what he confirms after a solar sale, how fast he dials, what he costs, and what happens when a homeowner doesn’t pick up. Straight answers, no hedging.</p>
+    <nav class="jump" aria-label="Jump to a category">
+      <a href="#what">01 What Frank does</a>
+      <a href="#call">02 The call itself</a>
+      <a href="#setup">03 Setup &amp; integration</a>
+      <a href="#cost">04 Cost &amp; trust</a>
+    </nav>
+  </div>
+</section>
+
+<!-- ============ CATEGORIES ============ -->
+<section class="sec" id="questions" style="padding-top:24px">
+  <div class="wrap">
+<section class="faqcat rv" id="what">
+      <h2 class="cat-h"><b>01</b> What Frank does</h2>
+      <details class="qa"><summary>What does Frank actually do?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Frank makes automated welcome calls — some companies call them confirmation calls — to your new solar customers: he confirms the key details of the deal, reduces cancellations, and makes sure the post-sale handoff goes smoothly.</div></details>
+      <details class="qa"><summary>How does Frank reduce cancellations?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">By calling the homeowner quickly after the sale. Frank reinforces the decision, answers questions, and clears up any confusion about next steps — before buyer’s remorse gets a vote.</div></details>
+      <details class="qa"><summary>What kind of information does Frank confirm?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Homeowner name, system size, adders, financing terms, rep promises, roof condition, and next steps — like the site survey or install date.</div></details>
+      <details class="qa"><summary>What’s the biggest benefit of using Frank?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Fewer cancellations, cleaner handoffs, and no forgotten steps — Frank also checks that the sales rep documented every part of the agreement. It’s revenue protection.</div></details>
+      <details class="qa"><summary>What makes Frank different from a regular IVR or phone bot?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Frank is proactive, human-like, and built for post-sale verification — not a passive menu system. He’s trained on your data and sounds like a helpful team member.</div></details>
+    </section>
+<section class="faqcat rv" id="call">
+      <h2 class="cat-h"><b>02</b> The call itself</h2>
+      <details class="qa"><summary>How quickly does Frank call after the sale?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Within minutes of receiving the contract. Most companies have him call while the rep is still in the home — before doubts have time to grow.</div></details>
+      <details class="qa"><summary>What happens if the homeowner doesn’t answer?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Frank leaves a friendly voicemail and retries the call at scheduled intervals. No new customer slips through.</div></details>
+      <details class="qa"><summary>What if the homeowner asks something Frank can’t answer?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">He doesn’t guess. Frank flags the call for human follow-up and escalates by email or through your internal system.</div></details>
+      <details class="qa"><summary>Will homeowners know they’re talking to a bot?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Frank uses natural voice AI and polite phrasing — many homeowners assume a friendly assistant. You control exactly how he introduces himself.</div></details>
+      <details class="qa"><summary>Does Frank speak Spanish or other languages?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Yes. Frank can be trained to speak multiple languages, including Spanish, based on your customer base.</div></details>
+      <details class="qa"><summary>Can Frank collect additional data from the homeowner?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Yes. He can ask follow-up questions, collect details like preferred install time or insurance status, and update your system with the answers.</div></details>
+      <details class="qa"><summary>Can Frank send texts, emails, or transfer the call to a human?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Yes. Frank can do anything a person can do on the phone — text, email, or transfer the call — and he works with CRMs, spreadsheets, and most business software.</div></details>
+    </section>
+    <div class="sec-cta rv">
+      <p class="sc-note">Want Frank on every close you make?</p>
+      <a class="btn btn-primary" href="tel:+18633560181">Book a strategy call · (863) 356-0181</a>
+    </div>
+<section class="faqcat rv" id="setup">
+      <h2 class="cat-h"><b>03</b> Setup &amp; integration</h2>
+      <details class="qa"><summary>Can Frank be trained on our specific sales process?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Yes — he has to be. Frank is customized for each solar company to match your terminology, your process, and your internal handoff requirements.</div></details>
+      <details class="qa"><summary>Can Frank be integrated with our CRM?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Yes. Frank receives deal data directly from your CRM or sales tools — no manual input needed.</div></details>
+      <details class="qa"><summary>How much setup is required?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">A few days to a couple of weeks. We train Frank on your workflows, connect your CRM, and run test calls before launch.</div></details>
+      <details class="qa"><summary>Does Frank handle compliance or disclosures?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Yes. If financing, insurance, or HOA rules require specific phrases or scripts, Frank can be trained to include them on every call.</div></details>
+    </section>
+<section class="faqcat rv" id="cost">
+      <h2 class="cat-h"><b>04</b> Cost &amp; trust</h2>
+      <details class="qa"><summary>How much does Frank cost?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Pricing depends on call volume and features: an initial setup fee, then a cost per call. Book a strategy call and we’ll scope it for your close rate.</div></details>
+      <details class="qa"><summary>Is Frank secure and compliant with data privacy regulations?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Yes. We use secure, encrypted systems and follow industry best practices for customer data.</div></details>
+      <details class="qa"><summary>Will this replace our sales reps?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">No. Frank backs your reps up — he makes sure no detail falls through the cracks after the sale.</div></details>
+      <details class="qa"><summary>Can we hear samples of Frank in action?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Yes. <a href="https://progressbot.ai/v2/frank#recording">There’s a real welcome call on the Frank page</a> — Frank walking Juan through his brand-new system — and we can simulate a custom demo for your company.</div></details>
+    </section>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="sec cta" id="cta">
+  <div class="wrap rv">
+    <p class="eyebrow">Still deciding?</p>
+    <h2>Put Frank on<br>your next close.</h2>
+    <p class="sub">Book 15 minutes and we’ll walk your exact process — contracts, terminology, CRM and all. Or hear the voice tech live on your own phone first: Botty calls you in about 30 seconds.</p>
+    <div class="cta-btns">
+      <a class="btn btn-primary" href="tel:+18633560181">Book a strategy call · (863) 356-0181</a>
+      <a class="btn btn-ghost on-dark" href="https://progressbot.ai/v2/botty-landing2?utm_source=frank_faq_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=final_cta#top">Hear Botty call you live</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="https://progressbot.ai/v2/home3">ProgressBot<span>.AI</span></a>
+        <p>AI phone bots for home service companies. Six agents on shift, 24/7 — never miss a lead again.</p>
+      </div>
+      <div>
+        <h4>AI agents</h4>
+        <ul>
+          <li><a href="https://progressbot.ai/v2/botty-landing2?utm_source=frank_faq_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=footer#top">Botty — live demo</a></li>
+          <li><a href="https://progressbot.ai/v2/frank">Frank — the welcome bot</a></li>
+          <li><a href="https://progressbot.ai/v2/ula">Ula — the updater</a></li>
+          <li><a href="tel:+18633560181">Full suite — talk with us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://progressbot.ai/v2/faq2">FAQ</a></li>
+          <li><a href="#top">Frank's FAQ</a></li>
+          <li><a href="https://progressbot.ai/v2/calculator">Cost calculator</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+18633560181">(863) 356-0181</a></li>
+          <li><a href="mailto:contact@progressbot.ai">contact@progressbot.ai</a></li>
+          <li><a href="https://www.linkedin.com/company/progress-bot-ai/">LinkedIn</a></li>
+          <li><a href="https://www.facebook.com/ProgressBotAI/">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 ProgressBot.AI. All rights reserved.</p>
+      <p class="foot-legal"><a href="https://progressbot.ai/terms-and-conditions/">Terms and Conditions</a><a href="https://progressbot.ai/privacy.html">Privacy Policy</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ STICKY MOBILE CTA ============ -->
+<div class="sticky-cta" id="stickyCta">
+  <a class="btn btn-primary" href="tel:+18633560181">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Book a strategy call
+  </a>
+</div>
+<script>
+(function(){
+  'use strict';
+  var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function qs(s, el){ return (el || document).querySelector(s); }
+  function qsa(s, el){ return Array.prototype.slice.call((el || document).querySelectorAll(s)); }
+
+  /* ---------- One open answer per category ---------- */
+  qsa('.faqcat').forEach(function(cat){
+    qsa('.qa', cat).forEach(function(d){
+      d.addEventListener('toggle', function(){
+        if (!d.open) return;
+        qsa('.qa[open]', cat).forEach(function(other){
+          if (other !== d) other.open = false;
+        });
+      });
+    });
+  });
+
+  /* ---------- Sticky header shadow ---------- */
+  var head = qs('.site-head');
+  window.addEventListener('scroll', function(){
+    head.classList.toggle('scrolled', window.scrollY > 4);
+  }, { passive: true });
+
+  /* ---------- Sticky mobile CTA ---------- */
+  var sticky = qs('#stickyCta');
+  var ctaBand = qs('#cta');
+  if ('IntersectionObserver' in window && sticky){
+    var sIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        sticky.classList.toggle('hide', e.isIntersecting);
+      });
+    }, { threshold: 0.2 });
+    sIO.observe(ctaBand);
+  }
+
+  /* ---------- Scroll reveals ---------- */
+  var rvs = qsa('.rv');
+  if (RM || !('IntersectionObserver' in window)){
+    rvs.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var rvIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); rvIO.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    rvs.forEach(function(el){ rvIO.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>

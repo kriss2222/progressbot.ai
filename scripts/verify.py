@@ -24,6 +24,7 @@ CFG = {
  '/v2/frank':          dict(utm='frank_page',      must=['runCheck']),
  '/v2/ula':            dict(utm='ula_page',        must=['runTimeline'], red_free=True),
  '/v2/faq2':           dict(utm='faq_page',        must=[]),
+ '/v2/frank-faq':       dict(utm='frank_faq_page',  must=[]),
  '/v2/calculator':     dict(utm='calculator_page', must=['URLSearchParams', '$468,000']),
  '/v2/roofing':        dict(utm='roofing_page',    must=[], industry=True),
  '/v2/solar':          dict(utm='solar_page',      must=['NREL', 'tab=cancel'], industry=True),
