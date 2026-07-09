@@ -77,7 +77,9 @@ paper `#F3F4F1` / card white / ink `#14181D` / `--green #0E7B43` = **action** /
 - Animated signatures (dispatch board, phone sim, contract check, timeline,
   calculator count-ups) must: render complete static state without JS, pause via
   IntersectionObserver off-screen, go static under `prefers-reduced-motion`.
-- Voice: blunt, money-first, trades-aware.
+- Voice: blunt, money-first, trades-aware. **No em dashes anywhere** (client
+  rule 2026-07-08, enforced by verify.py): use a plain "-". Only exemption:
+  verbatim legal body text on /v2/terms + /v2/privacy.
 
 ## Phone numbers — OPEN QUESTION (see CLIENT-NOTES)
 

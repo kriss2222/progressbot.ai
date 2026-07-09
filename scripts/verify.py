@@ -30,8 +30,8 @@ CFG = {
  '/v2/roofing':        dict(utm='roofing_page',    must=[], industry=True),
  '/v2/solar':          dict(utm='solar_page',      must=['NREL', 'tab=cancel'], industry=True),
  '/v2/hvac':           dict(utm='hvac_page',       must=[], industry=True, forbid=['NREL', '33%']),
- '/v2/terms':          dict(utm='terms_page',      must=['Roof Bear SMS Alerts', 'reply STOP']),
- '/v2/privacy':        dict(utm='privacy_page',    must=['SimplyBook.me', 'Device Information']),
+ '/v2/terms':          dict(utm='terms_page',      must=['Roof Bear SMS Alerts', 'reply STOP'], legal=True),
+ '/v2/privacy':        dict(utm='privacy_page',    must=['SimplyBook.me', 'Device Information'], legal=True),
 }
 RED_CLASSES = ['class="leak-n"', 'class="mr-flag"', '<p class="eq', 'class="redline']
 
@@ -67,6 +67,8 @@ def check(path, ref_tokens):
     if '`' in s: fails.append('backtick found')
     if '${' in s: fails.append('${ found (template literal)')
     if EMOJI.search(s): fails.append('emoji found')
+    # client style rule 2026-07-08: no em dashes; verbatim legal body text exempt
+    if '—' in s and not cfg.get('legal'): fails.append('em dash found (use plain "-")')
     if s.count('<h1') != 1: fails.append('expected exactly one <h1>')
     for u in STALE:
         if u in s: fails.append('stale URL: ' + u)

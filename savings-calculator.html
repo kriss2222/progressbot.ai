@@ -13,8 +13,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Missed-Call &amp; Cancellation Calculator — What Your Phones Cost You | ProgressBot.AI</title>
-<meta name="description" content="Drag three sliders and see what missed calls and post-sale cancellations cost your company per year — your close rate, your job value, your math. Then make the number smaller.">
+<title>Missed-Call &amp; Cancellation Calculator - What Your Phones Cost You | ProgressBot.AI</title>
+<meta name="description" content="Drag three sliders and see what missed calls and post-sale cancellations cost your company per year - your close rate, your job value, your math. Then make the number smaller.">
 <meta name="theme-color" content="#F3F4F1">
 <!-- Canonical assumes deployment at /v2/calculator - adjust if the path changes -->
 <link rel="canonical" href="https://progressbot.ai/v2/calculator">
@@ -26,7 +26,7 @@
 <!-- TODO: add og:image + twitter:image (1200x630) - a framed screenshot of the calculator result panel is the obvious candidate -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="What Do Your Missed Calls Cost? Run Your Own Numbers">
-<meta name="twitter:description" content="Your missed calls and cancellations, priced by your own inputs — with a shareable pre-filled link.">
+<meta name="twitter:description" content="Your missed calls and cancellations, priced by your own inputs - with a shareable pre-filled link.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230E7B43'/%3E%3Cg transform='translate(3.2 3.2) scale(0.73)'%3E%3Cpath d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -574,9 +574,9 @@ h2{
 <!-- ============ HERO + CALCULATOR ============ -->
 <section class="hero" style="padding-bottom:56px">
   <div class="wrap">
-    <p class="eyebrow">The math — yours this time</p>
+    <p class="eyebrow">The math - yours this time</p>
     <h1>Run your<br>own numbers.</h1>
-    <p class="lede">Our math says missed calls and post-sale cancellations bleed six figures a year. Don’t take our math — <strong>drag the sliders and watch your own.</strong> Every number below is an input you control.</p>
+    <p class="lede">Our math says missed calls and post-sale cancellations bleed six figures a year. Don’t take our math - <strong>drag the sliders and watch your own.</strong> Every number below is an input you control.</p>
 
     <div class="tabbar" role="tablist" aria-label="Choose a calculator" id="calc">
       <button class="tab" role="tab" id="tab-calls" aria-selected="true" aria-controls="panel-calls">Missed calls</button>
@@ -587,7 +587,7 @@ h2{
     <div class="calc" id="panel-calls" role="tabpanel" aria-labelledby="tab-calls">
       <div class="calc-in">
         <h3>The missed-call leak</h3>
-        <p class="hint">What the calls that hit voicemail are worth — at your own close rate.</p>
+        <p class="hint">What the calls that hit voicemail are worth - at your own close rate.</p>
         <div class="trades" aria-label="Preset typical values for a trade">
           <button class="trade" data-jv="12000" data-cr="35" type="button">Roofing</button>
           <button class="trade" data-jv="28000" data-cr="25" type="button">Solar</button>
@@ -612,7 +612,7 @@ h2{
       <div class="calc-out">
         <p class="out-eyebrow">Walking to competitors</p>
         <p class="big-n" id="o-leak">$468,000</p>
-        <p class="big-l">per year — your missed calls, priced at the close rate you just set.</p>
+        <p class="big-l">per year - your missed calls, priced at the close rate you just set.</p>
         <div class="orow"><span class="ok">Missed calls / yr</span><span class="ov" id="o-mcy">156</span></div>
         <div class="orow"><span class="ok">Lost jobs / yr</span><span class="ov" id="o-jobs">46.8</span></div>
         <div class="orow"><span class="ok">Lost revenue / wk</span><span class="ov" id="o-wk">$9,000</span></div>
@@ -621,7 +621,7 @@ h2{
           <input type="text" id="share-calls" readonly aria-label="Shareable link with your inputs">
           <button type="button" data-share="share-calls">Copy link</button>
         </div>
-        <p class="share-tip">Texting a prospect? Set their numbers — the link opens pre-filled.</p>
+        <p class="share-tip">Texting a prospect? Set their numbers - the link opens pre-filled.</p>
       </div>
     </div>
 
@@ -643,7 +643,7 @@ h2{
         <div class="srow">
           <div class="srow-top"><label class="slab" for="xr">Your cancellation rate</label><span class="sval" id="v-xr"></span></div>
           <input class="rng" type="range" id="xr" min="5" max="50" step="1" value="33">
-          <p class="snote">Industry average for residential solar: 33% — NREL, 2022.</p>
+          <p class="snote">Industry average for residential solar: 33% - NREL, 2022.</p>
         </div>
         <div class="srow">
           <div class="srow-top"><label class="slab" for="rd">What-if: cut cancellations by…</label><span class="sval" id="v-rd"></span></div>
@@ -654,18 +654,18 @@ h2{
       <div class="calc-out">
         <p class="out-eyebrow">Signed, then gone</p>
         <p class="big-n" id="o-burn">$1,485,000</p>
-        <p class="big-l">per year — contracts that cancel before install, at your rate.</p>
+        <p class="big-l">per year - contracts that cancel before install, at your rate.</p>
         <div class="orow"><span class="ok">Deals signed / yr</span><span class="ov" id="o-dy">180</span></div>
         <div class="orow"><span class="ok">Deals cancelled / yr</span><span class="ov" id="o-cy">59.4</span></div>
         <div class="orow keep"><span class="ok">A <span id="o-rdl">20</span>% cut keeps</span><span class="ov" id="o-keep">$297,000 / yr</span></div>
-        <p class="out-src">What-if only — reported by one customer, not a promise.</p>
+        <p class="out-src">What-if only - reported by one customer, not a promise.</p>
         <a class="btn btn-primary" href="tel:+18633560181">Book a strategy call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
-        <a class="out-link" href="https://progressbot.ai/v2/frank">Meet Frank — the welcome bot <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a class="out-link" href="https://progressbot.ai/v2/frank">Meet Frank - the welcome bot <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         <div class="share">
           <input type="text" id="share-cancel" readonly aria-label="Shareable link with your inputs">
           <button type="button" data-share="share-cancel">Copy link</button>
         </div>
-        <p class="share-tip">Texting a prospect? Set their numbers — the link opens pre-filled.</p>
+        <p class="share-tip">Texting a prospect? Set their numbers - the link opens pre-filled.</p>
       </div>
     </div>
 
@@ -678,16 +678,16 @@ h2{
     <div class="rv">
       <p class="eyebrow">How we do the math</p>
       <h2>No black box.<br>Multiplication.</h2>
-      <p class="sub">We calculate what the problem costs — we don’t promise savings. Your close rate is yours, your job value is yours, and the what-if slider is labeled as exactly that.</p>
+      <p class="sub">We calculate what the problem costs - we don’t promise savings. Your close rate is yours, your job value is yours, and the what-if slider is labeled as exactly that.</p>
     </div>
     <div class="rv">
       <p class="eq"><span>missed calls / wk</span><span class="op">×</span><span>52</span><span class="op">×</span><span>close rate</span><span class="op">×</span><span>avg job value</span><span class="op">=</span><b>the leak</b></p>
       <p class="eq"><span>deals / mo</span><span class="op">×</span><span>12</span><span class="op">×</span><span>cancellation rate</span><span class="op">×</span><span>contract value</span><span class="op">=</span><b>the burn</b></p>
     </div>
     <ul class="trust-chips rv" style="margin-top:34px">
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>NREL 2022 — 33% of residential solar sales cancel</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Solar Bear — ~20% fewer cancellations (reported)</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg>Every default is editable — your numbers rule</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>NREL 2022 - 33% of residential solar sales cancel</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Solar Bear - ~20% fewer cancellations (reported)</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg>Every default is editable - your numbers rule</li>
     </ul>
   </div>
 </section>
@@ -697,7 +697,7 @@ h2{
   <div class="wrap rv">
     <p class="eyebrow">Next step</p>
     <h2>Now make the<br>number smaller.</h2>
-    <p class="sub">The leak stops when the phone gets answered — hear Botty do it on your own phone in about 30 seconds. The burn stops with a welcome call on every close — talk with us about Frank.</p>
+    <p class="sub">The leak stops when the phone gets answered - hear Botty do it on your own phone in about 30 seconds. The burn stops with a welcome call on every close - talk with us about Frank.</p>
     <div class="cta-btns">
       <a class="btn btn-primary" href="https://progressbot.ai/v2/botty-landing2?utm_source=calculator_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=final_cta#top">Hear Botty call you live <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
       <a class="btn btn-ghost on-dark" href="tel:+18633560181">Talk with us · (863) 356-0181</a>
@@ -713,16 +713,16 @@ h2{
     <div class="foot-grid">
       <div class="foot-brand">
         <a class="brand" href="https://progressbot.ai/v2/home3">ProgressBot<span>.AI</span></a>
-        <p>AI phone bots for home service companies. Six agents on shift, 24/7 — never miss a lead again.</p>
+        <p>AI phone bots for home service companies. Six agents on shift, 24/7 - never miss a lead again.</p>
       </div>
       <div>
         <h4>AI agents</h4>
         <ul>
-          <li><a href="https://progressbot.ai/v2/botty-landing2?utm_source=calculator_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=footer#top">Botty — live demo</a></li>
-          <li><a href="https://progressbot.ai/v2/ava">Ava — the assistant</a></li>
-          <li><a href="https://progressbot.ai/v2/frank">Frank — the welcome bot</a></li>
-          <li><a href="https://progressbot.ai/v2/ula">Ula — the updater</a></li>
-          <li><a href="tel:+18633560181">Full suite — talk with us</a></li>
+          <li><a href="https://progressbot.ai/v2/botty-landing2?utm_source=calculator_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=footer#top">Botty - live demo</a></li>
+          <li><a href="https://progressbot.ai/v2/ava">Ava - the assistant</a></li>
+          <li><a href="https://progressbot.ai/v2/frank">Frank - the welcome bot</a></li>
+          <li><a href="https://progressbot.ai/v2/ula">Ula - the updater</a></li>
+          <li><a href="tel:+18633560181">Full suite - talk with us</a></li>
         </ul>
       </div>
       <div>
