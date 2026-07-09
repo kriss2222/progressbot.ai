@@ -7,6 +7,15 @@ never paste private message text or quotes into it.
 
 ---
 
+## 2026-07-09 · Mascot variants per page · STATUS: DECIDED
+Follow-up to the logo decision: client approved using multiple mascot
+expressions on different pages and specifically requested a sunglasses version
+for the solar page. Applied: headset bot = default on all pages; hard-hat bot
+on /v2/roofing and /v2/hvac; sunglasses bot (headset + shades) on /v2/solar.
+Classic antenna-wink variant unused for now, available if she wants it somewhere.
+
+---
+
 ## 2026-07-09 · Logo: headset mascot in v2 green · STATUS: DECIDED
 Client reviewed the vector logo concepts (winking robot mascot redrawn from the
 original raster logo) and picked the "headset" variant: bot wearing a
