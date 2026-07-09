@@ -79,7 +79,11 @@ paper `#F3F4F1` / card white / ink `#14181D` / `--green #0E7B43` = **action** /
   the trade-appropriate variant, default to headset. Footer brand stays
   text-only. Favicon = simplified fat-stroke headset bot as data-URI SVG
   `<link rel="icon">`, identical on every page (copy from `home4.html`).
-  og:image still pending.
+  og:image = mascot lockup PNGs in `og/` (deploy the folder to site root as
+  `/og/`): `og.png` default · `og-hardhat.png` roofing+hvac · `og-solar.png`
+  solar. Every head points at its variant; twitter:card = summary_large_image.
+  Regenerate via headless Chrome from the compositor in the og assets, keep
+  1200x630.
 - Components: `.wrap` 1160px; cards 1px `--line` radius 14–18; buttons radius 9;
   mono eyebrow + 26×2px green rule; sticky header (static ≤860) with pulse
   "on shift"; dark mono-headed footer; sticky mobile CTA ≤860; `.rv` reveals.
@@ -183,4 +187,5 @@ Agent pages follow the frank/ula pattern.
    diff before wholesale edits.
 7. Landing form protections (honeypot `website`, 3s dwell, `isHuman`, TCPA line)
    are load-bearing; server must still re-verify (rate-limit, SMS-confirm).
-8. og:image TODOs (1200×630) sit in every head.
+8. og:image is wired in every head (see design contract); new pages copy the
+   five-tag block and pick the right `/og/` variant.
