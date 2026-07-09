@@ -22,5 +22,5 @@ links `/faq` (not `/faq.html`) — both presumably serve the same page.
 | — (new) | `/v2/roofing` `/v2/solar` `/v2/hvac` | roofing/solar/hvac.html | BUILT — deploy |
 | `/ava-the-assistant` | `/v2/ava` | ava.html | BUILT 2026-07-08 (live copy captured in CONTENT-CAPSULES; Ava added to claims inventory; red-free, Tel CTA) — deploy pending; every v2 footer links to it, incl. botty-landing2 (Product list) |
 | `/solar-ai-team/` | TBD — overlaps `/v2/solar` | — | **NOT BUILT** — found via nav crawl 2026-07-08. Agent-roster page for solar (Botty/Banx/Frank/Ava/Ula), headline "In 5 Years, there won't be any human solar sales reps." Decide: rebuild vs. redirect to `/v2/solar`. |
-| — (new, backlog) | Banx / Zoe / Brenda agent pages | — | NOT BUILT (frank/ula pattern) |
+| — (new) | `/v2/banx` `/v2/zoe` `/v2/brenda` | banx/zoe/brenda.html | BUILT 2026-07-08 from home4 crew-board copy + claims inventory only (no old pages existed). Banx carries the real Natalie cold-call recording; Zoe carries the $10k missed-call redline; Brenda red-free. Deploy pending. NOTE: home4 crew board still says "Six agents" and has no Ava card - reconcile when redesigning home |
 | — (new, backlog) | Spanish versions, post-demo page | — | NOT BUILT |

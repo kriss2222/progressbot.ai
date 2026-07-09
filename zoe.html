@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <!--
-  ProgressBot.AI - Ava agent page (FINAL)
+  ProgressBot.AI - Zoe agent page (FINAL)
   Static, self-contained: all CSS and vanilla JavaScript inline in this one
   file. No build step, no frameworks - safe for shared hosting: just upload.
-  Deploy as: public_html/v2/ava/index.html  (adjust path + canonical below
+  Deploy as: public_html/v2/zoe/index.html  (adjust path + canonical below
   if you deploy elsewhere)
   Only external dependency: Google Fonts.
 -->
@@ -11,20 +11,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ava - Your Phone, Fully Handled. AI Assistant Answers 24/7 | ProgressBot.AI</title>
-<meta name="description" content="Ava answers every call on your line 24/7 with a friendly, natural voice - accurate info, appointments booked straight into Google Calendar, a text summary the moment the call ends, and a confirmation text to the caller.">
+<title>Zoe - 24/7 AI Phone Receptionist for Home Services | ProgressBot.AI</title>
+<meta name="description" content="Zoe answers every incoming call 24/7 within 3 rings - routes it to the right person, books the appointment, or handles it herself. Recaps texted, CRM updated, never voicemail.">
 <meta name="theme-color" content="#F3F4F1">
-<!-- Canonical assumes deployment at /v2/ava - adjust if the path changes -->
-<link rel="canonical" href="https://progressbot.ai/v2/ava">
+<!-- Canonical assumes deployment at /v2/zoe - adjust if the path changes -->
+<link rel="canonical" href="https://progressbot.ai/v2/zoe">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://progressbot.ai/v2/ava">
+<meta property="og:url" content="https://progressbot.ai/v2/zoe">
 <meta property="og:site_name" content="ProgressBot.AI">
-<meta property="og:title" content="Your Phone. Fully Handled. - Ava, the AI Assistant">
-<meta property="og:description" content="Ava answers every call, gives instant info, books appointments into Google Calendar, and sends follow-up texts - you never break stride.">
-<!-- TODO: add og:image + twitter:image (1200x630) - a framed screenshot of the call log is the obvious candidate -->
+<meta property="og:title" content="Every Call Answered - Zoe, the 24/7 AI Receptionist">
+<meta property="og:description" content="Zoe answers every incoming call 24/7 within 3 rings - routes it to the right person, books the appointment, or handles it herself. Recaps texted, CRM updated, never voicemail.">
+<!-- TODO: add og:image + twitter:image (1200x630) -->
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Your Phone. Fully Handled. - Ava, the AI Assistant">
-<meta name="twitter:description" content="Ava answers every call, gives instant info, books appointments into Google Calendar, and sends follow-up texts - you never break stride.">
+<meta name="twitter:title" content="Every Call Answered - Zoe, the 24/7 AI Receptionist">
+<meta name="twitter:description" content="Zoe answers every incoming call 24/7 within 3 rings - routes it to the right person, books the appointment, or handles it herself. Recaps texted, CRM updated, never voicemail.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230E7B43'/%3E%3Cg transform='translate(3.2 3.2) scale(0.73)'%3E%3Cpath d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -588,8 +588,8 @@ h2{
  "@graph": [
   {
    "@type": "Service",
-   "name": "Ava - AI assistant that answers your phone line",
-   "serviceType": "AI phone answering, appointment booking, and follow-up texts",
+   "name": "Zoe - 24/7 AI phone receptionist",
+   "serviceType": "Inbound AI call answering, routing, triage, and appointment booking",
    "provider": {
     "@type": "Organization",
     "name": "ProgressBot.AI",
@@ -597,49 +597,49 @@ h2{
     "telephone": "(863) 356-0181"
    },
    "areaServed": "United States",
-   "description": "Ava answers every call on your phone line 24/7 with a friendly, natural voice - gives accurate info about you or your business, books appointments directly into Google Calendar, texts you a summary when the call ends, and sends the caller a confirmation or thank-you text."
+   "description": "Zoe answers every incoming call 24/7 within 3 rings: routes and triages it, books appointments onto the calendar, or handles it herself - with recaps texted to the team and the CRM updated automatically."
   },
   {
    "@type": "FAQPage",
    "mainEntity": [
     {
      "@type": "Question",
-     "name": "When does Ava answer?",
+     "name": "How fast does Zoe answer?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "24/7 - even when you're busy, mid-job, or off the clock. Every call gets picked up instantly, in a friendly, natural voice. No voicemail."
+      "text": "Within 3 rings, 24/7 - days, nights, weekends. Callers never hit voicemail."
      }
     },
     {
      "@type": "Question",
-     "name": "Where do the appointments go?",
+     "name": "What can she handle on her own?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Straight into your Google Calendar. Ava books directly onto it - no back-and-forth, no disorganized scheduling, no double-booking."
+      "text": "She answers questions, books appointments onto your calendar, and routes calls to the right person. Simple calls never have to touch your team."
      }
     },
     {
      "@type": "Question",
-     "name": "How do I know what happened on a call?",
+     "name": "What about emergencies?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "The moment a call ends, Ava texts you a summary. The caller gets a confirmation or thank-you text too - both sides stay in the loop, automatically."
+      "text": "Calls get triaged - urgent jobs go to the top and get the first available slot, and anything that needs a human is handed off immediately."
      }
     },
     {
      "@type": "Question",
-     "name": "Will callers get the right information?",
+     "name": "Does Zoe speak Spanish?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Ava is set up with accurate info about you and your business, and delivers it the same way on every call - one voice, one message, zero burnout."
+      "text": "Yes - multilingual, including Spanish."
      }
     },
     {
      "@type": "Question",
-     "name": "Is Ava for a business line or a personal phone?",
+     "name": "How fast can she go live?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "She runs on your personal phone line if that's where the work calls land - and gives callers accurate info about you or your business. If it rings, she handles it."
+      "text": "Typically 1-2 weeks: we train her on your business, connect the calendar and CRM, and run test calls before launch."
      }
     }
    ]
@@ -655,14 +655,12 @@ h2{
     <a class="brand" href="https://progressbot.ai/v2/home3">ProgressBot<span>.AI</span></a>
     <nav class="nav" aria-label="Main">
       <a href="https://progressbot.ai/v2/home3">Home</a>
-      <a href="https://progressbot.ai/v2/frank">Frank</a>
-      <a href="https://progressbot.ai/v2/ula">Ula</a>
       <a href="https://progressbot.ai/v2/faq2">FAQ</a>
     </nav>
     <div class="head-right">
-      <span class="onshift"><i class="pdot" aria-hidden="true"></i>Ava is on shift</span>
+      <span class="onshift"><i class="pdot" aria-hidden="true"></i>Zoe is on shift</span>
       <a class="head-tel" href="tel:+18633560181">(863) 356-0181</a>
-      <a class="btn btn-primary btn-sm" href="https://progressbot.ai/v2/botty-landing2?utm_source=ava_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=header#top">Get started</a>
+      <a class="btn btn-primary btn-sm" href="https://progressbot.ai/v2/botty-landing2?utm_source=zoe_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=header#top">Get started</a>
     </div>
   </div>
 </header>
@@ -673,181 +671,150 @@ h2{
   <div class="wrap hero-grid">
 
     <div class="hero-copy">
-      <p class="eyebrow">Ava - the assistant · on your line</p>
-      <h1>Your phone.<br><span>Fully handled.</span></h1>
-      <p class="lede">Ava answers every call, gives instant info, books appointments, and sends follow-ups - all from your personal phone line. <strong>You stay on the job. She works the phone.</strong></p>
+      <p class="eyebrow">Zoe - the receptionist · on your phones</p>
+      <h1>Every call<br><span>answered.</span></h1>
+      <p class="lede">Zoe answers every incoming call 24/7 - routes it to the right person, books the appointment, or handles it herself. <strong>Within 3 rings. Never voicemail.</strong></p>
       <div class="hero-btns">
         <a class="btn btn-primary" href="tel:+18633560181">Book a strategy call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
-        <a class="btn btn-ghost" href="https://progressbot.ai/v2/botty-landing2?utm_source=ava_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=hero#top">Hear the voice AI live</a>
+        <a class="btn btn-ghost" href="https://progressbot.ai/v2/botty-landing2?utm_source=zoe_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=hero#top">Hear the voice AI live</a>
       </div>
     </div>
 
     <div class="hero-right">
-      <div class="worder" role="img" aria-label="Simulated call log: Ava answers an incoming call instantly while the owner is mid-job, shares accurate info, books an appointment into Google Calendar, texts the owner a summary, and sends the caller a confirmation text.">
+      <div class="worder" role="img" aria-label="Simulated inbound call at 11:52 PM: a no-heat emergency is answered by Zoe on ring two, triaged, booked for 7:30 AM, recapped by text, and logged in the CRM.">
         <div aria-hidden="true">
-          <div class="wo-head"><i class="pdot"></i><span class="wo-title">Your line · Ava on shift</span><span class="wo-meta">Tue · 2:14 PM</span></div>
+          <div class="wo-head"><i class="pdot"></i><span class="wo-title">Inbound · your line</span><span class="wo-meta">11:52 PM</span></div>
           <div class="tl-body" id="tlBody">
             <div class="tlnode done">
               <span class="tl-dot"></span>
-              <p class="tl-lab">Incoming call - you’re mid-job</p>
-              <p class="tl-sub">2:14 PM</p>
+              <p class="tl-lab">11:52 PM - no heat, needs a tech</p>
+              <p class="tl-sub">Incoming call</p>
             </div>
             <div class="tlnode done">
               <span class="tl-dot"></span>
-              <p class="tl-lab">Ava answers instantly</p>
-              <p class="tl-sub">Friendly, natural voice</p>
-              <span class="tl-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Answered · no voicemail</span>
+              <p class="tl-lab">Zoe answers - ring 2</p>
+              <p class="tl-sub">24/7 · never voicemail</p>
+              <span class="tl-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Answered</span>
             </div>
             <div class="tlnode done">
               <span class="tl-dot"></span>
-              <p class="tl-lab">Caller asks about availability</p>
-              <p class="tl-sub">Accurate info · no guessing</p>
-              <span class="tl-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Question answered</span>
+              <p class="tl-lab">Routed and triaged</p>
+              <p class="tl-sub">Urgent - straight to the top</p>
+              <span class="tl-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Triaged</span>
             </div>
             <div class="tlnode done">
               <span class="tl-dot"></span>
-              <p class="tl-lab">Appointment booked</p>
-              <p class="tl-sub">Google Calendar</p>
-              <span class="tl-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Thu 10:00 AM · on your calendar</span>
+              <p class="tl-lab">Booked 7:30 AM</p>
+              <p class="tl-sub">First slot on the calendar</p>
+              <span class="tl-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>On the calendar</span>
             </div>
             <div class="tlnode done">
               <span class="tl-dot"></span>
-              <p class="tl-lab">Call ends - recap hits your phone</p>
-              <p class="tl-sub">Text summary</p>
-              <span class="tl-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Summary texted to you</span>
+              <p class="tl-lab">Recap texted to your team</p>
+              <p class="tl-sub">Before anyone wakes up</p>
+              <span class="tl-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Recap sent</span>
             </div>
             <div class="tlnode done">
               <span class="tl-dot"></span>
-              <p class="tl-lab">Caller gets a confirmation text</p>
-              <p class="tl-sub">Thank-you + details</p>
-              <span class="tl-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Confirmation sent</span>
-            </div>
-            <div class="tlnode done">
-              <span class="tl-dot"></span>
-              <p class="tl-lab">You never broke stride</p>
-              <p class="tl-sub">Zero interruptions</p>
+              <p class="tl-lab">CRM updated automatically</p>
+              <p class="tl-sub">No manual entry</p>
+              <span class="tl-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>CRM updated</span>
             </div>
           </div>
-          <p class="wo-foot">Every call answered · summarized · confirmed</p>
+          <p class="wo-foot">Every call recapped to your team · CRM updated</p>
         </div>
       </div>
-      <p class="dp-cap">Simulated call · Answer → assist → update</p>
+      <p class="dp-cap">Simulated call · Answer, triage, book</p>
     </div>
 
   </div>
 </section>
 
-<!-- ============ THE EVERYDAY CHAOS ============ -->
-<section class="sec" id="chaos">
+<!-- ============ THE COST OF VOICEMAIL ============ -->
+<section class="sec" id="leak">
   <div class="wrap">
     <div class="rv">
-      <p class="eyebrow">The everyday chaos</p>
-      <h2>Your phone doesn’t care<br>that you’re working.</h2>
-      <p class="sub" style="max-width:720px">Missed calls turn into lost opportunities. Clients get inconsistent answers depending on who picks up - if anyone picks up. Scheduling turns disorganized and double-booked, follow-ups get forgotten after long days, and the calls that do land interrupt real work. <strong style="color:var(--ink)">That whole list is the job Ava took.</strong></p>
+      <p class="eyebrow">The cost of voicemail</p>
+      <h2>Missed calls<br>are paid invoices<br>you never sent.</h2>
+      <p class="sub" style="max-width:720px">After hours, during jobs, at lunch - the calls keep coming whether anyone answers or not. The ones that hit voicemail call the next company on the list.</p>
     </div>
+    <div class="redline rv"><strong>One missed call can be a $10,000 job.</strong> Miss just one a week and that is $520,000+ a year walking past your voicemail. <a href="https://progressbot.ai/v2/calculator?utm_source=zoe_page&amp;utm_medium=internal&amp;utm_campaign=calculator&amp;utm_content=redline">Run your own numbers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
   </div>
 </section>
 
-<!-- ============ WHAT AVA DOES ============ -->
+<!-- ============ WHAT ZOE DOES ============ -->
 <section class="sec" id="handled">
   <div class="wrap">
     <div class="rv">
       <p class="eyebrow">What she does</p>
-      <h2>Every call,<br>handled end to end.</h2>
-      <p class="sub">Ava handles every call so you don’t have to - from the first ring to the follow-up text.</p>
+      <h2>Answered, routed,<br>booked. Every time.</h2>
+      <p class="sub">Zoe picks up every call so nothing lands in voicemail - and nothing gets lost after the hello.</p>
     </div>
     <div class="cov-grid">
       <div class="types">
         <div class="trow rv">
           <div class="trow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
           <div>
-            <h3>Answers instantly</h3>
-            <p>Every call picked up with a friendly, natural voice - 24/7, even when you’re busy. No voicemail, ever.</p>
+            <h3>Answers 24/7, within 3 rings</h3>
+            <p>Days, nights, weekends, holidays. No voicemail, ever.</p>
           </div>
         </div>
         <div class="trow rv">
-          <div class="trow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+          <div class="trow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
           <div>
-            <h3>Gives accurate info</h3>
-            <p>Callers get the right answers about you or your business - the same answers, every single time.</p>
+            <h3>Routes and triages</h3>
+            <p>The right call reaches the right person - and urgent jobs jump the line.</p>
           </div>
         </div>
         <div class="trow rv">
           <div class="trow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
           <div>
             <h3>Books appointments</h3>
-            <p>Straight into your Google Calendar - no back-and-forth, no disorganized scheduling, no double-booking.</p>
+            <p>Straight onto your calendar - no callback tag, no double-booking.</p>
+          </div>
+        </div>
+        <div class="trow rv">
+          <div class="trow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <div>
+            <h3>Handles it herself</h3>
+            <p>Simple questions get answered on the spot, so your team is not interrupted.</p>
           </div>
         </div>
         <div class="trow rv">
           <div class="trow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
           <div>
-            <h3>Texts you a summary</h3>
-            <p>The moment a call ends, the recap lands on your phone - who called, what they wanted, what happens next.</p>
-          </div>
-        </div>
-        <div class="trow rv">
-          <div class="trow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></div>
-          <div>
-            <h3>Follows up with the caller</h3>
-            <p>A confirmation or thank-you text, sent automatically - no follow-ups forgotten after a long day.</p>
+            <h3>Recaps and updates</h3>
+            <p>A texted recap after every call, and the CRM updates automatically.</p>
           </div>
         </div>
       </div>
       <div class="outcard rv">
         <h3>What changes</h3>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Never miss a call - Ava answers 24/7, even when you’re busy</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Book without lifting a finger - appointments go straight to Google Calendar</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Stay in the loop - every call summarized instantly by text</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Perfect consistency - one voice, one message, zero burnout</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>No missed calls, no voicemail</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Urgent jobs triaged to the top</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Appointments on the calendar</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Recaps texted, CRM always current</li>
         </ul>
-        <a class="btn btn-primary btn-block" href="tel:+18633560181">Put Ava on your line <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+        <a class="btn btn-primary btn-block" href="tel:+18633560181">Put Zoe on your phones <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ HOW SHE FITS ============ -->
-<section class="sec" id="how">
-  <div class="wrap">
-    <div class="rv">
-      <p class="eyebrow">How she fits into your day</p>
-      <h2>Answer. Assist.<br>Update.</h2>
-    </div>
-    <div class="proc three">
-      <div class="step rv">
-        <p class="step-n">1</p>
-        <h3>Answer</h3>
-        <p>Ava picks up every call instantly - you keep working, driving, or living your life.</p>
-      </div>
-      <div class="step rv">
-        <p class="step-n">2</p>
-        <h3>Assist</h3>
-        <p>She shares info, books appointments, and answers questions - accurately, in a friendly, natural voice.</p>
-      </div>
-      <div class="step rv">
-        <p class="step-n">3</p>
-        <h3>Update</h3>
-        <p>Summaries go to you, confirmations go to the caller - nobody is left wondering what happened.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ AVA MINI-FAQ ============ -->
+<!-- ============ MINI-FAQ ============ -->
 <section class="sec" id="faq">
   <div class="wrap">
     <div class="rv">
       <p class="eyebrow">Questions</p>
-      <h2>Before you hand<br>her the phone.</h2>
+      <h2>Before you hand<br>her the phones.</h2>
     </div>
     <div class="rv" style="margin-top:40px">
-<details class="qa"><summary>When does Ava answer?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">24/7 - even when you’re busy, mid-job, or off the clock. Every call gets picked up instantly, in a friendly, natural voice. No voicemail.</div></details>
-<details class="qa"><summary>Where do the appointments go?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Straight into your Google Calendar. Ava books directly onto it - no back-and-forth, no disorganized scheduling, no double-booking.</div></details>
-<details class="qa"><summary>How do I know what happened on a call?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">The moment a call ends, Ava texts you a summary. The caller gets a confirmation or thank-you text too - both sides stay in the loop, automatically.</div></details>
-<details class="qa"><summary>Will callers get the right information?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Ava is set up with accurate info about you and your business, and delivers it the same way on every call - one voice, one message, zero burnout.</div></details>
-<details class="qa"><summary>Is Ava for a business line or a personal phone?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">She runs on your personal phone line if that’s where the work calls land - and gives callers accurate info about you or your business. If it rings, she handles it.</div></details>
+<details class="qa"><summary>How fast does Zoe answer?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Within 3 rings, 24/7 - days, nights, weekends. Callers never hit voicemail.</div></details>
+<details class="qa"><summary>What can she handle on her own?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">She answers questions, books appointments onto your calendar, and routes calls to the right person. Simple calls never have to touch your team.</div></details>
+<details class="qa"><summary>What about emergencies?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Calls get triaged - urgent jobs go to the top and get the first available slot, and anything that needs a human is handed off immediately.</div></details>
+<details class="qa"><summary>Does Zoe speak Spanish?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Yes - multilingual, including Spanish.</div></details>
+<details class="qa"><summary>How fast can she go live?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Typically 1-2 weeks: we train her on your business, connect the calendar and CRM, and run test calls before launch.</div></details>
       <p class="qa-more"><a href="https://progressbot.ai/v2/faq2">All the answers - read the full FAQ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></p>
     </div>
   </div>
@@ -857,11 +824,11 @@ h2{
 <section class="sec cta" id="cta">
   <div class="wrap rv">
     <p class="eyebrow">Next step</p>
-    <h2>Ready to let Ava<br>handle your calls?</h2>
-    <p class="sub">Experience what it’s like to never miss another call, meeting, or message. Book 15 minutes and we’ll set Ava up around your line, your info, your calendar. Want to hear the voice tech first? Botty - our demo agent - calls you back in about 30 seconds. The demo runs our default roofing flow; your Ava gets trained on your business.</p>
+    <h2>Stop feeding<br>voicemail.</h2>
+    <p class="sub">Book 15 minutes and we will set Zoe up on your line - your routing rules, your calendar, your CRM. Want to hear the voice tech first? Botty - our demo agent - calls you back in about 30 seconds. The demo runs our default roofing flow; your Zoe gets trained on your business.</p>
     <div class="cta-btns">
       <a class="btn btn-primary" href="tel:+18633560181">Book a strategy call · (863) 356-0181</a>
-      <a class="btn btn-ghost on-dark" href="https://progressbot.ai/v2/botty-landing2?utm_source=ava_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=final_cta#top">Hear Botty call you live</a>
+      <a class="btn btn-ghost on-dark" href="https://progressbot.ai/v2/botty-landing2?utm_source=zoe_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=final_cta#top">Hear Botty call you live</a>
     </div>
   </div>
 </section>
@@ -874,16 +841,16 @@ h2{
     <div class="foot-grid">
       <div class="foot-brand">
         <a class="brand" href="https://progressbot.ai/v2/home3">ProgressBot<span>.AI</span></a>
-        <p>AI phone bots for home service companies. Six agents on shift, 24/7 - never miss a lead again.</p>
+        <p>AI sales agents that answer, qualify, and book - 24/7. Never miss a lead again.</p>
       </div>
       <div>
         <h4>AI agents</h4>
         <ul>
-          <li><a href="https://progressbot.ai/v2/botty-landing2?utm_source=ava_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=footer#top">Botty - live demo</a></li>
+          <li><a href="https://progressbot.ai/v2/botty-landing2?utm_source=zoe_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=footer#top">Botty - live demo</a></li>
           <li><a href="https://progressbot.ai/v2/banx">Banx - the cold caller</a></li>
-          <li><a href="https://progressbot.ai/v2/zoe">Zoe - the receptionist</a></li>
+          <li><a href="#top">Zoe - the receptionist</a></li>
           <li><a href="https://progressbot.ai/v2/brenda">Brenda - the web bot</a></li>
-          <li><a href="#top">Ava - the assistant</a></li>
+          <li><a href="https://progressbot.ai/v2/ava">Ava - the assistant</a></li>
           <li><a href="https://progressbot.ai/v2/frank">Frank - the welcome bot</a></li>
           <li><a href="https://progressbot.ai/v2/ula">Ula - the updater</a></li>
         </ul>
@@ -927,37 +894,37 @@ h2{
   function qs(s, el){ return (el || document).querySelector(s); }
   function qsa(s, el){ return Array.prototype.slice.call((el || document).querySelectorAll(s)); }
 
-  /* ---------- Ava call-log simulation ---------- */
-  var avNodes = qsa('.tlnode');
-  var avTimers = [];
-  var avRunning = false;
-  function aLater(fn, ms){ avTimers.push(setTimeout(fn, ms)); }
-  function aStop(){ avTimers.forEach(clearTimeout); avTimers = []; avRunning = false; }
-  function runAvaLog(){
-    aStop();
-    avRunning = true;
-    avNodes.forEach(function(n){ n.classList.remove('on','done'); });
+  /* ---------- Timeline simulation ---------- */
+  var agNodes = qsa('.tlnode');
+  var agTimers = [];
+  var agRunning = false;
+  function gLater(fn, ms){ agTimers.push(setTimeout(fn, ms)); }
+  function gStop(){ agTimers.forEach(clearTimeout); agTimers = []; agRunning = false; }
+  function runZoeLog(){
+    gStop();
+    agRunning = true;
+    agNodes.forEach(function(n){ n.classList.remove('on','done'); });
     var t = 500;
-    avNodes.forEach(function(n){
+    agNodes.forEach(function(n){
       (function(node, at){
-        aLater(function(){ node.classList.add('on'); }, at);
-        aLater(function(){ node.classList.remove('on'); node.classList.add('done'); }, at + 1100);
+        gLater(function(){ node.classList.add('on'); }, at);
+        gLater(function(){ node.classList.remove('on'); node.classList.add('done'); }, at + 1100);
       })(n, t);
       t += 1900;
     });
-    aLater(runAvaLog, t + 5200);
+    gLater(runZoeLog, t + 5200);
   }
-  var avCard = qs('.worder');
-  if (avCard && avNodes.length && !RM){
+  var agCard = qs('.worder');
+  if (agCard && agNodes.length && !RM){
     if ('IntersectionObserver' in window){
-      var aIO = new IntersectionObserver(function(entries){
+      var gIO = new IntersectionObserver(function(entries){
         entries.forEach(function(e){
-          if (e.isIntersecting){ if (!avRunning) runAvaLog(); }
-          else { aStop(); }
+          if (e.isIntersecting){ if (!agRunning) runZoeLog(); }
+          else { gStop(); }
         });
       }, { threshold: 0.25 });
-      aIO.observe(avCard);
-    } else { runAvaLog(); }
+      gIO.observe(agCard);
+    } else { runZoeLog(); }
   }
 
   /* ---------- Sticky header shadow ---------- */

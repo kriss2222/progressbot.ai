@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <!--
-  ProgressBot.AI - Ava agent page (FINAL)
+  ProgressBot.AI - Banx agent page (FINAL)
   Static, self-contained: all CSS and vanilla JavaScript inline in this one
   file. No build step, no frameworks - safe for shared hosting: just upload.
-  Deploy as: public_html/v2/ava/index.html  (adjust path + canonical below
+  Deploy as: public_html/v2/banx/index.html  (adjust path + canonical below
   if you deploy elsewhere)
-  Only external dependency: Google Fonts.
+  Only external dependency: Google Fonts + own-domain call recording.
 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ava - Your Phone, Fully Handled. AI Assistant Answers 24/7 | ProgressBot.AI</title>
-<meta name="description" content="Ava answers every call on your line 24/7 with a friendly, natural voice - accurate info, appointments booked straight into Google Calendar, a text summary the moment the call ends, and a confirmation text to the caller.">
+<title>Banx - AI Cold Caller for Fresh and Aged Leads | ProgressBot.AI</title>
+<meta name="description" content="Banx works your fresh and aged leads 24/7 - qualifies them, books appointments onto your calendar, texts your team the recap, and updates the CRM automatically. Hear a real cold call on this page.">
 <meta name="theme-color" content="#F3F4F1">
-<!-- Canonical assumes deployment at /v2/ava - adjust if the path changes -->
-<link rel="canonical" href="https://progressbot.ai/v2/ava">
+<!-- Canonical assumes deployment at /v2/banx - adjust if the path changes -->
+<link rel="canonical" href="https://progressbot.ai/v2/banx">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://progressbot.ai/v2/ava">
+<meta property="og:url" content="https://progressbot.ai/v2/banx">
 <meta property="og:site_name" content="ProgressBot.AI">
-<meta property="og:title" content="Your Phone. Fully Handled. - Ava, the AI Assistant">
-<meta property="og:description" content="Ava answers every call, gives instant info, books appointments into Google Calendar, and sends follow-up texts - you never break stride.">
-<!-- TODO: add og:image + twitter:image (1200x630) - a framed screenshot of the call log is the obvious candidate -->
+<meta property="og:title" content="Your Leads Never Go Cold - Banx, the AI Cold Caller">
+<meta property="og:description" content="Banx works your fresh and aged leads 24/7 - qualifies them, books appointments onto your calendar, texts your team the recap, and updates the CRM automatically. Hear a real cold call on this page.">
+<!-- TODO: add og:image + twitter:image (1200x630) -->
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Your Phone. Fully Handled. - Ava, the AI Assistant">
-<meta name="twitter:description" content="Ava answers every call, gives instant info, books appointments into Google Calendar, and sends follow-up texts - you never break stride.">
+<meta name="twitter:title" content="Your Leads Never Go Cold - Banx, the AI Cold Caller">
+<meta name="twitter:description" content="Banx works your fresh and aged leads 24/7 - qualifies them, books appointments onto your calendar, texts your team the recap, and updates the CRM automatically. Hear a real cold call on this page.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230E7B43'/%3E%3Cg transform='translate(3.2 3.2) scale(0.73)'%3E%3Cpath d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -588,8 +588,8 @@ h2{
  "@graph": [
   {
    "@type": "Service",
-   "name": "Ava - AI assistant that answers your phone line",
-   "serviceType": "AI phone answering, appointment booking, and follow-up texts",
+   "name": "Banx - AI cold caller for fresh and aged leads",
+   "serviceType": "Outbound AI cold calling, lead qualification, and appointment booking",
    "provider": {
     "@type": "Organization",
     "name": "ProgressBot.AI",
@@ -597,49 +597,49 @@ h2{
     "telephone": "(863) 356-0181"
    },
    "areaServed": "United States",
-   "description": "Ava answers every call on your phone line 24/7 with a friendly, natural voice - gives accurate info about you or your business, books appointments directly into Google Calendar, texts you a summary when the call ends, and sends the caller a confirmation or thank-you text."
+   "description": "Banx works fresh and aged leads around the clock: qualifies them, books appointments onto the calendar, texts the team a recap, and updates the CRM automatically."
   },
   {
    "@type": "FAQPage",
    "mainEntity": [
     {
      "@type": "Question",
-     "name": "When does Ava answer?",
+     "name": "What leads does Banx call?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "24/7 - even when you're busy, mid-job, or off the clock. Every call gets picked up instantly, in a friendly, natural voice. No voicemail."
+      "text": "Your fresh leads and your aged, dormant ones - the contacts sitting in your CRM that nobody has time to work."
      }
     },
     {
      "@type": "Question",
-     "name": "Where do the appointments go?",
+     "name": "What happens when a lead is interested?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Straight into your Google Calendar. Ava books directly onto it - no back-and-forth, no disorganized scheduling, no double-booking."
+      "text": "Banx qualifies them and books the appointment straight onto your calendar. Your team gets a texted recap and the CRM updates automatically."
      }
     },
     {
      "@type": "Question",
-     "name": "How do I know what happened on a call?",
+     "name": "Is the calling compliant?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "The moment a call ends, Ava texts you a summary. The caller gets a confirmation or thank-you text too - both sides stay in the loop, automatically."
+      "text": "Yes - TCPA, GDPR, and CCPA aligned, with encrypted systems and audit trails."
      }
     },
     {
      "@type": "Question",
-     "name": "Will callers get the right information?",
+     "name": "Does Banx speak Spanish?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Ava is set up with accurate info about you and your business, and delivers it the same way on every call - one voice, one message, zero burnout."
+      "text": "Yes - multilingual, including Spanish."
      }
     },
     {
      "@type": "Question",
-     "name": "Is Ava for a business line or a personal phone?",
+     "name": "How fast can he go live?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "She runs on your personal phone line if that's where the work calls land - and gives callers accurate info about you or your business. If it rings, she handles it."
+      "text": "Typically 1-2 weeks: we train him on your list and your script, then run test calls before launch."
      }
     }
    ]
@@ -655,14 +655,12 @@ h2{
     <a class="brand" href="https://progressbot.ai/v2/home3">ProgressBot<span>.AI</span></a>
     <nav class="nav" aria-label="Main">
       <a href="https://progressbot.ai/v2/home3">Home</a>
-      <a href="https://progressbot.ai/v2/frank">Frank</a>
-      <a href="https://progressbot.ai/v2/ula">Ula</a>
       <a href="https://progressbot.ai/v2/faq2">FAQ</a>
     </nav>
     <div class="head-right">
-      <span class="onshift"><i class="pdot" aria-hidden="true"></i>Ava is on shift</span>
+      <span class="onshift"><i class="pdot" aria-hidden="true"></i>Banx is on shift</span>
       <a class="head-tel" href="tel:+18633560181">(863) 356-0181</a>
-      <a class="btn btn-primary btn-sm" href="https://progressbot.ai/v2/botty-landing2?utm_source=ava_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=header#top">Get started</a>
+      <a class="btn btn-primary btn-sm" href="https://progressbot.ai/v2/botty-landing2?utm_source=banx_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=header#top">Get started</a>
     </div>
   </div>
 </header>
@@ -673,181 +671,164 @@ h2{
   <div class="wrap hero-grid">
 
     <div class="hero-copy">
-      <p class="eyebrow">Ava - the assistant · on your line</p>
-      <h1>Your phone.<br><span>Fully handled.</span></h1>
-      <p class="lede">Ava answers every call, gives instant info, books appointments, and sends follow-ups - all from your personal phone line. <strong>You stay on the job. She works the phone.</strong></p>
+      <p class="eyebrow">Banx - the cold caller · before the sale</p>
+      <h1>Your leads<br><span>never go cold.</span></h1>
+      <p class="lede">Banx works your fresh and aged leads, qualifies them, and books the appointment - so the pipeline never sits still. <strong>Including the ones sitting untouched in your CRM.</strong></p>
       <div class="hero-btns">
         <a class="btn btn-primary" href="tel:+18633560181">Book a strategy call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
-        <a class="btn btn-ghost" href="https://progressbot.ai/v2/botty-landing2?utm_source=ava_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=hero#top">Hear the voice AI live</a>
+        <a class="btn btn-ghost" href="https://progressbot.ai/v2/botty-landing2?utm_source=banx_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=hero#top">Hear the voice AI live</a>
       </div>
     </div>
 
     <div class="hero-right">
-      <div class="worder" role="img" aria-label="Simulated call log: Ava answers an incoming call instantly while the owner is mid-job, shares accurate info, books an appointment into Google Calendar, texts the owner a summary, and sends the caller a confirmation text.">
+      <div class="worder" role="img" aria-label="Simulated outbound run: Banx pulls an aged solar lead from the CRM, dials, qualifies the lead, books an appointment, texts the team a recap, and updates the CRM.">
         <div aria-hidden="true">
-          <div class="wo-head"><i class="pdot"></i><span class="wo-title">Your line · Ava on shift</span><span class="wo-meta">Tue · 2:14 PM</span></div>
+          <div class="wo-head"><i class="pdot"></i><span class="wo-title">Outbound · aged-lead run</span><span class="wo-meta">On shift · 24/7</span></div>
           <div class="tl-body" id="tlBody">
             <div class="tlnode done">
               <span class="tl-dot"></span>
-              <p class="tl-lab">Incoming call - you’re mid-job</p>
-              <p class="tl-sub">2:14 PM</p>
+              <p class="tl-lab">Follow-up on an aged solar lead</p>
+              <p class="tl-sub">Pulled from your CRM</p>
             </div>
             <div class="tlnode done">
               <span class="tl-dot"></span>
-              <p class="tl-lab">Ava answers instantly</p>
-              <p class="tl-sub">Friendly, natural voice</p>
-              <span class="tl-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Answered · no voicemail</span>
+              <p class="tl-lab">Banx dials</p>
+              <p class="tl-sub">Outbound · automatic</p>
+              <span class="tl-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Calling</span>
             </div>
             <div class="tlnode done">
               <span class="tl-dot"></span>
-              <p class="tl-lab">Caller asks about availability</p>
-              <p class="tl-sub">Accurate info · no guessing</p>
-              <span class="tl-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Question answered</span>
+              <p class="tl-lab">Lead qualified</p>
+              <p class="tl-sub">Questions asked, answers logged</p>
+              <span class="tl-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Qualified</span>
             </div>
             <div class="tlnode done">
               <span class="tl-dot"></span>
               <p class="tl-lab">Appointment booked</p>
-              <p class="tl-sub">Google Calendar</p>
-              <span class="tl-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Thu 10:00 AM · on your calendar</span>
+              <p class="tl-sub">Onto your calendar</p>
+              <span class="tl-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Appt booked</span>
             </div>
             <div class="tlnode done">
               <span class="tl-dot"></span>
-              <p class="tl-lab">Call ends - recap hits your phone</p>
-              <p class="tl-sub">Text summary</p>
-              <span class="tl-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Summary texted to you</span>
+              <p class="tl-lab">Recap texted to your team</p>
+              <p class="tl-sub">The moment the call ends</p>
+              <span class="tl-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Recap sent</span>
             </div>
             <div class="tlnode done">
               <span class="tl-dot"></span>
-              <p class="tl-lab">Caller gets a confirmation text</p>
-              <p class="tl-sub">Thank-you + details</p>
-              <span class="tl-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Confirmation sent</span>
-            </div>
-            <div class="tlnode done">
-              <span class="tl-dot"></span>
-              <p class="tl-lab">You never broke stride</p>
-              <p class="tl-sub">Zero interruptions</p>
+              <p class="tl-lab">CRM updated automatically</p>
+              <p class="tl-sub">No manual entry</p>
+              <span class="tl-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>CRM updated</span>
             </div>
           </div>
-          <p class="wo-foot">Every call answered · summarized · confirmed</p>
+          <p class="wo-foot">Every call recapped to your team · CRM updated</p>
         </div>
       </div>
-      <p class="dp-cap">Simulated call · Answer → assist → update</p>
+      <p class="dp-cap">Simulated run · Dial, qualify, book</p>
     </div>
 
   </div>
 </section>
 
-<!-- ============ THE EVERYDAY CHAOS ============ -->
-<section class="sec" id="chaos">
-  <div class="wrap">
-    <div class="rv">
-      <p class="eyebrow">The everyday chaos</p>
-      <h2>Your phone doesn’t care<br>that you’re working.</h2>
-      <p class="sub" style="max-width:720px">Missed calls turn into lost opportunities. Clients get inconsistent answers depending on who picks up - if anyone picks up. Scheduling turns disorganized and double-booked, follow-ups get forgotten after long days, and the calls that do land interrupt real work. <strong style="color:var(--ink)">That whole list is the job Ava took.</strong></p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ WHAT AVA DOES ============ -->
+<!-- ============ WHAT BANX DOES ============ -->
 <section class="sec" id="handled">
   <div class="wrap">
     <div class="rv">
-      <p class="eyebrow">What she does</p>
-      <h2>Every call,<br>handled end to end.</h2>
-      <p class="sub">Ava handles every call so you don’t have to - from the first ring to the follow-up text.</p>
+      <p class="eyebrow">What he does</p>
+      <h2>Dial. Qualify.<br>Book. Repeat.</h2>
+      <p class="sub">Banx keeps calling so your pipeline keeps moving - fresh leads and the ones everyone gave up on.</p>
     </div>
     <div class="cov-grid">
       <div class="types">
         <div class="trow rv">
-          <div class="trow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div class="trow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
           <div>
-            <h3>Answers instantly</h3>
-            <p>Every call picked up with a friendly, natural voice - 24/7, even when you’re busy. No voicemail, ever.</p>
+            <h3>Works fresh and aged leads</h3>
+            <p>New leads and the dormant contacts sitting in your CRM - Banx calls them all, on shift 24/7.</p>
           </div>
         </div>
         <div class="trow rv">
-          <div class="trow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+          <div class="trow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
           <div>
-            <h3>Gives accurate info</h3>
-            <p>Callers get the right answers about you or your business - the same answers, every single time.</p>
+            <h3>Qualifies before you spend a minute</h3>
+            <p>He asks the questions and logs the answers, so your team only talks to leads worth their time.</p>
           </div>
         </div>
         <div class="trow rv">
           <div class="trow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
           <div>
-            <h3>Books appointments</h3>
-            <p>Straight into your Google Calendar - no back-and-forth, no disorganized scheduling, no double-booking.</p>
+            <h3>Books the appointment</h3>
+            <p>Qualified leads go straight onto your calendar - no back-and-forth.</p>
           </div>
         </div>
         <div class="trow rv">
           <div class="trow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
           <div>
-            <h3>Texts you a summary</h3>
-            <p>The moment a call ends, the recap lands on your phone - who called, what they wanted, what happens next.</p>
+            <h3>Recaps and updates</h3>
+            <p>A texted recap the moment a call ends, and the CRM updates automatically.</p>
           </div>
         </div>
         <div class="trow rv">
-          <div class="trow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></div>
+          <div class="trow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
           <div>
-            <h3>Follows up with the caller</h3>
-            <p>A confirmation or thank-you text, sent automatically - no follow-ups forgotten after a long day.</p>
+            <h3>Hands off when it matters</h3>
+            <p>A live prospect who wants a human gets one - instant handoff to your team.</p>
           </div>
         </div>
       </div>
       <div class="outcard rv">
         <h3>What changes</h3>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Never miss a call - Ava answers 24/7, even when you’re busy</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Book without lifting a finger - appointments go straight to Google Calendar</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Stay in the loop - every call summarized instantly by text</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Perfect consistency - one voice, one message, zero burnout</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Fresh and aged leads worked around the clock</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Qualified appointments on your calendar</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Recaps texted, CRM always current</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Human handoff the moment it matters</li>
         </ul>
-        <a class="btn btn-primary btn-block" href="tel:+18633560181">Put Ava on your line <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+        <a class="btn btn-primary btn-block" href="tel:+18633560181">Put Banx on your leads <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ HOW SHE FITS ============ -->
-<section class="sec" id="how">
+<!-- ============ REAL RECORDING ============ -->
+<section class="sec" id="recordings">
   <div class="wrap">
     <div class="rv">
-      <p class="eyebrow">How she fits into your day</p>
-      <h2>Answer. Assist.<br>Update.</h2>
+      <p class="eyebrow">Real recording</p>
+      <h2>Hear Banx work<br>a real cold call.</h2>
+      <p class="sub">No script reading, no staging - this is Banx on the phone with a real lead named Natalie.</p>
     </div>
-    <div class="proc three">
-      <div class="step rv">
-        <p class="step-n">1</p>
-        <h3>Answer</h3>
-        <p>Ava picks up every call instantly - you keep working, driving, or living your life.</p>
-      </div>
-      <div class="step rv">
-        <p class="step-n">2</p>
-        <h3>Assist</h3>
-        <p>She shares info, books appointments, and answers questions - accurately, in a friendly, natural voice.</p>
-      </div>
-      <div class="step rv">
-        <p class="step-n">3</p>
-        <h3>Update</h3>
-        <p>Summaries go to you, confirmations go to the caller - nobody is left wondering what happened.</p>
+    <div class="calllog rv">
+      <div class="player" data-src="https://progressbot.ai/Cold-Cal-lNatalie-Banx-8-4-25.mp3">
+        <button class="pbtn" type="button" aria-label="Play recording: Banx cold-calls Natalie">
+          <svg class="ic-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="8 5 19 12 8 19"/></svg>
+          <svg class="ic-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg>
+        </button>
+        <div>
+          <p class="ptitle">Banx cold-calls Natalie</p>
+          <p class="pmeta">Outbound · Cold call · Banx</p>
+        </div>
+        <p class="ptime"><span class="t-cur">0:00</span> / <span class="t-dur">--:--</span></p>
+        <div class="pbar"><input type="range" min="0" max="1000" value="0" step="1" aria-label="Seek within recording: Banx cold-calls Natalie" disabled></div>
       </div>
     </div>
+    <p class="log-cap">Real call recording · Played from progressbot.ai</p>
   </div>
 </section>
 
-<!-- ============ AVA MINI-FAQ ============ -->
+<!-- ============ MINI-FAQ ============ -->
 <section class="sec" id="faq">
   <div class="wrap">
     <div class="rv">
       <p class="eyebrow">Questions</p>
-      <h2>Before you hand<br>her the phone.</h2>
+      <h2>Before you hand<br>him the list.</h2>
     </div>
     <div class="rv" style="margin-top:40px">
-<details class="qa"><summary>When does Ava answer?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">24/7 - even when you’re busy, mid-job, or off the clock. Every call gets picked up instantly, in a friendly, natural voice. No voicemail.</div></details>
-<details class="qa"><summary>Where do the appointments go?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Straight into your Google Calendar. Ava books directly onto it - no back-and-forth, no disorganized scheduling, no double-booking.</div></details>
-<details class="qa"><summary>How do I know what happened on a call?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">The moment a call ends, Ava texts you a summary. The caller gets a confirmation or thank-you text too - both sides stay in the loop, automatically.</div></details>
-<details class="qa"><summary>Will callers get the right information?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Ava is set up with accurate info about you and your business, and delivers it the same way on every call - one voice, one message, zero burnout.</div></details>
-<details class="qa"><summary>Is Ava for a business line or a personal phone?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">She runs on your personal phone line if that’s where the work calls land - and gives callers accurate info about you or your business. If it rings, she handles it.</div></details>
+<details class="qa"><summary>What leads does Banx call?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Your fresh leads and your aged, dormant ones - the contacts sitting in your CRM that nobody has time to work.</div></details>
+<details class="qa"><summary>What happens when a lead is interested?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Banx qualifies them and books the appointment straight onto your calendar. Your team gets a texted recap and the CRM updates automatically.</div></details>
+<details class="qa"><summary>Is the calling compliant?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Yes - TCPA, GDPR, and CCPA aligned, with encrypted systems and audit trails.</div></details>
+<details class="qa"><summary>Does Banx speak Spanish?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Yes - multilingual, including Spanish.</div></details>
+<details class="qa"><summary>How fast can he go live?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Typically 1-2 weeks: we train him on your list and your script, then run test calls before launch.</div></details>
       <p class="qa-more"><a href="https://progressbot.ai/v2/faq2">All the answers - read the full FAQ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></p>
     </div>
   </div>
@@ -857,11 +838,11 @@ h2{
 <section class="sec cta" id="cta">
   <div class="wrap rv">
     <p class="eyebrow">Next step</p>
-    <h2>Ready to let Ava<br>handle your calls?</h2>
-    <p class="sub">Experience what it’s like to never miss another call, meeting, or message. Book 15 minutes and we’ll set Ava up around your line, your info, your calendar. Want to hear the voice tech first? Botty - our demo agent - calls you back in about 30 seconds. The demo runs our default roofing flow; your Ava gets trained on your business.</p>
+    <h2>Your CRM is full<br>of unworked leads.</h2>
+    <p class="sub">Book 15 minutes and we will map Banx onto your lead list, your script, and your CRM. Want to hear the voice tech first? Botty - our inbound demo agent - calls you back in about 30 seconds. The demo runs our default roofing flow; your Banx build gets trained on your list and your script.</p>
     <div class="cta-btns">
       <a class="btn btn-primary" href="tel:+18633560181">Book a strategy call · (863) 356-0181</a>
-      <a class="btn btn-ghost on-dark" href="https://progressbot.ai/v2/botty-landing2?utm_source=ava_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=final_cta#top">Hear Botty call you live</a>
+      <a class="btn btn-ghost on-dark" href="https://progressbot.ai/v2/botty-landing2?utm_source=banx_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=final_cta#top">Hear Botty call you live</a>
     </div>
   </div>
 </section>
@@ -874,16 +855,16 @@ h2{
     <div class="foot-grid">
       <div class="foot-brand">
         <a class="brand" href="https://progressbot.ai/v2/home3">ProgressBot<span>.AI</span></a>
-        <p>AI phone bots for home service companies. Six agents on shift, 24/7 - never miss a lead again.</p>
+        <p>AI sales agents that answer, qualify, and book - 24/7. Never miss a lead again.</p>
       </div>
       <div>
         <h4>AI agents</h4>
         <ul>
-          <li><a href="https://progressbot.ai/v2/botty-landing2?utm_source=ava_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=footer#top">Botty - live demo</a></li>
-          <li><a href="https://progressbot.ai/v2/banx">Banx - the cold caller</a></li>
+          <li><a href="https://progressbot.ai/v2/botty-landing2?utm_source=banx_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=footer#top">Botty - live demo</a></li>
+          <li><a href="#top">Banx - the cold caller</a></li>
           <li><a href="https://progressbot.ai/v2/zoe">Zoe - the receptionist</a></li>
           <li><a href="https://progressbot.ai/v2/brenda">Brenda - the web bot</a></li>
-          <li><a href="#top">Ava - the assistant</a></li>
+          <li><a href="https://progressbot.ai/v2/ava">Ava - the assistant</a></li>
           <li><a href="https://progressbot.ai/v2/frank">Frank - the welcome bot</a></li>
           <li><a href="https://progressbot.ai/v2/ula">Ula - the updater</a></li>
         </ul>
@@ -927,38 +908,120 @@ h2{
   function qs(s, el){ return (el || document).querySelector(s); }
   function qsa(s, el){ return Array.prototype.slice.call((el || document).querySelectorAll(s)); }
 
-  /* ---------- Ava call-log simulation ---------- */
-  var avNodes = qsa('.tlnode');
-  var avTimers = [];
-  var avRunning = false;
-  function aLater(fn, ms){ avTimers.push(setTimeout(fn, ms)); }
-  function aStop(){ avTimers.forEach(clearTimeout); avTimers = []; avRunning = false; }
-  function runAvaLog(){
-    aStop();
-    avRunning = true;
-    avNodes.forEach(function(n){ n.classList.remove('on','done'); });
+  /* ---------- Timeline simulation ---------- */
+  var agNodes = qsa('.tlnode');
+  var agTimers = [];
+  var agRunning = false;
+  function gLater(fn, ms){ agTimers.push(setTimeout(fn, ms)); }
+  function gStop(){ agTimers.forEach(clearTimeout); agTimers = []; agRunning = false; }
+  function runBanxLog(){
+    gStop();
+    agRunning = true;
+    agNodes.forEach(function(n){ n.classList.remove('on','done'); });
     var t = 500;
-    avNodes.forEach(function(n){
+    agNodes.forEach(function(n){
       (function(node, at){
-        aLater(function(){ node.classList.add('on'); }, at);
-        aLater(function(){ node.classList.remove('on'); node.classList.add('done'); }, at + 1100);
+        gLater(function(){ node.classList.add('on'); }, at);
+        gLater(function(){ node.classList.remove('on'); node.classList.add('done'); }, at + 1100);
       })(n, t);
       t += 1900;
     });
-    aLater(runAvaLog, t + 5200);
+    gLater(runBanxLog, t + 5200);
   }
-  var avCard = qs('.worder');
-  if (avCard && avNodes.length && !RM){
+  var agCard = qs('.worder');
+  if (agCard && agNodes.length && !RM){
     if ('IntersectionObserver' in window){
-      var aIO = new IntersectionObserver(function(entries){
+      var gIO = new IntersectionObserver(function(entries){
         entries.forEach(function(e){
-          if (e.isIntersecting){ if (!avRunning) runAvaLog(); }
-          else { aStop(); }
+          if (e.isIntersecting){ if (!agRunning) runBanxLog(); }
+          else { gStop(); }
         });
       }, { threshold: 0.25 });
-      aIO.observe(avCard);
-    } else { runAvaLog(); }
+      gIO.observe(agCard);
+    } else { runBanxLog(); }
   }
+
+  /* ---------- Custom call-log audio player ---------- */
+  function fmt(sec){
+    if (!isFinite(sec) || isNaN(sec)) return '--:--';
+    var m = Math.floor(sec / 60), s = Math.floor(sec % 60);
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
+  var players = [];
+  function initPlayer(row){
+    var src   = row.getAttribute('data-src');
+    var btn   = qs('.pbtn', row);
+    var range = qs('input[type="range"]', row);
+    var tCur  = qs('.t-cur', row);
+    var tDur  = qs('.t-dur', row);
+    var title = qs('.ptitle', row).textContent;
+    var failed = false;
+    var audio = document.createElement('audio');
+    audio.preload = 'metadata';
+    audio.src = src;
+    function paintBar(pct){
+      range.style.background = 'linear-gradient(to right, #37B071 ' + pct + '%, #2A323A ' + pct + '%)';
+    }
+    paintBar(0);
+    function fail(){
+      if (failed) return;
+      failed = true;
+      try { audio.pause(); } catch(e){}
+      row.innerHTML = '<p class="pfall">Recording unavailable here - ' +
+        '<a href="https://progressbot.ai/v2/botty-landing2?utm_source=banx_page&utm_medium=internal&utm_campaign=botty_demo&utm_content=audio_fallback#top">hear the voice AI live instead</a></p>';
+    }
+    audio.addEventListener('error', fail);
+    audio.addEventListener('loadedmetadata', function(){
+      if (isFinite(audio.duration)){ tDur.textContent = fmt(audio.duration); range.disabled = false; }
+    });
+    audio.addEventListener('durationchange', function(){
+      if (isFinite(audio.duration)){ tDur.textContent = fmt(audio.duration); range.disabled = false; }
+    });
+    audio.addEventListener('timeupdate', function(){
+      tCur.textContent = fmt(audio.currentTime);
+      if (isFinite(audio.duration) && audio.duration > 0){
+        var pct = (audio.currentTime / audio.duration) * 100;
+        range.value = Math.round(pct * 10);
+        paintBar(pct);
+      }
+    });
+    audio.addEventListener('ended', function(){
+      row.classList.remove('playing');
+      btn.setAttribute('aria-label', 'Play recording: ' + title);
+      range.value = 0;
+      paintBar(0);
+      tCur.textContent = '0:00';
+    });
+    btn.addEventListener('click', function(){
+      if (failed) return;
+      if (audio.paused){
+        players.forEach(function(p){ if (p.audio !== audio) p.pause(); });
+        var pr = audio.play();
+        if (pr && pr.catch){ pr.catch(fail); }
+        row.classList.add('playing');
+        btn.setAttribute('aria-label', 'Pause recording: ' + title);
+      } else {
+        audio.pause();
+        row.classList.remove('playing');
+        btn.setAttribute('aria-label', 'Play recording: ' + title);
+      }
+    });
+    range.addEventListener('input', function(){
+      if (failed || !isFinite(audio.duration)) return;
+      var pct = range.value / 10;
+      audio.currentTime = (pct / 100) * audio.duration;
+      paintBar(pct);
+    });
+    players.push({
+      audio: audio,
+      pause: function(){
+        audio.pause();
+        row.classList.remove('playing');
+        btn.setAttribute('aria-label', 'Play recording: ' + title);
+      }
+    });
+  }
+  qsa('.player').forEach(initPlayer);
 
   /* ---------- Sticky header shadow ---------- */
   var head = qs('.site-head');

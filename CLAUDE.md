@@ -133,6 +133,11 @@ prefiller MUST match that trade's calculator chip: Roofing `tab=calls&cr=35&jv=1
 | `/v2/frank` | frank.html | Tel | contract check (red mismatch) |
 | `/v2/ula` | ula.html (+alias) | Tel | project timeline (red-free) |
 | `/v2/ava` | ava.html | Tel | call-log timeline (red-free) |
+| `/v2/banx` | banx.html | Tel | outbound-run timeline + real cold-call player (red-free) |
+| `/v2/zoe` | zoe.html | Tel | 11:52 PM inbound timeline; one $10k redline |
+| `/v2/brenda` | brenda.html | Tel | web-chat timeline (red-free) |
+| `/v2/terms` | terms.html | - | legal restyle, text verbatim |
+| `/v2/privacy` | privacy.html | - | legal restyle, text verbatim |
 | `/v2/faq2` | faq.html | Demo | accordions + mirrored FAQPage JSON-LD |
 | `/v2/calculator` | savings-calculator.html | Demo/Tel | URL-state sliders, copy-link |
 | `/v2/roofing` | roofing.html | **Demo** (script match) | roofing dispatch; $520k eq |
