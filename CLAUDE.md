@@ -77,7 +77,9 @@ paper `#F3F4F1` / card white / ink `#14181D` / `--green #0E7B43` = **action** /
   (copy: `roofing.html`) · **sunglasses** bot on solar (copy: `solar.html`).
   Copy the `<svg class="bmark">` block, never redraw. New industry pages: pick
   the trade-appropriate variant, default to headset. Footer brand stays
-  text-only. Favicon + og:image still pending.
+  text-only. Favicon = simplified fat-stroke headset bot as data-URI SVG
+  `<link rel="icon">`, identical on every page (copy from `home4.html`).
+  og:image still pending.
 - Components: `.wrap` 1160px; cards 1px `--line` radius 14–18; buttons radius 9;
   mono eyebrow + 26×2px green rule; sticky header (static ≤860) with pulse
   "on shift"; dark mono-headed footer; sticky mobile CTA ≤860; `.rv` reveals.
