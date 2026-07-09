@@ -10,7 +10,8 @@ step, no framework — ever.
 
 1. `git pull`
 2. Read `docs/context/PROJECT-BRIEF.md` and `docs/context/CLIENT-NOTES.md`
-   (client decisions arrive via WhatsApp and live ONLY in that log).
+   (client decisions live ONLY in that log — summaries only; never paste
+   private message text into this public repo).
 3. `python3 scripts/verify.py` — know the baseline before touching anything.
 4. Work (rules below) → `python3 scripts/verify.py <changed files>` → commit only
    on green. Commit style: `page: what changed` (e.g. `solar: fix calc prefill`).

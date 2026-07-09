@@ -16,9 +16,10 @@ and everything that linked to the old page links to the new one.
 
 - **Builder:** Enrique — works from this repo (terminal + Claude Code), deploys to
   hosting.com shared hosting by uploading files.
-- **Client:** owns progressbot.ai and the business facts. Client decisions arrive
-  over WhatsApp and MUST be logged in `docs/context/CLIENT-NOTES.md` — that file is
-  the only client-instruction memory future sessions have.
+- **Client:** owns progressbot.ai and the business facts. Client decisions MUST be
+  summarized in `docs/context/CLIENT-NOTES.md` — that file is the only
+  client-instruction memory future sessions have. Summaries only: this repo is
+  public, so never paste private message text into it.
 
 ## How the repo maps to the live site
 
@@ -46,7 +47,7 @@ top-of-file `Deploy as:` comment define its live path — filenames don't. Known
 
 1. **PHONE NUMBERS.** README.md (2026-07-03) says use ONLY (863) 354-1635. Every
    page built and deployed since uses (863) 356-0181 except the demo landing. One
-   WhatsApp to the client settles it. Then: set the policy in `scripts/verify.py`
+   question to the client settles it. Then: set the policy in `scripts/verify.py`
    (env `PB_PHONE_POLICY`), convert pages if needed, update CLAUDE.md + this file,
    log the decision in CLIENT-NOTES.
 2. **Root cutover.** When does home4 actually replace the WordPress homepage at `/`?

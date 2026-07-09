@@ -1,9 +1,9 @@
 # Client decisions log
 
-The client communicates over WhatsApp. **This file is the only memory terminal
-sessions have of those decisions.** After any client conversation that decides
-anything, paste the decision here (newest first): date · decision · exact quote if
-possible · status.
+**This file is the only memory terminal sessions have of client decisions.**
+After any client conversation that decides anything, record it here (newest
+first): date · decision · status. Summaries only — this repo is public, so
+never paste private message text or quotes into it.
 
 ---
 
