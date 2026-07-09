@@ -30,6 +30,8 @@ CFG = {
  '/v2/roofing':        dict(utm='roofing_page',    must=[], industry=True),
  '/v2/solar':          dict(utm='solar_page',      must=['NREL', 'tab=cancel'], industry=True),
  '/v2/hvac':           dict(utm='hvac_page',       must=[], industry=True, forbid=['NREL', '33%']),
+ '/v2/terms':          dict(utm='terms_page',      must=['Roof Bear SMS Alerts', 'reply STOP']),
+ '/v2/privacy':        dict(utm='privacy_page',    must=['SimplyBook.me', 'Device Information']),
 }
 RED_CLASSES = ['class="leak-n"', 'class="mr-flag"', '<p class="eq', 'class="redline']
 

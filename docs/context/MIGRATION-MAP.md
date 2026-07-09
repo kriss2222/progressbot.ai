@@ -16,8 +16,8 @@ links `/faq` (not `/faq.html`) — both presumably serve the same page.
 | `/ula-the-ai-updater/` | `/v2/ula` | ula.html (+ alias file) | BUILT — deploy both paths |
 | `/faq.html` | `/v2/faq2` | faq.html | BUILT — deploy latest |
 | `/franks-welcome-call-faq` | `/v2/frank-faq` | frank-faq.html | BUILT 2026-07-08 (20 Q&As from live page, verbatim copy in CONTENT-CAPSULES) — deploy pending; v2 footers retargeted |
-| `/terms-and-conditions/` | `/v2/terms` (restyle only) | — | NOT BUILT — never rewrite legal text |
-| `/privacy.html` | `/v2/privacy` (restyle only) | — | NOT BUILT — never rewrite legal text |
+| `/terms-and-conditions/` | `/v2/terms` (restyle only) | terms.html | BUILT 2026-07-08 — legal text verbatim from live page (text-node integrity asserted); deploy pending. NOTE: live legal text cites (863) 654-1635 + kristen@progressbot.ai — third number, kept verbatim, flagged as open question |
+| `/privacy.html` | `/v2/privacy` (restyle only) | privacy.html | BUILT 2026-07-08 — legal text verbatim from live page (text-node integrity asserted); deploy pending |
 | — (new) | `/v2/calculator` | savings-calculator.html | DONE concept — deploy latest |
 | — (new) | `/v2/roofing` `/v2/solar` `/v2/hvac` | roofing/solar/hvac.html | BUILT — deploy |
 | `/ava-the-assistant` | `/v2/ava` | ava.html | BUILT 2026-07-08 (live copy captured in CONTENT-CAPSULES; Ava added to claims inventory; red-free, Tel CTA) — deploy pending; every v2 footer links to it, incl. botty-landing2 (Product list) |

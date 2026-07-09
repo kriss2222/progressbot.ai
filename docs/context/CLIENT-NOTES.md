@@ -17,4 +17,12 @@ Then set `PB_PHONE_POLICY` accordingly and update CLAUDE.md.
 
 ---
 
-## (paste new decisions above this line)
+## 2026-07-08 · Third phone number found in legal text · STATUS: OPEN
+The live terms page (`/terms-and-conditions/`) cites (863) 654-1635 and
+kristen@progressbot.ai in its support clause — a third number besides 354/356.
+Kept verbatim in the v2 restyle (never rewrite legal text). Ask the client
+whether 654-1635 is real or a typo for 354-1635 when settling the phone policy.
+
+---
+
+## (record new decisions above this line)
