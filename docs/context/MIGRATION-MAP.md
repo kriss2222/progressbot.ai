@@ -20,7 +20,7 @@ links `/faq` (not `/faq.html`) — both presumably serve the same page.
 | `/privacy.html` | `/v2/privacy` (restyle only) | — | NOT BUILT — never rewrite legal text |
 | — (new) | `/v2/calculator` | savings-calculator.html | DONE concept — deploy latest |
 | — (new) | `/v2/roofing` `/v2/solar` `/v2/hvac` | roofing/solar/hvac.html | BUILT — deploy |
-| `/ava-the-assistant` | `/v2/ava` (proposed) | — | **NOT BUILT** — found via nav crawl 2026-07-08. NOTE: Ava is NOT in the CLAUDE.md agent list/claims inventory; live page claims: 24/7 answering, books into Google Calendar, text summaries, no stats. Add Ava to claims inventory before building. |
+| `/ava-the-assistant` | `/v2/ava` | ava.html | BUILT 2026-07-08 (live copy captured in CONTENT-CAPSULES; Ava added to claims inventory; red-free, Tel CTA) — deploy pending; other pages' footers not yet linking to it |
 | `/solar-ai-team/` | TBD — overlaps `/v2/solar` | — | **NOT BUILT** — found via nav crawl 2026-07-08. Agent-roster page for solar (Botty/Banx/Frank/Ava/Ula), headline "In 5 Years, there won't be any human solar sales reps." Decide: rebuild vs. redirect to `/v2/solar`. |
 | — (new, backlog) | Banx / Zoe / Brenda agent pages | — | NOT BUILT (frank/ula pattern) |
 | — (new, backlog) | Spanish versions, post-demo page | — | NOT BUILT |

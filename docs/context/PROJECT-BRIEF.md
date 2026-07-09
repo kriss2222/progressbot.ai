@@ -36,8 +36,8 @@ top-of-file `Deploy as:` comment define its live path — filenames don't. Known
 
 ## Current state (2026-07-08)
 
-- Built & verified: home (root-ready), botty-landing2, frank, ula, faq2, calculator,
-  roofing, solar, hvac. Live under `/v2/...`; the live `/v2/home3` deployment predates
+- Built & verified: home (root-ready), botty-landing2, frank, ula, ava, faq2,
+  calculator, roofing, solar, hvac. Live under `/v2/...`; the live `/v2/home3` deployment predates
   the latest integrations — redeploy pending; root cutover pending client go-ahead.
 - The Botty demo page keeps its own tracking number and its form protections
   (honeypot, dwell-time, TCPA line) — load-bearing, see CLAUDE.md.

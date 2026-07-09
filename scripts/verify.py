@@ -23,6 +23,7 @@ CFG = {
  '/v2/botty-landing2': dict(utm=None, phone=P354,  must=['id="website"', 'isHuman', 'By submitting, you agree to receive a phone call']),
  '/v2/frank':          dict(utm='frank_page',      must=['runCheck']),
  '/v2/ula':            dict(utm='ula_page',        must=['runTimeline'], red_free=True),
+ '/v2/ava':            dict(utm='ava_page',        must=['runAvaLog'], red_free=True),
  '/v2/faq2':           dict(utm='faq_page',        must=[]),
  '/v2/frank-faq':       dict(utm='frank_faq_page',  must=[]),
  '/v2/calculator':     dict(utm='calculator_page', must=['URLSearchParams', '$468,000']),

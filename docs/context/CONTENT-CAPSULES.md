@@ -112,6 +112,40 @@ CTA: "Schedule a Demo with Frank". Answers verbatim:
     texting, emailing, or transferring calls. And he can interact with software
     such as CRMs, spreadsheets, and most business software."
 
+## Old Ava page (`/ava-the-assistant`, fetched live 2026-07-08)
+
+Page title: "Ava - Your Phone. Fully Handled. | ProgressBot.AI". No stats, no
+testimonials, no pricing on the page ⇒ v2 page is red-free (like Ula).
+Footer phone on the live page: (863) 356-0181 · contact@progressbot.ai.
+
+- Headline: "Your Phone. Fully Handled."
+- Sub: "Ava answers every call, gives instant info, books appointments, and
+  sends follow-ups — all from your personal phone line."
+- Primary CTA: "Book A Demo With Ava →"
+- Feature list ("Ava Handles Every Call So You Don't Have To"): answers calls
+  instantly with a friendly, natural voice · gives accurate info about you or
+  your business · books appointments directly into your Google Calendar · sends
+  you a text summary when the call ends · texts the caller with a confirmation
+  or thank-you.
+- "Always Polite. Always On. Always Accurate." quads: Never Miss a Call ("Ava
+  answers 24/7, even when you're busy") · Book Without Lifting a Finger
+  ("Appointments go straight to Google Calendar") · Stay in the Loop ("Every
+  call summarized instantly by text") · Perfect Consistency ("One voice, one
+  message, zero burnout").
+- "The Everyday Chaos Ava Eliminates": missed calls turning into lost
+  opportunities · inconsistent information given to clients · disorganized
+  scheduling and double-booking · follow-ups forgotten after long days ·
+  constant interruptions during real work.
+- "How Ava Fits Into Your Day": Answer (picks up every call instantly) ·
+  Assist (shares info, books appointments, answers questions) · Update (sends
+  summaries to you and confirmations to callers).
+- Closing: "Ready to Let Ava Handle Your Calls?" — "Experience what it's like
+  to never miss another call, meeting, or message." CTAs: "Listen to Ava Handle
+  a Real Call" | "Book a Quick Demo". No Ava call recording asset is known —
+  don't link audio unless one is confirmed on the server.
+- Distinct angle vs Zoe: Ava fronts YOUR PERSONAL PHONE LINE (solo operator /
+  owner's cell), not just a business receptionist.
+
 ## Audio assets (own domain — allowed external requests)
 
 - `https://progressbot.ai/Cold-Cal-lNatalie-Banx-8-4-25.mp3` (Banx cold call —

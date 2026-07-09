@@ -103,7 +103,10 @@ convert pages, update this section.
   Brenda (web bot) · Botty (AI sales rep — LIVE DEMO) · Frank (welcome call
   minutes after signing; catches rep promises; voicemail retry; setup fee +
   per-call) · Ula (weekly + milestone update calls; flags at-risk customers;
-  CRM/quoting/calendar/dialers/financing integrations).
+  CRM/quoting/calendar/dialers/financing integrations) · Ava (answers your
+  personal phone line 24/7, friendly natural voice; accurate info about you or
+  your business; books into Google Calendar; texts owner a summary post-call;
+  texts caller a confirmation/thank-you — NO published stats, page is red-free).
 - **The public demo runs the DEFAULT ROOFING FLOW.** Non-roofing pages promoting
   it must disclose ("your build gets trained on X"). Roofing pages may lean in.
 - Quotes stay anonymized (trade + region). **No HVAC testimonial exists** — that
@@ -126,6 +129,7 @@ prefiller MUST match that trade's calculator chip: Roofing `tab=calls&cr=35&jv=1
 | `/v2/botty-landing2` | botty-landing2.html | 2-step form | phone sim; honeypot+dwell; TCPA |
 | `/v2/frank` | frank.html | Tel | contract check (red mismatch) |
 | `/v2/ula` | ula.html (+alias) | Tel | project timeline (red-free) |
+| `/v2/ava` | ava.html | Tel | call-log timeline (red-free) |
 | `/v2/faq2` | faq.html | Demo | accordions + mirrored FAQPage JSON-LD |
 | `/v2/calculator` | savings-calculator.html | Demo/Tel | URL-state sliders, copy-link |
 | `/v2/roofing` | roofing.html | **Demo** (script match) | roofing dispatch; $520k eq |
