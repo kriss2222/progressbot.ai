@@ -35,9 +35,10 @@ step, no framework — ever.
 Filenames don't define URLs — each file's `<link rel="canonical">` and its
 top-of-file `Deploy as:` comment do. Quirks to know:
 
-- `home4.html` = CURRENT homepage (canonical `/`, deploys to root).
-  `home3.html` = legacy, fails verify on purpose; `progressbot-home2.html` =
-  byte-duplicate of home4. **Recommended: delete both extras.**
+- `home4.html` = CURRENT homepage (canonical `/`, deploys to root). Legacy
+  `home3.html` + duplicate `progressbot-home2.html` were deleted 2026-07-08
+  (recoverable from git history). The live `/v2/home3` URL still serves an old
+  deploy and is what v2 nav links point to until root cutover.
 - `savings-calculator.html` → `/v2/calculator` (name ≠ path).
 - `ula-the-ai-updater.html` = byte-copy of `ula.html` serving the old URL path
   (canonical correctly → `/v2/ula`). Edit Ula ⇒ update both (re-copy one over the

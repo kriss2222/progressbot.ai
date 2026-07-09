@@ -25,9 +25,10 @@ and everything that linked to the old page links to the new one.
 Flat `.html` files at repo root. Each file's `<link rel="canonical">` and its
 top-of-file `Deploy as:` comment define its live path — filenames don't. Known quirks:
 
-- `home4.html` = the CURRENT homepage (canonical `/`). `home3.html` is legacy and
-  fails verification on purpose; `progressbot-home2.html` is a byte-identical
-  duplicate of home4. **Recommended cleanup: delete home3 + progressbot-home2.**
+- `home4.html` = the CURRENT homepage (canonical `/`). Legacy `home3.html` and
+  byte-duplicate `progressbot-home2.html` were deleted 2026-07-08 (git history
+  has them). The live `/v2/home3` URL still serves an old deploy — v2 nav links
+  point there until the root cutover.
 - `savings-calculator.html` deploys to `/v2/calculator` (name ≠ path; canonical rules).
 - `ula-the-ai-updater.html` is a byte-identical copy of `ula.html`, kept so the OLD
   WordPress URL can serve the new page (its canonical correctly points to `/v2/ula`).
@@ -59,4 +60,4 @@ top-of-file `Deploy as:` comment define its live path — filenames don't. Known
 2. Fetch `https://progressbot.ai/sitemap.xml` (or crawl the old nav) and complete
    MIGRATION-MAP.md so the mission has a full checklist.
 3. Resolve open question 1 with the client; execute the outcome.
-4. Delete legacy home files; commit.
+4. ~~Delete legacy home files~~ — done 2026-07-08.
