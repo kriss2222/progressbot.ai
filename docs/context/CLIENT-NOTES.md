@@ -7,6 +7,16 @@ never paste private message text or quotes into it.
 
 ---
 
+## 2026-07-09 · Logo: headset mascot in v2 green · STATUS: DECIDED
+Client reviewed the vector logo concepts (winking robot mascot redrawn from the
+original raster logo) and picked the "headset" variant: bot wearing a
+call-center headset with mic boom, v2 green, wink kept. She had tried a green
+recolor of the old raster logo in the header herself but prefers the vector
+redraw. Rollout: inline SVG mascot in page headers next to the existing
+wordmark. Still open: og:image raster derivative (needs separate OK), favicon.
+
+---
+
 ## 2026-07-03 · Phone number directive · STATUS: UNRESOLVED CONFLICT
 From README.md (author: repo owner): "The only phone number we want to use on here
 right now is (863) 354-1635."

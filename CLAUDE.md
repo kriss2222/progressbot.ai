@@ -71,6 +71,10 @@ paper `#F3F4F1` / card white / ink `#14181D` / `--green #0E7B43` = **action** /
 - Red discipline: one–two red beats per page max, measured on **styled elements**
   (`.leak-n`, `.eq b`, `.redline`, `.mr-flag`), never text mentions. `ula.html`
   is deliberately red-free (no published stat → no red).
+- Logo (client decision 2026-07-09): header `.brand` = inline SVG mascot
+  (winking bot with call-center headset, class `bmark`) + the wordmark text.
+  One canonical drawing - copy the `<svg class="bmark">` block from `home4.html`,
+  never redraw. Footer brand stays text-only. Favicon + og:image still pending.
 - Components: `.wrap` 1160px; cards 1px `--line` radius 14–18; buttons radius 9;
   mono eyebrow + 26×2px green rule; sticky header (static ≤860) with pulse
   "on shift"; dark mono-headed footer; sticky mobile CTA ≤860; `.rv` reveals.
