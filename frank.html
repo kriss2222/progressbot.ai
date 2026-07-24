@@ -21,14 +21,11 @@
 <meta property="og:site_name" content="ProgressBot.AI">
 <meta property="og:title" content="Signed Isn’t Sold - Frank Stops Post-Sale Cancellations">
 <meta property="og:description" content="A third of residential solar sales cancel after signing. Frank calls within minutes of the close, confirms every contract line, and catches the promises reps forget to write down.">
-<meta property="og:image" content="https://progressbot.ai/og/og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:image" content="https://progressbot.ai/og/og.png">
-<meta name="twitter:card" content="summary_large_image">
+<!-- TODO: add og:image + twitter:image (1200x630) - a framed screenshot of the contract-check card is the obvious candidate -->
+<meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Signed Isn’t Sold - Frank Stops Post-Sale Cancellations">
 <meta name="twitter:description" content="Frank calls new solar customers within minutes of signing - confirms the deal, catches missing promises, cuts cancellations. Hear a real welcome call.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%2314181D' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 54C22 12 98 12 108 54'/%3E%3Crect x='20' y='30' width='80' height='66' rx='22' fill='%23FFFFFF'/%3E%3Crect x='5' y='50' width='15' height='32' rx='7.5' fill='%230E7B43'/%3E%3Crect x='100' y='50' width='15' height='32' rx='7.5' fill='%230E7B43'/%3E%3Ccircle cx='76' cy='60' r='9' fill='%2314181D' stroke='none'/%3E%3Cpath d='M30 58c4 7 16 7 20 0'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230E7B43'/%3E%3Cg transform='translate(3.2 3.2) scale(0.73)'%3E%3Cpath d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Big+Shoulders+Display:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -133,8 +130,9 @@ h2{
   letter-spacing:.03em;text-decoration:none;text-transform:uppercase;flex:none;
 }
 .brand span{color:var(--green)}
-.brand{display:inline-flex;align-items:center;gap:9px}
-.brand svg.bmark{width:42px;height:42px;flex:none}
+.brand{display:inline-flex;align-items:center}
+.brand-logo{width:36px;height:36px;flex:none;margin-right:9px}
+.site-foot .brand-logo{width:34px;height:34px;background:#fff;border-radius:9px;padding:3px}
 .nav{display:flex;align-items:center;gap:26px;margin-right:auto;margin-left:36px}
 .nav a{font-size:15px;font-weight:600;text-decoration:none;color:var(--ink2)}
 .nav a:hover{color:var(--green)}
@@ -486,6 +484,20 @@ h2{
 
 /* ============ FRANK: VERIFY GRID + QUOTE + STEPS ============ */
 .vgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:44px}
+.feat{
+  background:var(--card);border:1px solid var(--line);border-radius:15px;
+  padding:24px 22px;
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+.feat:hover{transform:translateY(-3px);box-shadow:0 16px 32px -20px rgba(20,24,29,.3);border-color:var(--green)}
+.feat .feat-n{
+  display:flex;align-items:center;gap:12px;margin:0 0 14px;
+  font-family:var(--mono);font-size:11px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--green);
+}
+.feat-n::after{content:"";height:2px;flex:1;background:var(--green-t)}
+.feat h3{font-size:17px;font-weight:700;line-height:1.3}
+.feat p{font-size:14.5px;color:var(--ink2);line-height:1.5;margin-top:7px}
 .proc.three{grid-template-columns:repeat(3,1fr)}
 .pull{display:grid;grid-template-columns:1.25fr .75fr;gap:26px;margin-top:44px;align-items:stretch}
 .quote{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:34px 32px;display:flex;flex-direction:column}
@@ -567,16 +579,16 @@ h2{
 
 <header class="site-head">
   <div class="wrap">
-    <a class="brand" href="https://progressbot.ai/v2/home3"><svg class="bmark" viewBox="0 0 120 120" width="42" height="42" aria-hidden="true" focusable="false"><g fill="none" stroke="#14181D" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 52C24 16 96 16 104 52"/><rect x="22" y="30" width="76" height="62" rx="20" fill="#FFFFFF"/><rect x="9" y="48" width="16" height="30" rx="8" fill="#0E7B43"/><rect x="95" y="48" width="16" height="30" rx="8" fill="#0E7B43"/><path d="M16 78c-1 13 8 17 16 13"/><rect x="28" y="86" width="13" height="9" rx="4.5" fill="#0E7B43"/><circle cx="76" cy="58" r="9.5" fill="#FFFFFF"/><circle cx="76" cy="58" r="4.2" fill="#0E7B43" stroke="none"/><circle cx="77.8" cy="56.2" r="1.5" fill="#FFFFFF" stroke="none"/><path d="M36 57c3.5 5.5 11.5 5.5 15 0"/><path d="M50 76c4 5 16 5 20 0"/></g></svg>ProgressBot<span>.AI</span></a>
+    <a class="brand" href="index.html"><img class="brand-logo" src="ProgressBot.AI-green-v2-logo.png" alt="" width="36" height="36">ProgressBot<span>.AI</span></a>
     <nav class="nav" aria-label="Main">
-      <a href="https://progressbot.ai/v2/home3">Home</a>
-      <a href="https://progressbot.ai/v2/faq2">FAQ</a>
-      <a href="#recording">Hear a call</a>
+      <a href="index.html#crew">Agents</a>
+      <a href="index.html#process">How it works</a>
+      <a href="index.html#recordings">Hear a call</a>
     </nav>
     <div class="head-right">
-      <span class="onshift"><i class="pdot" aria-hidden="true"></i>Frank is on shift</span>
-      <a class="head-tel" href="tel:+18633560181">(863) 356-0181</a>
-      <a class="btn btn-primary btn-sm" href="https://progressbot.ai/v2/botty-landing2?utm_source=frank_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=header#top">Get started</a>
+      <span class="onshift"><i class="pdot" aria-hidden="true"></i>6 agents on shift</span>
+      <a class="head-tel" href="tel:+18633541635">(863) 354-1635</a>
+      <a class="btn btn-primary btn-sm" href="botty-landing.html?utm_source=frank_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=header#top">Get started</a>
     </div>
   </div>
 </header>
@@ -587,14 +599,14 @@ h2{
   <div class="wrap hero-grid">
 
     <div class="hero-copy">
-      <p class="eyebrow">Frank - the welcome bot · after the sale</p>
+      <p class="eyebrow">Frank · the welcome bot · after the sale</p>
       <h1>Signed<br>isn’t sold.</h1>
-      <p class="lede">A signed contract still cancels - a third of residential solar deals do. Frank calls every new customer <strong>within minutes of signing, while your rep is still in the home:</strong> confirms the deal line by line, answers the doubts, and catches problems before they become cancellations.</p>
+      <p class="lede">A signed contract still cancels. A third of residential solar deals do. Frank calls every new customer <strong>within minutes of signing, while your rep is still in the home:</strong> confirms the deal line by line, answers the doubts, and catches problems before they become cancellations.</p>
       <div class="hero-btns">
-        <a class="btn btn-primary" href="tel:+18633560181">Book a strategy call
+        <a class="btn btn-primary" href="tel:+18633541635">Book a strategy call
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         </a>
-        <a class="btn btn-ghost" href="https://progressbot.ai/v2/botty-landing2?utm_source=frank_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=hero#top">Hear the voice AI live</a>
+        <a class="btn btn-ghost" href="botty-landing.html?utm_source=frank_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=hero#top">Hear the voice AI live</a>
       </div>
     </div>
 
@@ -620,7 +632,7 @@ h2{
               <span class="wtx"><span class="wlab">Rep promises</span><span class="wval">“Critter guard included”</span></span>
               <span class="wchip">Not on the contract</span>
             </div>
-            <div class="wres show" id="wres"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Contract amended - fixed before install day</span></div>
+            <div class="wres show" id="wres"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span>Contract amended · fixed before install day</span></div>
           </div>
           <p class="wo-foot">Summary texted to your team · synced to CRM</p>
         </div>
@@ -641,9 +653,9 @@ h2{
     <div class="leak-grid">
       <div class="rv">
         <p class="leak-n">33%</p>
-        <p class="leak-l">of residential solar sales cancel - National Renewable Energy Laboratory, 2022.</p>
+        <p class="leak-l">of residential solar sales cancel. National Renewable Energy Laboratory, 2022.</p>
       </div>
-      <p class="leak-copy rv">Lead gen, the appointment, the in-home pitch, the proposal, the financing, the signature - <strong>all paid for.</strong> Then the customer sits alone with second thoughts, a confusing contract, and a rep’s verbal promises nobody wrote down. That’s where a third of the work walks out the door.</p>
+      <p class="leak-copy rv">Lead gen, the appointment, the in-home pitch, the proposal, the financing, the signature, <strong>all paid for.</strong> Then the customer sits alone with second thoughts, a confusing contract, and a rep’s verbal promises nobody wrote down. That’s where a third of the work walks out the door.</p>
     </div>
   </div>
 </section>
@@ -654,28 +666,28 @@ h2{
     <div class="rv">
       <p class="eyebrow">The fix</p>
       <h2>Frank confirms everything<br>while the ink is wet.</h2>
-      <p class="sub">Within minutes of the close, Frank runs the whole deal back with the homeowner - trained on your data, synced with your CRM. If they don’t answer, he leaves a friendly voicemail and retries on schedule.</p>
+      <p class="sub">Within minutes of the close, Frank runs the whole deal back with the homeowner, trained on your data, synced with your CRM. If they don’t answer, he leaves a friendly voicemail and retries on schedule.</p>
     </div>
     <div class="vgrid">
       <div class="feat rv">
-        <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></div>
+        <p class="feat-n">01</p>
         <h3>Homeowner info</h3>
-        <p>Name, address, contact - the basics, confirmed out loud.</p>
+        <p>Name, address, contact: the basics, confirmed out loud.</p>
       </div>
       <div class="feat rv">
-        <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg></div>
+        <p class="feat-n">02</p>
         <h3>System specs</h3>
-        <p>Size, panel count, placement - what they think they bought vs. what’s on paper.</p>
+        <p>Size, panel count, placement: what they think they bought vs. what’s on paper.</p>
       </div>
       <div class="feat rv">
-        <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <p class="feat-n">03</p>
         <h3>Financing terms</h3>
-        <p>Rate, term, monthly payment - the numbers nobody wants surprises on.</p>
+        <p>Rate, term, monthly payment: the numbers nobody wants surprises on.</p>
       </div>
       <div class="feat rv">
-        <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>
+        <p class="feat-n">04</p>
         <h3>Rep promises &amp; extras</h3>
-        <p>The verbal add-ons and adders. If it was promised, it gets written down - or flagged.</p>
+        <p>The verbal add-ons and adders. If it was promised, it gets written down, or flagged.</p>
       </div>
     </div>
   </div>
@@ -687,7 +699,7 @@ h2{
     <div class="rv">
       <p class="eyebrow">Real recording</p>
       <h2>Hear Frank make the call.</h2>
-      <p class="sub">An unstaged welcome call from the field - Frank walking Juan through his brand-new system.</p>
+      <p class="sub">An unstaged welcome call from the field. Frank walking Juan through his brand-new system.</p>
     </div>
     <div class="calllog rv">
       <div class="player" data-src="https://progressbot.ai/frank-confirmation-voice-bot/Juan-Frank-Welcome-Call-Recording-2025-07-18.mp3">
@@ -706,7 +718,7 @@ h2{
     <p class="log-cap">Real call recording · Played from progressbot.ai</p>
     <div class="sec-cta rv">
       <p class="sc-note">Want this running on every close you make?</p>
-      <a class="btn btn-primary" href="tel:+18633560181">Book a strategy call · (863) 356-0181</a>
+      <a class="btn btn-primary" href="tel:+18633541635">Book a strategy call · (863) 354-1635</a>
     </div>
   </div>
 </section>
@@ -737,18 +749,18 @@ h2{
     <div class="rv">
       <p class="eyebrow">How it fits</p>
       <h2>Zero change<br>to how you sell.</h2>
-      <p class="sub">Frank is customized to your terminology, your process, and your handoffs - setup takes days to a couple of weeks, with test calls before launch.</p>
+      <p class="sub">Frank is customized to your terminology, your process, and your handoffs. Setup takes days to a couple of weeks, with test calls before launch.</p>
     </div>
     <div class="proc three">
       <div class="step rv">
         <p class="step-n">1</p>
         <h3>The close</h3>
-        <p>Your rep does what they do. Contract signed - the deal data flows straight from your CRM to Frank.</p>
+        <p>Your rep does what they do. Contract signed, the deal data flows straight from your CRM to Frank.</p>
       </div>
       <div class="step rv">
         <p class="step-n">2</p>
         <h3>Frank calls</h3>
-        <p>Within minutes - most companies have him dial while the rep is still in the home. He confirms every line and notes every promise.</p>
+        <p>Within minutes, most companies have him dial while the rep is still in the home. He confirms every line and notes every promise.</p>
       </div>
       <div class="step rv">
         <p class="step-n">3</p>
@@ -767,12 +779,12 @@ h2{
       <h2>Asked before they buy.</h2>
     </div>
     <div class="rv" style="margin-top:40px">
-<details class="qa"><summary>How fast does Frank call after the sale?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Within minutes of receiving the contract. Most companies have him call while the rep is still in the home - before doubts have time to grow.</div></details>
+<details class="qa"><summary>How fast does Frank call after the sale?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Within minutes of receiving the contract. Most companies have him call while the rep is still in the home, before doubts have time to grow.</div></details>
 <details class="qa"><summary>What if the homeowner doesn’t answer?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Frank leaves a friendly voicemail and retries the call at scheduled intervals. No new customer slips through.</div></details>
 <details class="qa"><summary>What if he’s asked something he can’t answer?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">He doesn’t guess. Frank flags the call for human follow-up and escalates by email or through your internal system.</div></details>
-<details class="qa"><summary>Will homeowners know they’re talking to a bot?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Frank uses natural voice AI and polite phrasing - many homeowners assume a friendly assistant. You control exactly how he introduces himself.</div></details>
+<details class="qa"><summary>Will homeowners know they’re talking to a bot?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Frank uses natural voice AI and polite phrasing, many homeowners assume a friendly assistant. You control exactly how he introduces himself.</div></details>
 <details class="qa"><summary>What does Frank cost?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Pricing depends on call volume and features: an initial setup fee, then a cost per call. Book a strategy call and we’ll scope it for your close rate.</div></details>
-      <p class="qa-more"><a href="https://progressbot.ai/v2/faq2">All the answers - read the full FAQ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></p>
+      <p class="qa-more"><a href="https://progressbot.ai/v2/faq2">All the answers · read the full FAQ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></p>
     </div>
   </div>
 </section>
@@ -782,10 +794,10 @@ h2{
   <div class="wrap rv">
     <p class="eyebrow">Next step</p>
     <h2>Stop losing<br>signed deals.</h2>
-    <p class="sub">Book 15 minutes and we’ll put Frank on every close - trained on your contracts, your terminology, your CRM. Or hear the voice tech on your own phone first: Botty calls you in about 30 seconds.</p>
+    <p class="sub">Book 15 minutes and we’ll put Frank on every close, trained on your contracts, your terminology, your CRM. Or hear the voice tech on your own phone first: Botty calls you in about 30 seconds.</p>
     <div class="cta-btns">
-      <a class="btn btn-primary" href="tel:+18633560181">Book a strategy call · (863) 356-0181</a>
-      <a class="btn btn-ghost on-dark" href="https://progressbot.ai/v2/botty-landing2?utm_source=frank_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=final_cta#top">Hear Botty call you live</a>
+      <a class="btn btn-primary" href="tel:+18633541635">Book a strategy call · (863) 354-1635</a>
+      <a class="btn btn-ghost on-dark" href="botty-landing.html?utm_source=frank_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=final_cta#top">Hear Botty call you live</a>
     </div>
   </div>
 </section>
@@ -797,34 +809,33 @@ h2{
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a class="brand" href="https://progressbot.ai/v2/home3">ProgressBot<span>.AI</span></a>
-        <p>AI phone bots for home service companies. Seven agents on shift, 24/7 - never miss a lead again.</p>
+        <a class="brand" href="index.html"><img class="brand-logo" src="ProgressBot.AI-green-v2-logo.png" alt="" width="36" height="36">ProgressBot<span>.AI</span></a>
+        <p>AI phone bots for home service companies. Six agents on shift, 24/7. Never miss a lead again.</p>
       </div>
       <div>
         <h4>AI agents</h4>
         <ul>
-          <li><a href="https://progressbot.ai/v2/botty-landing2?utm_source=frank_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=footer#top">Botty - live demo</a></li>
-          <li><a href="https://progressbot.ai/v2/banx">Banx - the cold caller</a></li>
-          <li><a href="https://progressbot.ai/v2/zoe">Zoe - the receptionist</a></li>
-          <li><a href="https://progressbot.ai/v2/brenda">Brenda - the web bot</a></li>
-          <li><a href="https://progressbot.ai/v2/ava">Ava - the assistant</a></li>
-          <li><a href="#top">Frank - the welcome bot</a></li>
-          <li><a href="https://progressbot.ai/v2/ula">Ula - the updater</a></li>
-          <li><a href="tel:+18633560181">Full suite - talk with us</a></li>
+          <li><a href="botty-landing.html?utm_source=frank_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=footer#top">Botty · live demo</a></li>
+          <li><a href="frank.html">Frank · the welcome bot</a></li>
+          <li><a href="ula-the-ai-updater.html">Ula · the updater</a></li>
+          <li><a href="tel:+18633541635">Full suite · talk with us</a></li>
         </ul>
       </div>
       <div>
         <h4>Resources</h4>
         <ul>
-          <li><a href="https://progressbot.ai/v2/faq2">FAQ</a></li>
-          <li><a href="https://progressbot.ai/v2/frank-faq">Frank's FAQ</a></li>
-          <li><a href="https://progressbot.ai/v2/calculator">Cost calculator</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="savings-calculator.html">Cost calculator</a></li>
+          <li><a href="https://progressbot.ai/franks-welcome-call-faq">Frank's FAQ</a></li>
+          <li><a href="roofing.html">Built for roofing</a></li>
+          <li><a href="solar.html">Built for solar</a></li>
+          <li><a href="hvac.html">Built for HVAC</a></li>
         </ul>
       </div>
       <div>
         <h4>Contact</h4>
         <ul>
-          <li><a href="tel:+18633560181">(863) 356-0181</a></li>
+          <li><a href="tel:+18633541635">(863) 354-1635</a></li>
           <li><a href="mailto:contact@progressbot.ai">contact@progressbot.ai</a></li>
           <li><a href="https://www.linkedin.com/company/progress-bot-ai/">LinkedIn</a></li>
           <li><a href="https://www.facebook.com/ProgressBotAI/">Facebook</a></li>
@@ -840,7 +851,7 @@ h2{
 
 <!-- ============ STICKY MOBILE CTA ============ -->
 <div class="sticky-cta" id="stickyCta">
-  <a class="btn btn-primary" href="tel:+18633560181">
+  <a class="btn btn-primary" href="tel:+18633541635">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
     Book a strategy call
   </a>
@@ -919,8 +930,8 @@ h2{
       if (failed) return;
       failed = true;
       try { audio.pause(); } catch(err){}
-      row.innerHTML = '<p class="pfall">Recording unavailable here \u2014 ' +
-        '<a href="https://progressbot.ai/v2/botty-landing2?utm_source=frank_page&utm_medium=internal&utm_campaign=botty_demo&utm_content=audio_fallback#top">hear the voice AI live instead</a></p>';
+      row.innerHTML = '<p class="pfall">Recording unavailable here. ' +
+        '<a href="botty-landing.html?utm_source=frank_page&utm_medium=internal&utm_campaign=botty_demo&utm_content=audio_fallback#top">Hear the voice AI live instead</a></p>';
     }
     audio.addEventListener('error', fail);
     function setDur(){
