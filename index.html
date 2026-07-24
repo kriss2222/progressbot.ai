@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--
   ProgressBot.AI - homepage (FINAL)
   Static, self-contained: all CSS and vanilla JavaScript are inline in this
@@ -137,10 +137,37 @@ h2{
 .brand svg.bmark{width:42px;height:42px;flex:none;margin-right:9px}
 .brand-logo{flex:none;margin-right:9px}
 .site-foot .brand-logo{width:34px;height:34px;background:#fff;border-radius:9px;padding:3px}
-.nav{display:flex;align-items:center;gap:26px;margin-right:auto;margin-left:36px}
-.nav a{font-size:15px;font-weight:600;text-decoration:none;color:var(--ink2)}
-.nav a:hover{color:var(--green)}
-.head-right{display:flex;align-items:center;gap:22px}
+.nav{display:flex;align-items:center;gap:24px;margin-right:auto;margin-left:36px}
+.nav > a{font-size:15px;font-weight:600;text-decoration:none;color:var(--ink2)}
+.nav > a:hover{color:var(--green)}
+.drop{position:relative}
+.drop-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--body);font-size:15px;font-weight:600;color:var(--ink2);
+  background:none;border:0;cursor:pointer;padding:0;line-height:inherit;
+}
+.drop-btn:hover{color:var(--green)}
+.drop-btn svg{width:14px;height:14px;flex:none;transition:transform .18s ease}
+.drop.open .drop-btn{color:var(--green)}
+.drop.open .drop-btn svg{transform:rotate(180deg)}
+.drop-panel{
+  display:none;position:absolute;top:calc(100% + 16px);left:-18px;z-index:80;
+  background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:16px 20px;min-width:252px;
+  box-shadow:0 20px 44px -20px rgba(20,24,29,.4);
+}
+.drop-panel::before{content:"";position:absolute;left:0;right:0;top:-17px;height:17px}
+.drop.open .drop-panel{display:block}
+.drop-panel a{display:block;font-size:15px;font-weight:600;color:var(--ink);text-decoration:none;padding:6px 0;white-space:nowrap}
+.drop-panel a:hover{color:var(--green)}
+.drop-panel .onshift{margin-bottom:8px}
+.drop-split{border-top:1px solid var(--line);margin-top:10px;padding-top:10px}
+.drop-label{
+  font-family:var(--mono);font-size:11px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-bottom:2px;
+}
+.drop-panel a.drop-more{color:var(--green)}
+.head-right{display:flex;align-items:center;gap:18px}
 .onshift{
   font-family:var(--mono);font-size:11px;font-weight:600;
   letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);
@@ -150,6 +177,48 @@ h2{
 @keyframes pdot{0%,100%{box-shadow:0 0 0 0 rgba(14,123,67,.45)}55%{box-shadow:0 0 0 7px rgba(14,123,67,0)}}
 .head-tel{font-weight:600;font-size:15px;text-decoration:none;color:var(--ink)}
 .head-tel:hover{color:var(--green)}
+.head-tel-ic{
+  display:none;width:40px;height:40px;flex:none;border:1.5px solid var(--line);
+  border-radius:50%;align-items:center;justify-content:center;color:var(--green);
+}
+.head-tel-ic svg{width:18px;height:18px}
+.burger{
+  display:none;width:40px;height:40px;flex:none;border:1.5px solid var(--line);
+  border-radius:9px;background:var(--card);cursor:pointer;
+  align-items:center;justify-content:center;color:var(--ink);padding:0;
+}
+.burger svg{width:20px;height:20px}
+.burger .ic-close{display:none}
+.mobnav-open .burger .ic-menu{display:none}
+.mobnav-open .burger .ic-close{display:block}
+.mobnav{
+  display:none;position:absolute;top:100%;left:0;right:0;z-index:75;
+  background:var(--card);border-bottom:1px solid var(--line);
+  max-height:calc(100vh - 66px);overflow:auto;
+  box-shadow:0 24px 40px -24px rgba(20,24,29,.4);
+}
+.mobnav-open .mobnav{display:block}
+.mobnav .wrap{display:block;height:auto;padding-top:6px;padding-bottom:22px}
+.m-link,.m-group{
+  display:flex;align-items:center;justify-content:space-between;width:100%;
+  font-family:var(--body);font-size:16.5px;font-weight:600;color:var(--ink);
+  text-decoration:none;background:none;border:0;border-bottom:1px solid var(--line);
+  padding:14px 0;cursor:pointer;text-align:left;
+}
+.m-group svg{width:16px;height:16px;flex:none;transition:transform .18s ease}
+.m-group[aria-expanded="true"] svg{transform:rotate(180deg)}
+.m-panel{display:none;border-bottom:1px solid var(--line);padding:4px 0 12px 14px}
+.m-panel.open{display:block}
+.m-panel a{display:block;font-size:15.5px;font-weight:500;color:var(--ink2);text-decoration:none;padding:7px 0}
+.m-panel a:hover{color:var(--green)}
+.m-panel .drop-label{margin:10px 0 2px}
+.m-ctas{display:flex;flex-direction:column;gap:12px;padding-top:18px}
+.m-ctas .onshift{justify-content:center}
+@media (hover:hover) and (min-width:961px){
+  .drop:hover .drop-panel{display:block}
+  .drop:hover .drop-btn{color:var(--green)}
+  .drop:hover .drop-btn svg{transform:rotate(180deg)}
+}
 
 /* ============ HERO ============ */
 .hero{padding:72px 0 88px;overflow:hidden}
@@ -417,6 +486,13 @@ h2{
 .site-foot li{margin-bottom:10px}
 .site-foot a{text-decoration:none;color:#B7BEB8}
 .site-foot a:hover{color:var(--green-br)}
+.foot-social{display:flex;gap:10px;margin-top:16px}
+.foot-social a{
+  width:36px;height:36px;border:1px solid #2A313A;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;color:#B7BEB8;
+}
+.foot-social a:hover{color:var(--green-br);border-color:var(--green-br)}
+.foot-social svg{width:17px;height:17px}
 .foot-bottom{
   border-top:1px solid #1E242B;padding:22px 0;font-size:13px;
   display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;align-items:center;
@@ -441,6 +517,7 @@ h2{
   .sec{padding:76px 0}
   .hero{padding:64px 0 64px}
   .nav{display:none}
+  .burger{display:inline-flex}
   .hero-grid{grid-template-columns:1fr;gap:44px}
   .feed{height:396px}
   .board{grid-template-columns:1fr 1fr}
@@ -454,8 +531,6 @@ h2{
 @media (max-width:860px){
   .sticky-cta{display:block}
   body{padding-bottom:86px}
-  .onshift{display:none}
-  .site-head{position:static}
 }
 @media (max-width:640px){
   body{font-size:16px}
@@ -464,12 +539,16 @@ h2{
   .proc{grid-template-columns:1fr}
   .trust-chips{grid-template-columns:1fr}
   .head-tel{display:none}
+  .head-tel-ic{display:inline-flex}
+  .head-cta{display:none}
+  .head-right{gap:12px}
   .calllog{padding:6px 18px}
   .player{grid-template-columns:auto 1fr;gap:6px 14px}
   .ptime{grid-row:auto;grid-column:2;justify-self:start}
   .pbar{grid-column:1 / 3}
   .redline a{margin-left:0}
-  .foot-grid{grid-template-columns:1fr;gap:30px}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:26px}
+  .foot-brand{grid-column:1 / -1}
 }
 
 /* ============ REDUCED MOTION ============ */
@@ -486,16 +565,81 @@ h2{
   <div class="wrap">
     <a class="brand" href="https://progressbot.ai/"><svg class="bmark" viewBox="0 0 120 120" width="42" height="42" aria-hidden="true" focusable="false"><g fill="none" stroke="#14181D" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 52C24 16 96 16 104 52"/><rect x="22" y="30" width="76" height="62" rx="20" fill="#FFFFFF"/><rect x="9" y="48" width="16" height="30" rx="8" fill="#0E7B43"/><rect x="95" y="48" width="16" height="30" rx="8" fill="#0E7B43"/><path d="M16 78c-1 13 8 17 16 13"/><rect x="28" y="86" width="13" height="9" rx="4.5" fill="#0E7B43"/><circle cx="76" cy="58" r="9.5" fill="#FFFFFF"/><circle cx="76" cy="58" r="4.2" fill="#0E7B43" stroke="none"/><circle cx="77.8" cy="56.2" r="1.5" fill="#FFFFFF" stroke="none"/><path d="M36 57c3.5 5.5 11.5 5.5 15 0"/><path d="M50 76c4 5 16 5 20 0"/></g></svg>ProgressBot<span>.AI</span></a>
     <nav class="nav" aria-label="Main">
-      <a href="#crew">Agents</a>
-      <a href="#process">How it works</a>
-      <a href="#recordings">Hear a call</a>
+      <div class="drop">
+        <button class="drop-btn" type="button" aria-expanded="false" aria-controls="agentsPanel">Agents<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="drop-panel" id="agentsPanel">
+          <p class="onshift"><i class="pdot" aria-hidden="true"></i>7 agents on shift</p>
+          <a href="https://progressbot.ai/v2/botty-landing2?utm_source=homepage&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=nav#top">Botty - live demo</a>
+          <a href="https://progressbot.ai/v2/banx">Banx - the cold caller</a>
+          <a href="https://progressbot.ai/v2/zoe">Zoe - the receptionist</a>
+          <a href="https://progressbot.ai/v2/brenda">Brenda - the web bot</a>
+          <a href="https://progressbot.ai/v2/ava">Ava - the assistant</a>
+          <a href="https://progressbot.ai/v2/frank">Frank - the welcome bot</a>
+          <a href="https://progressbot.ai/v2/ula">Ula - the updater</a>
+          <div class="drop-split">
+            <a class="drop-more" href="https://progressbot.ai/#crew">Meet the whole crew</a>
+          </div>
+        </div>
+      </div>
+      <a href="https://progressbot.ai/#recordings">Hear a call</a>
+      <div class="drop">
+        <button class="drop-btn" type="button" aria-expanded="false" aria-controls="resourcesPanel">Resources<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="drop-panel" id="resourcesPanel">
+          <a href="https://progressbot.ai/#process">How it works</a>
+          <a href="https://progressbot.ai/v2/faq2">FAQ</a>
+          <a href="https://progressbot.ai/v2/calculator">Cost calculator</a>
+          <a href="https://progressbot.ai/v2/frank-faq">Frank's FAQ</a>
+          <div class="drop-split">
+            <p class="drop-label">Built for</p>
+            <a href="https://progressbot.ai/v2/roofing">Roofing</a>
+            <a href="https://progressbot.ai/v2/solar">Solar</a>
+            <a href="https://progressbot.ai/v2/hvac">HVAC</a>
+          </div>
+        </div>
+      </div>
     </nav>
     <div class="head-right">
-      <span class="onshift"><i class="pdot" aria-hidden="true"></i>7 agents on shift</span>
       <a class="head-tel" href="tel:+18633541635">(863) 354-1635</a>
-      <a class="btn btn-primary btn-sm" href="https://progressbot.ai/v2/botty-landing2?utm_source=homepage&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=header#top">Get started</a>
+      <a class="head-tel-ic" href="tel:+18633541635" aria-label="Call (863) 354-1635"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+      <a class="btn btn-primary btn-sm head-cta" href="https://progressbot.ai/v2/botty-landing2?utm_source=homepage&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=header#demo">Let Botty call you</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="mobNav" aria-label="Menu">
+        <svg class="ic-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="ic-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
     </div>
   </div>
+  <nav class="mobnav" id="mobNav" aria-label="Mobile">
+    <div class="wrap">
+      <button class="m-group" type="button" aria-expanded="false" aria-controls="mAgents">Agents<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="m-panel" id="mAgents">
+        <a href="https://progressbot.ai/v2/botty-landing2?utm_source=homepage&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=mobnav#top">Botty - live demo</a>
+        <a href="https://progressbot.ai/v2/banx">Banx - the cold caller</a>
+        <a href="https://progressbot.ai/v2/zoe">Zoe - the receptionist</a>
+        <a href="https://progressbot.ai/v2/brenda">Brenda - the web bot</a>
+        <a href="https://progressbot.ai/v2/ava">Ava - the assistant</a>
+        <a href="https://progressbot.ai/v2/frank">Frank - the welcome bot</a>
+        <a href="https://progressbot.ai/v2/ula">Ula - the updater</a>
+        <a href="https://progressbot.ai/#crew">Meet the whole crew</a>
+      </div>
+      <a class="m-link" href="https://progressbot.ai/#recordings">Hear a call</a>
+      <button class="m-group" type="button" aria-expanded="false" aria-controls="mResources">Resources<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="m-panel" id="mResources">
+        <a href="https://progressbot.ai/#process">How it works</a>
+        <a href="https://progressbot.ai/v2/faq2">FAQ</a>
+        <a href="https://progressbot.ai/v2/calculator">Cost calculator</a>
+        <a href="https://progressbot.ai/v2/frank-faq">Frank's FAQ</a>
+        <p class="drop-label">Built for</p>
+        <a href="https://progressbot.ai/v2/roofing">Roofing</a>
+        <a href="https://progressbot.ai/v2/solar">Solar</a>
+        <a href="https://progressbot.ai/v2/hvac">HVAC</a>
+      </div>
+      <div class="m-ctas">
+        <p class="onshift"><i class="pdot" aria-hidden="true"></i>7 agents on shift</p>
+        <a class="btn btn-primary btn-block" href="https://progressbot.ai/v2/botty-landing2?utm_source=homepage&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=mobnav#demo">Let Botty call you</a>
+        <a class="btn btn-ghost btn-block" href="tel:+18633541635">Call (863) 354-1635</a>
+      </div>
+    </div>
+  </nav>
 </header>
 <main id="top">
 
@@ -508,7 +652,7 @@ h2{
       <h1>Put a <span>crew</span><br>on your phones.</h1>
       <p class="lede">Seven AI agents built for contractors. They answer, cold-call, sell, confirm, and keep homeowners updated - <strong>24/7, inbound and outbound.</strong> Take the whole suite or just the seat you need. No new software: we build, train, and maintain them for you.</p>
       <div class="hero-btns">
-        <a class="btn btn-primary" href="https://progressbot.ai/v2/botty-landing2?utm_source=homepage&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=hero#top">
+        <a class="btn btn-primary" href="https://progressbot.ai/v2/botty-landing2?utm_source=homepage&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=hero#demo">
           Hear Botty call you live
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         </a>
@@ -839,11 +983,11 @@ h2{
 <section class="sec cta" id="cta">
   <div class="wrap rv">
     <p class="eyebrow">Next step</p>
-    <h2>Put the crew<br>on your phones.</h2>
-    <p class="sub">Hear Botty on your own phone in about 30 seconds - or talk with us about the full suite, built around how your company already works. Most setups go live in 1–2 weeks.</p>
+    <h2>Ready to be<br>convinced?</h2>
+    <p class="sub">Botty will call your own phone in about 30 seconds - live and unscripted. Or talk with us about the full suite, built around how your company already works. Most setups go live in 1–2 weeks.</p>
     <div class="cta-btns">
-      <a class="btn btn-primary" href="https://progressbot.ai/v2/botty-landing2?utm_source=homepage&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=final_cta#top">
-        Hear Botty call you live
+      <a class="btn btn-primary" href="https://progressbot.ai/v2/botty-landing2?utm_source=homepage&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=final_cta#demo">
+        Let Botty call you
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       </a>
       <a class="btn btn-ghost on-dark" href="tel:+18633541635">Talk with us · (863) 354-1635</a>
@@ -860,6 +1004,10 @@ h2{
       <div class="foot-brand">
         <a class="brand" href="https://progressbot.ai/"><img class="brand-logo" src="ProgressBot.AI-green-v2-logo.png" alt="" width="34" height="34">ProgressBot<span>.AI</span></a>
         <p>AI phone bots for home service companies. Seven agents on shift, 24/7 - never miss a lead again.</p>
+        <div class="foot-social">
+          <a href="https://www.linkedin.com/company/progress-bot-ai/" aria-label="ProgressBot.AI on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z"/></svg></a>
+          <a href="https://www.facebook.com/ProgressBotAI/" aria-label="ProgressBot.AI on Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21.5v-7.6h2.56l.38-2.97H13.5V9.04c0-.86.24-1.44 1.47-1.44h1.57V4.94c-.27-.04-1.2-.12-2.29-.12-2.27 0-3.82 1.39-3.82 3.93v2.18H7.87v2.97h2.56v7.6h3.07z"/></svg></a>
+        </div>
       </div>
       <div>
         <h4>AI agents</h4>
@@ -890,8 +1038,6 @@ h2{
         <ul>
           <li><a href="tel:+18633541635">(863) 354-1635</a></li>
           <li><a href="mailto:contact@progressbot.ai">contact@progressbot.ai</a></li>
-          <li><a href="https://www.linkedin.com/company/progress-bot-ai/">LinkedIn</a></li>
-          <li><a href="https://www.facebook.com/ProgressBotAI/">Facebook</a></li>
         </ul>
       </div>
     </div>
@@ -904,7 +1050,7 @@ h2{
 
 <!-- ============ STICKY MOBILE CTA ============ -->
 <div class="sticky-cta" id="stickyCta">
-  <a class="btn btn-primary" href="https://progressbot.ai/v2/botty-landing2?utm_source=homepage&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=sticky#top">
+  <a class="btn btn-primary" href="https://progressbot.ai/v2/botty-landing2?utm_source=homepage&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=sticky#demo">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
     Hear Botty call you live
   </a>
@@ -1198,6 +1344,57 @@ h2{
   window.addEventListener('scroll', function(){
     head.classList.toggle('scrolled', window.scrollY > 4);
   }, { passive: true });
+
+  /* ---------- Header dropdown menus ---------- */
+  var drops = qsa('.drop');
+  function closeDrops(except){
+    drops.forEach(function(d){
+      if (d === except) return;
+      d.classList.remove('open');
+      qs('.drop-btn', d).setAttribute('aria-expanded', 'false');
+    });
+  }
+  drops.forEach(function(d){
+    var btn = qs('.drop-btn', d);
+    btn.addEventListener('click', function(){
+      closeDrops(d);
+      var open = d.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+  document.addEventListener('click', function(e){
+    if (!e.target.closest || !e.target.closest('.drop')) closeDrops(null);
+  });
+
+  /* ---------- Mobile menu ---------- */
+  var burger = qs('.burger');
+  function closeMobnav(){
+    head.classList.remove('mobnav-open');
+    if (burger) burger.setAttribute('aria-expanded', 'false');
+  }
+  if (burger){
+    burger.addEventListener('click', function(){
+      var open = head.classList.toggle('mobnav-open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    qsa('.m-group').forEach(function(g){
+      g.addEventListener('click', function(){
+        var panel = g.nextElementSibling;
+        var open = panel.classList.toggle('open');
+        g.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    });
+    qsa('.mobnav a').forEach(function(a){
+      a.addEventListener('click', closeMobnav);
+    });
+    var mqDesk = window.matchMedia('(min-width: 961px)');
+    var onMq = function(e){ if (e.matches) closeMobnav(); };
+    if (mqDesk.addEventListener) mqDesk.addEventListener('change', onMq);
+    else if (mqDesk.addListener) mqDesk.addListener(onMq);
+  }
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape'){ closeDrops(null); closeMobnav(); }
+  });
 
   /* ---------- Sticky mobile CTA (hidden whenever another CTA is on screen) ---------- */
   var sticky = qs('#stickyCta');
