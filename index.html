@@ -137,7 +137,7 @@ h2{
 .brand svg.bmark{width:42px;height:42px;flex:none;margin-right:9px}
 .brand-logo{flex:none;margin-right:9px}
 .site-foot .brand-logo{width:34px;height:34px;background:#fff;border-radius:9px;padding:3px}
-.nav{display:flex;align-items:center;gap:24px;margin-right:auto;margin-left:36px}
+.nav{display:flex;align-items:center;gap:24px;margin-left:auto}
 .nav > a{font-size:15px;font-weight:600;text-decoration:none;color:var(--ink2)}
 .nav > a:hover{color:var(--green)}
 .drop{position:relative}
@@ -175,13 +175,6 @@ h2{
 }
 .pdot{width:8px;height:8px;border-radius:50%;background:var(--green);flex:none;animation:pdot 1.8s ease infinite}
 @keyframes pdot{0%,100%{box-shadow:0 0 0 0 rgba(14,123,67,.45)}55%{box-shadow:0 0 0 7px rgba(14,123,67,0)}}
-.head-tel{font-weight:600;font-size:15px;text-decoration:none;color:var(--ink)}
-.head-tel:hover{color:var(--green)}
-.head-tel-ic{
-  display:none;width:40px;height:40px;flex:none;border:1.5px solid var(--line);
-  border-radius:50%;align-items:center;justify-content:center;color:var(--green);
-}
-.head-tel-ic svg{width:18px;height:18px}
 .burger{
   display:none;width:40px;height:40px;flex:none;border:1.5px solid var(--line);
   border-radius:9px;background:var(--card);cursor:pointer;
@@ -538,8 +531,6 @@ h2{
   .board{grid-template-columns:1fr}
   .proc{grid-template-columns:1fr}
   .trust-chips{grid-template-columns:1fr}
-  .head-tel{display:none}
-  .head-tel-ic{display:inline-flex}
   .head-cta{display:none}
   .head-right{gap:12px}
   .calllog{padding:6px 18px}
@@ -581,7 +572,6 @@ h2{
           </div>
         </div>
       </div>
-      <a href="https://progressbot.ai/#recordings">Hear a call</a>
       <div class="drop">
         <button class="drop-btn" type="button" aria-expanded="false" aria-controls="resourcesPanel">Resources<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
         <div class="drop-panel" id="resourcesPanel">
@@ -597,10 +587,9 @@ h2{
           </div>
         </div>
       </div>
+      <a href="https://progressbot.ai/#recordings">Hear a call</a>
     </nav>
     <div class="head-right">
-      <a class="head-tel" href="tel:+18633541635">(863) 354-1635</a>
-      <a class="head-tel-ic" href="tel:+18633541635" aria-label="Call (863) 354-1635"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
       <a class="btn btn-primary btn-sm head-cta" href="https://progressbot.ai/v2/botty-landing2?utm_source=homepage&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=header#demo">Let Botty call you</a>
       <button class="burger" type="button" aria-expanded="false" aria-controls="mobNav" aria-label="Menu">
         <svg class="ic-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -621,7 +610,6 @@ h2{
         <a href="https://progressbot.ai/v2/ula">Ula - the updater</a>
         <a href="https://progressbot.ai/#crew">Meet the whole crew</a>
       </div>
-      <a class="m-link" href="https://progressbot.ai/#recordings">Hear a call</a>
       <button class="m-group" type="button" aria-expanded="false" aria-controls="mResources">Resources<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
       <div class="m-panel" id="mResources">
         <a href="https://progressbot.ai/#process">How it works</a>
@@ -633,6 +621,7 @@ h2{
         <a href="https://progressbot.ai/v2/solar">Solar</a>
         <a href="https://progressbot.ai/v2/hvac">HVAC</a>
       </div>
+      <a class="m-link" href="https://progressbot.ai/#recordings">Hear a call</a>
       <div class="m-ctas">
         <p class="onshift"><i class="pdot" aria-hidden="true"></i>7 agents on shift</p>
         <a class="btn btn-primary btn-block" href="https://progressbot.ai/v2/botty-landing2?utm_source=homepage&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=mobnav#demo">Let Botty call you</a>
