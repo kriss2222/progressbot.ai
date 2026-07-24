@@ -4,12 +4,13 @@
   Static, self-contained: all CSS and vanilla JavaScript are inline in this
   one file. No build step, no frameworks, no server-side runtime - safe for
   any shared host (cPanel / hosting.com): just upload the file.
-  Deploy as: public_html/v2/botty-landing2/index.html
+  Deploy as: public_html/v2/botty-landing/index.html
              (folder + index.html serves the extensionless URL
-              https://progressbot.ai/v2/botty-landing that all links use)
-  Only external dependency: Google Fonts.
-  Before wiring the form endpoint, read the TODO in the script section at the bottom of this file
-  (server-side honeypot check, rate limiting, SMS confirm - TCPA).
+              https://progressbot.ai/v2/botty-landing2 that all links use)
+  Only external dependency: Google Fonts (plus api.ipify.org at submit time).
+  The demo form POSTs JSON to the LIVE n8n production webhook on Railway (see
+  WEBHOOK_URL in the script at the bottom). The n8n workflow must be Active
+  (toggled on) for the form to work. A real submission triggers a real call.
 -->
 <html lang="en">
 <head>
@@ -24,14 +25,11 @@
 <meta property="og:site_name" content="ProgressBot.AI">
 <meta property="og:title" content="Hear Botty Answer - She Calls You in ~30 Seconds">
 <meta property="og:description" content="Botty answers roofing, solar &amp; HVAC calls in 3 rings, 24/7 - qualifies the lead, books the inspection, texts the recap. Enter your number and experience the call yourself.">
-<meta property="og:image" content="https://progressbot.ai/og/og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:image" content="https://progressbot.ai/og/og.png">
-<meta name="twitter:card" content="summary_large_image">
+<!-- TODO: add og:image + twitter:image (1200x630) once an asset exists, a framed screenshot of the phone demo is the obvious candidate -->
+<meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hear Botty Answer - She Calls You in ~30 Seconds">
 <meta name="twitter:description" content="Botty answers roofing, solar &amp; HVAC calls in 3 rings, 24/7. Enter your number and experience a real qualifying call - then get the recap your team would see.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%2314181D' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 54C22 12 98 12 108 54'/%3E%3Crect x='20' y='30' width='80' height='66' rx='22' fill='%23FFFFFF'/%3E%3Crect x='5' y='50' width='15' height='32' rx='7.5' fill='%230E7B43'/%3E%3Crect x='100' y='50' width='15' height='32' rx='7.5' fill='%230E7B43'/%3E%3Ccircle cx='76' cy='60' r='9' fill='%2314181D' stroke='none'/%3E%3Cpath d='M30 58c4 7 16 7 20 0'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230E7B43'/%3E%3Cg transform='translate(3.2 3.2) scale(0.73)'%3E%3Cpath d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Big+Shoulders+Display:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -123,8 +121,9 @@ h2{
   letter-spacing:.03em;text-decoration:none;text-transform:uppercase;
 }
 .brand span{color:var(--green)}
-.brand{display:inline-flex;align-items:center;gap:9px}
-.brand svg.bmark{width:42px;height:42px;flex:none}
+.brand{display:inline-flex;align-items:center}
+.brand-logo{width:36px;height:36px;flex:none;margin-right:9px}
+.site-foot .brand-logo{width:34px;height:34px;background:#fff;border-radius:9px;padding:3px}
 .head-right{display:flex;align-items:center;gap:22px}
 .onshift{
   font-family:var(--mono);font-size:11px;font-weight:600;
@@ -164,6 +163,19 @@ h1 .red{color:var(--red)}
 .form-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:16px}
 .form-title{font-family:var(--disp);font-weight:700;text-transform:uppercase;font-size:24px;letter-spacing:.02em}
 .step-label{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);text-align:right}
+.mini-steps{
+  list-style:none;display:flex;flex-direction:column;gap:7px;
+  margin:0 0 16px;padding:12px 14px;
+  background:var(--paper);border:1px solid var(--line);border-radius:9px;
+}
+.mini-steps li{display:flex;gap:9px;font-size:13px;color:var(--ink2);line-height:1.45}
+.mini-steps b{color:var(--ink);font-weight:600}
+.ms-n{
+  width:18px;height:18px;flex:none;margin-top:1px;border-radius:50%;
+  background:var(--green);color:#fff;
+  font-family:var(--mono);font-size:10.5px;font-weight:600;
+  display:flex;align-items:center;justify-content:center;
+}
 .field{margin-bottom:14px}
 .field label{display:block;font-size:13.5px;font-weight:600;margin-bottom:6px}
 .field label em{font-style:normal;font-weight:400;color:var(--mut)}
@@ -417,9 +429,9 @@ h1 .red{color:var(--red)}
 
 <header class="site-head">
   <div class="wrap">
-    <a class="brand" href="#top"><svg class="bmark" viewBox="0 0 120 120" width="42" height="42" aria-hidden="true" focusable="false"><g fill="none" stroke="#14181D" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 52C24 16 96 16 104 52"/><rect x="22" y="30" width="76" height="62" rx="20" fill="#FFFFFF"/><rect x="9" y="48" width="16" height="30" rx="8" fill="#0E7B43"/><rect x="95" y="48" width="16" height="30" rx="8" fill="#0E7B43"/><path d="M16 78c-1 13 8 17 16 13"/><rect x="28" y="86" width="13" height="9" rx="4.5" fill="#0E7B43"/><circle cx="76" cy="58" r="9.5" fill="#FFFFFF"/><circle cx="76" cy="58" r="4.2" fill="#0E7B43" stroke="none"/><circle cx="77.8" cy="56.2" r="1.5" fill="#FFFFFF" stroke="none"/><path d="M36 57c3.5 5.5 11.5 5.5 15 0"/><path d="M50 76c4 5 16 5 20 0"/></g></svg>ProgressBot<span>.AI</span></a>
+    <a class="brand" href="https://progressbot.ai/"><img class="brand-logo" src="ProgressBot.AI-green-v2-logo.png" alt="" width="36" height="36">ProgressBot<span>.AI</span></a>
     <div class="head-right">
-      <span class="onshift"><i class="pdot" aria-hidden="true"></i>Botty is on shift</span>
+      <span class="onshift"><i class="pdot" aria-hidden="true"></i>6 agents on shift</span>
       <a class="head-tel" href="tel:+18633541635">(863) 354-1635</a>
     </div>
   </div>
@@ -431,9 +443,9 @@ h1 .red{color:var(--red)}
   <div class="wrap hero-grid">
 
     <div class="hero-copy">
-      <p class="eyebrow">Live demo - Roofing · Solar · HVAC</p>
+      <p class="eyebrow">Live demo · Roofing · Solar · HVAC</p>
       <h1>Miss the call,<br><span class="red">lose the job.</span></h1>
-      <p class="lede">It's 6:40 AM. Your crew's on a roof and a <strong>$10,000 re-roof</strong> is about to ring the next company on the list. Botty answers in 3 rings - day or night - qualifies the lead, books the inspection, and texts you the whole conversation in seconds.</p>
+      <p class="lede">It's 6:40 AM. Your crew's on a roof and a <strong>$10,000 re-roof</strong> is about to ring the next company on the list. Botty answers in 3 rings, day or night, qualifies the lead, books the inspection, and texts you the whole conversation in seconds.</p>
       <ul class="chips">
         <li class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Answers 24/7</li>
         <li class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Books appointments</li>
@@ -448,6 +460,12 @@ h1 .red{color:var(--red)}
             <p class="step-label" id="stepLabel">Step 1 of 2 · ~20 sec</p>
           </div>
 
+          <ol class="mini-steps" aria-label="How the demo works">
+            <li><span class="ms-n" aria-hidden="true">1</span><span><b>Enter your info.</b> Takes 20 seconds. It's only used for this demo.</span></li>
+            <li><span class="ms-n" aria-hidden="true">2</span><span><b>Botty calls you.</b> Your phone rings in about 30 seconds. Talk to her like a real lead.</span></li>
+            <li><span class="ms-n" aria-hidden="true">3</span><span><b>Get the summary.</b> Seconds after, a text and email recap: exactly what your team would receive.</span></li>
+          </ol>
+
           <form id="demoForm" novalidate>
             <div class="hp" aria-hidden="true">
               <label for="website">Website</label>
@@ -461,8 +479,8 @@ h1 .red{color:var(--red)}
               </div>
               <div class="field" id="f-phone">
                 <label for="phone">Mobile number</label>
-                <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="(813) 555-0142" aria-describedby="e-phone">
-                <p class="err" id="e-phone">Enter a 10-digit US mobile - Botty needs it to call you.</p>
+                <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="(813) 555-0142" maxlength="14" aria-describedby="e-phone">
+                <p class="err" id="e-phone">Enter a 10-digit US mobile. Botty needs it to call you.</p>
               </div>
               <button class="btn btn-primary btn-block" type="button" id="step1Btn">
                 Have Botty call me
@@ -473,7 +491,7 @@ h1 .red{color:var(--red)}
             <div class="fstep" data-step="2" hidden>
               <div class="protip">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5M12 8h.01"/></svg>
-                <span><strong>Pro tip:</strong> use your real cell and have a property address handy. Botty runs a real qualifying call - you'll hear exactly what your customers would.</span>
+                <span><strong>Pro tip:</strong> use your real cell and have a property address handy. Botty runs a real qualifying call. You'll hear exactly what your customers would.</span>
               </div>
               <div class="frow">
                 <div class="field" id="f-lname">
@@ -488,7 +506,7 @@ h1 .red{color:var(--red)}
                 </div>
               </div>
               <div class="field" id="f-email">
-                <label for="email">Email <em>- for the recap</em></label>
+                <label for="email">Email <em>(for the recap)</em></label>
                 <input type="email" id="email" name="email" autocomplete="email" aria-describedby="e-email">
                 <p class="err" id="e-email">That email doesn't look right.</p>
               </div>
@@ -499,7 +517,7 @@ h1 .red{color:var(--red)}
                 </div>
                 <div class="field" id="f-cophone">
                   <label for="cophone">Company phone <em>(optional)</em></label>
-                  <input type="tel" id="cophone" name="cophone" inputmode="tel">
+                  <input type="tel" id="cophone" name="cophone" inputmode="tel" placeholder="(555) 555-5555" maxlength="14">
                 </div>
               </div>
               <button class="btn btn-primary btn-block" type="submit">
@@ -519,7 +537,7 @@ h1 .red{color:var(--red)}
             <span class="dial-dot" aria-hidden="true"></span>
             <h3>Botty is dialing&hellip;</h3>
           </div>
-          <p>Your phone should ring in about <strong>30 seconds</strong>. Answer it like a real customer would - and have that property address handy.</p>
+          <p>Your phone should ring in about <strong>30 seconds</strong>. Answer it like a real customer would, and have that property address handy.</p>
           <p class="micro"><span>Demo call</span><span>Takes 3–5 min</span><span>Recap by text &amp; email after</span></p>
         </div>
       </div>
@@ -565,7 +583,7 @@ h1 .red{color:var(--red)}
                 <div class="srow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>4128 Palmetto Ave, Tampa FL</span></div>
                 <div class="srow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><polyline points="9 14 11 16 15 12"/></svg><span>Leak near chimney · Shingle, ~15 yrs</span></div>
                 <div class="srow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c4.4 0 8-3.6 8-8 0-3-1.5-5.2-3-7-1 2-2 3-3 3 .5-3-1-6-4-8 .5 3-1 5-3 7.5C5.5 11.5 4 13 4 16c0 3.3 2.7 6 8 6z"/></svg><span>Ready now</span><span class="tag">Hot</span></div>
-                <div class="srow booked"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Booked: Thu 9:00 AM - free inspection</span></div>
+                <div class="srow booked"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Booked: Thu 9:00 AM · free inspection</span></div>
                 <p class="sms-foot">Delivered seconds after hangup · Text + email</p>
               </div>
             </div>
@@ -584,7 +602,7 @@ h1 .red{color:var(--red)}
     <div class="rv">
       <p class="eyebrow">The demo</p>
       <h2>You're about to be<br>Botty's next lead.</h2>
-      <p class="sub">No sales rep, no scheduling a demo for Tuesday. You experience the product the same way your customers will - on a phone call.</p>
+      <p class="sub">No sales rep, no scheduling a demo for Tuesday. You experience the product the same way your customers will, on a phone call.</p>
     </div>
     <div class="steps">
       <div class="step rv">
@@ -595,12 +613,12 @@ h1 .red{color:var(--red)}
       <div class="step rv">
         <p class="step-n">2</p>
         <h3>Your phone rings</h3>
-        <p>In about 30 seconds. Answer and talk like a homeowner with a roof problem - Botty runs a real qualifying call.</p>
+        <p>In about 30 seconds. Answer and talk like a homeowner with a roof problem. Botty runs a real qualifying call.</p>
       </div>
       <div class="step rv">
         <p class="step-n">3</p>
         <h3>Get the recap</h3>
-        <p>Seconds after you hang up: contact, property details, timeline, lead temperature, booked slot - exactly what your team would see.</p>
+        <p>Seconds after you hang up: contact, property details, timeline, lead temperature, booked slot. Exactly what your team would see.</p>
       </div>
     </div>
   </div>
@@ -612,7 +630,7 @@ h1 .red{color:var(--red)}
     <div class="rv">
       <p class="eyebrow">The math</p>
       <h2>One missed call can be<br>a $10,000 job.</h2>
-      <p class="sub">Miss one closable call a week and that's <strong>$500,000+ a year</strong> handed to whoever picked up. Botty answers every single one - for a fraction of one job.</p>
+      <p class="sub">Miss one closable call a week and that's <strong>$500,000+ a year</strong> handed to whoever picked up. Botty answers every single one, for a fraction of one job.</p>
     </div>
     <p class="eq rv"><span>52 weeks</span><span class="op">×</span><span>1 missed call</span><span class="op">×</span><span>$10,000 job</span><span class="op">=</span><b>a $520,000 problem</b></p>
     <div class="stats">
@@ -638,18 +656,18 @@ h1 .red{color:var(--red)}
     <div class="rv">
       <p class="eyebrow">What Botty does</p>
       <h2>Your AI sales rep,<br>on shift 24/7.</h2>
-      <p class="sub">Botty answers, qualifies, and books - then hands your team a ready-to-close lead. All in one conversation.</p>
+      <p class="sub">Botty answers, qualifies, and books, then hands your team a ready-to-close lead. All in one conversation.</p>
     </div>
     <div class="feat-grid">
       <div class="feat rv">
         <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
         <h3>Answers every call</h3>
-        <p>Day, night, weekend, storm season. No lead ever hits voicemail - or your competitor's line.</p>
+        <p>Day, night, weekend, storm season. No lead ever hits voicemail, or your competitor's line.</p>
       </div>
       <div class="feat rv">
         <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><polyline points="9 14 11 16 15 12"/></svg></div>
         <h3>Qualifies like your best rep</h3>
-        <p>Roof age, material, property details, timeline, budget - and how ready they are to buy.</p>
+        <p>Roof age, material, property details, timeline, budget, and how ready they are to buy.</p>
       </div>
       <div class="feat rv">
         <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h2M7 8v8M11 4v16M15 7v10M19 10v4"/></svg></div>
@@ -669,7 +687,7 @@ h1 .red{color:var(--red)}
       <div class="feat rv">
         <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg></div>
         <h3>Built around your business</h3>
-        <p>Your script, your questions, your brand voice - plus CRM updates. This demo runs our default roofing flow.</p>
+        <p>Your script, your questions, your brand voice, plus CRM updates. This demo runs our default roofing flow.</p>
       </div>
     </div>
   </div>
@@ -692,7 +710,7 @@ h1 .red{color:var(--red)}
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>
         </div>
-        <p>"Botty picks up the calls my crew physically can't - and the leads land in my phone already qualified."</p>
+        <p>"Botty picks up the calls my crew physically can't, and the leads land in my phone already qualified."</p>
         <figcaption class="attr">Solar contractor · Tampa Bay, FL</figcaption>
       </figure>
       <figure class="quote rv">
@@ -715,7 +733,7 @@ h1 .red{color:var(--red)}
   <div class="wrap rv">
     <p class="eyebrow">Next step</p>
     <h2>Stop losing jobs<br>to voicemail.</h2>
-    <p class="sub">Test Botty on your own phone right now - or book 15 minutes and we'll set her up on yours, tuned to your script and your brand.</p>
+    <p class="sub">Test Botty on your own phone right now, or book 15 minutes and we'll set her up on yours, tuned to your script and your brand.</p>
     <div class="cta-btns">
       <a class="btn btn-primary" href="#demo">
         Have Botty call me
@@ -733,27 +751,27 @@ h1 .red{color:var(--red)}
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a class="brand" href="#top">ProgressBot<span>.AI</span></a>
-        <p>AI sales agents that answer, qualify, and book - 24/7. Never miss a lead again.</p>
+        <a class="brand" href="https://progressbot.ai/"><img class="brand-logo" src="ProgressBot.AI-green-v2-logo.png" alt="" width="36" height="36">ProgressBot<span>.AI</span></a>
+        <p>AI phone bots for home service companies. Six agents on shift, 24/7. Never miss a lead again.</p>
       </div>
       <div>
-        <h4>Product</h4>
+        <h4>AI agents</h4>
         <ul>
-          <li><a href="https://progressbot.ai/v2/home3#crew">AI sales agents</a></li>
-          <li><a href="https://progressbot.ai/v2/banx">Banx - the cold caller</a></li>
-          <li><a href="https://progressbot.ai/v2/zoe">Zoe - the receptionist</a></li>
-          <li><a href="https://progressbot.ai/v2/brenda">Brenda - the web bot</a></li>
-          <li><a href="https://progressbot.ai/v2/ava">Ava - the assistant</a></li>
-          <li><a href="https://progressbot.ai/v2/calculator">Cost calculator</a></li>
-          <li><a href="https://progressbot.ai/v2/faq2">FAQ</a></li>
+          <li><a href="#top">Botty · live demo</a></li>
+          <li><a href="https://progressbot.ai/v2/frank">Frank · the welcome bot</a></li>
+          <li><a href="https://progressbot.ai/v2/ula">Ula · the updater</a></li>
+          <li><a href="tel:+18633541635">Full suite · talk with us</a></li>
         </ul>
       </div>
       <div>
-        <h4>Company</h4>
+        <h4>Resources</h4>
         <ul>
-          <li><a href="https://progressbot.ai/v2/home3">Home</a></li>
-          <li><a href="#top">About</a></li>
-          <li><a href="#top">Blog</a></li>
+          <li><a href="https://progressbot.ai/v2/faq2">FAQ</a></li>
+          <li><a href="https://progressbot.ai/v2/calculator">Cost calculator</a></li>
+          <li><a href="https://progressbot.ai/franks-welcome-call-faq">Frank's FAQ</a></li>
+          <li><a href="https://progressbot.ai/v2/roofing">Built for roofing</a></li>
+          <li><a href="https://progressbot.ai/v2/solar">Built for solar</a></li>
+          <li><a href="https://progressbot.ai/v2/hvac">Built for HVAC</a></li>
         </ul>
       </div>
       <div>
@@ -761,12 +779,14 @@ h1 .red{color:var(--red)}
         <ul>
           <li><a href="tel:+18633541635">(863) 354-1635</a></li>
           <li><a href="mailto:contact@progressbot.ai">contact@progressbot.ai</a></li>
+          <li><a href="https://www.linkedin.com/company/progress-bot-ai/">LinkedIn</a></li>
+          <li><a href="https://www.facebook.com/ProgressBotAI/">Facebook</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bottom">
       <p>© 2026 ProgressBot.AI. All rights reserved.</p>
-      <p class="foot-legal"><a href="#top">Terms of Service</a><a href="https://progressbot.ai/privacy.html">Privacy Policy</a></p>
+      <p class="foot-legal"><a href="https://progressbot.ai/terms-and-conditions/">Terms and Conditions</a><a href="https://progressbot.ai/privacy.html">Privacy Policy</a></p>
     </div>
   </div>
 </footer>
@@ -775,7 +795,7 @@ h1 .red{color:var(--red)}
 <div class="sticky-cta" id="stickyCta">
   <a class="btn btn-primary" href="#demo">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-    Have Botty call me - 30 sec
+    Have Botty call me · 30 sec
   </a>
 </div>
 <script>
@@ -798,17 +818,17 @@ h1 .red{color:var(--red)}
   /* ---------- Call simulation ---------- */
   var SCRIPT = [
     { who: 'botty', text: "Thanks for calling Summit Roofing, this is Botty. How can I help?" },
-    { who: 'lead',  text: "Hey, yeah - my roof's leaking near the chimney. There's a water stain on the ceiling this morning." },
-    { who: 'botty', text: "Sorry to hear that - let's get someone out fast. What's the address?" },
+    { who: 'lead',  text: "Hey, yeah, my roof's leaking near the chimney. There's a water stain on the ceiling this morning." },
+    { who: 'botty', text: "Sorry to hear that, let's get someone out fast. What's the address?" },
     { who: 'lead',  text: "4128 Palmetto Ave, in Tampa." },
     { who: 'botty', text: "Got it. And your name?" },
     { who: 'lead',  text: "Mike." },
-    { who: 'botty', text: "Thanks, Mike. About how old is the roof - and is it shingle or tile?" },
+    { who: 'botty', text: "Thanks, Mike. About how old is the roof, and is it shingle or tile?" },
     { who: 'lead',  text: "Shingle. Fifteen years, give or take." },
     { who: 'botty', text: "Okay. I can get an inspector out Thursday at 9 AM, or Friday at 2. Which works better?" },
     { who: 'lead',  text: "Thursday morning works." },
     { who: 'botty', text: "Booked. You'll get a text confirmation in a second. Anything else I can help with?" },
-    { who: 'lead',  text: "No, that's it. Wow - that was quick." }
+    { who: 'lead',  text: "No, that's it. Wow, that was quick." }
   ];
 
   var scrIncoming = qs('#scrIncoming');
@@ -998,47 +1018,82 @@ h1 .red{color:var(--red)}
     qs('#' + id).addEventListener('input', function(){ setErr(id, false); });
   });
 
+  /* Phone formatting as you type: (813) 555-0142 */
+  function formatPhoneInput(input){
+    var v = input.value.replace(/\D/g, '').slice(0, 10);
+    if (v.length === 0)      input.value = '';
+    else if (v.length <= 3)  input.value = '(' + v;
+    else if (v.length <= 6)  input.value = '(' + v.slice(0, 3) + ') ' + v.slice(3);
+    else                     input.value = '(' + v.slice(0, 3) + ') ' + v.slice(3, 6) + '-' + v.slice(6);
+  }
+  ['phone','cophone'].forEach(function(id){
+    qs('#' + id).addEventListener('input', function(){ formatPhoneInput(this); });
+  });
+
+  var WEBHOOK_URL = 'https://primary-production-42da.up.railway.app/webhook/98ee64d3-f0bc-461c-95d6-523f94a7c3d8botty-bot';
+  var submitBtn = step2.querySelector('button[type="submit"]');
+
+  function showSuccess(){
+    formWrap.hidden = true;
+    successEl.hidden = false;
+    successEl.scrollIntoView({ block: 'center', behavior: RM ? 'auto' : 'smooth' });
+  }
+
   form.addEventListener('submit', function(ev){
     ev.preventDefault();
     if (!validStep2()) return;
 
+    /* Bot filtering (client-side layer only, silent, so bots learn nothing):
+       - honeypot: the hidden "website" field must stay empty
+       - dwell time: humans need more than 3s to fill a two-step form
+       Bots see the same success state, but no request is sent. */
+    var hp = qs('#website');
+    var isHuman = (!hp || hp.value === '') && (Date.now() - formT0 > 3000);
+    if (!isHuman){ showSuccess(); return; }
+
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     var payload = {
       firstName:    qs('#fname').value.trim(),
       lastName:     qs('#lname').value.trim(),
-      mobile:       cleanPhone(qs('#phone').value),
       email:        qs('#email').value.trim(),
+      phone:        '1' + cleanPhone(qs('#phone').value),
       zip:          qs('#zip').value.trim(),
-      company:      qs('#company').value.trim(),
-      companyPhone: qs('#cophone').value.trim()
+      companyName:  qs('#company').value.trim(),
+      companyPhone: qs('#cophone').value.trim(),
+      industry:     'roofing',
+      url:          window.location.href,
+      device_type:  isMobile ? 'mobile' : 'desktop',
+      ip_address:   'unknown',
+      timestamp:    new Date().toISOString(),
+      source:       'Botty Demo Form'
     };
 
-    /* Bot filtering (client-side layer only - silent, so bots learn nothing):
-       - honeypot: the hidden "website" field must stay empty
-       - dwell time: humans need more than 3s to fill a two-step form
-       Show the same success state either way.
+    var btnHTML = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Dialing…';
 
-       TODO (server-side, REQUIRED before launch - this triggers a real outbound call):
-       - re-verify honeypot + dwell time on the server
-       - rate-limit by IP and by target phone number
-       - confirm via SMS opt-in before dialing (TCPA safety)
-    */
-    var hp = qs('#website');
-    var isHuman = (!hp || hp.value === '') && (Date.now() - formT0 > 3000);
+    function sendIt(){
+      fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(function(res){
+        if (!res.ok) throw new Error('Webhook response ' + res.status);
+        showSuccess();
+      }).catch(function(err){
+        if (window.console && console.error) console.error('Demo call error:', err);
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = btnHTML;
+        alert('Something went wrong. Please try again or call us at (863) 354-1635.');
+      });
+    }
 
-    /* TODO: POST to your endpoint when isHuman === true. Example:
-       if (isHuman){
-         fetch('/api/demo-call', {
-           method: 'POST',
-           headers: { 'Content-Type': 'application/json' },
-           body: JSON.stringify(payload)
-         });
-       }
-    */
-    void payload; void isHuman;
-
-    formWrap.hidden = true;
-    successEl.hidden = false;
-    successEl.scrollIntoView({ block: 'center', behavior: RM ? 'auto' : 'smooth' });
+    /* Grab the caller's IP for the webhook payload, then send either way */
+    fetch('https://api.ipify.org?format=json')
+      .then(function(r){ return r.json(); })
+      .then(function(d){ if (d && d.ip) payload.ip_address = d.ip; })
+      .catch(function(){})
+      .then(sendIt);
   });
 
   /* ---------- Sticky mobile CTA ---------- */

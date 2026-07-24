@@ -55,4 +55,43 @@ whether 654-1635 is real or a typo for 354-1635 when settling the phone policy.
 
 ---
 
+## 2026-07-23 · Phone consolidated to (863) 354-1635 · STATUS: RESOLVED
+Client (repo owner) confirmed: use (863) 354-1635 EVERYWHERE. Resolves the
+2026-07-03 conflict and the 2026-07-08 legal-text open item. Applied sitewide in
+this change: all (863) 356-0181 -> 354-1635 (display + tel:), and the terms.html
+legal-text number (863) 654-1635 -> 354-1635 (client confirmed it was a typo, not
+a real third line). No phone split remains. TODO for a terminal session: set
+`PB_PHONE_POLICY` to enforce 354-1635-only in scripts/verify.py and update CLAUDE.md.
+Placeholder/demo numbers inside the Botty form ((555) 555-5555, (813) 555-0142)
+are illustrative UI only and intentionally left as-is.
+
+## 2026-07-23 · Logo: SVG mascot system kept over raster PNG · STATUS: CONFIRMED
+Re-confirmed the 2026-07-09 decision: keep Enrique's per-page inline-SVG mascots
+(headset default; hard hat on roofing/hvac; sunglasses on solar) as the standard.
+Client's separate local working folder still carries the old raster PNG
+(ProgressBot.AI-green-v2-logo.png) in headers/footers; that folder is being retired
+(see workflow note below), so the PNG is NOT the site logo. KNOWN INCONSISTENCY:
+frank.html, ula-the-ai-updater.html, and botty-landing2.html still use the PNG
+(they came from the client's local copies). The PNG file is now committed so those
+three render correctly, but converting them to the SVG mascot is an open follow-up
+for full uniformity.
+
+## 2026-07-23 · Homepage cut to root as index.html · STATUS: DONE in repo (deploy pending)
+home4.html renamed to index.html (canonical stays `/`). Every "Home"/brand link
+sitewide repointed from the old `/v2/home3` deploy to root `https://progressbot.ai/`.
+This assumes the root cutover is going ahead; hosting step still required: deploy
+index.html to public_html root. (Open question 2 in PROJECT-BRIEF now has a direction.)
+
+## 2026-07-23 · Botty demo page: client's current form adopted · STATUS: DONE in repo
+Client's local botty-landing.html (newer 2-step form) replaces the body of
+botty-landing2.html. Filename and canonical kept as `/v2/botty-landing2` to preserve
+the live URL and all inbound links; the local file's relative links were rewritten
+to the absolute `/v2/...` deploy URLs. Form webhook/protections unchanged.
+
+## 2026-07-23 · Single source of truth = this GitHub repo · STATUS: WORKFLOW
+Client had been editing a loose local `v2/` folder while Enrique pushed here, which
+caused the divergence (wrong phone, missing PNG, drifted pages). Going forward the
+loose folder is retired: both client and Enrique work from a git clone of this repo
+(pull before, push after). This reconciliation PR is the convergence point.
+
 ## (record new decisions above this line)
