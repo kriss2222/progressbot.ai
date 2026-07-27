@@ -13,6 +13,11 @@ from html.parser import HTMLParser
 POLICY = os.environ.get('PB_PHONE_POLICY', 'single_354')
 P356, P354 = '(863) 356-0181', '(863) 354-1635'
 EMOJI = re.compile('[\U0001F300-\U0001FAFF\u2600-\u27BF]')
+# Google's own recommended install: a second bare <script> in <head>, verbatim
+# on every page. Named exception to the "one plain <script>" rule, same as the
+# JSON-LD data-script carve-out - GTM stays where Google says to put it instead
+# of getting merged into the page script and delayed to end of body.
+GTM_OPEN = "<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':"
 # page-link forms only (trailing quote) - asset subpaths like .../voice-bot/file.mp3 are legit
 STALE = ['progressbot.ai/frank-confirmation-voice-bot/"', 'progressbot.ai/ula-the-ai-updater/"',
          'progressbot.ai/faq.html"', 'progressbot.ai/v2/botty-landing?', 'progressbot.ai/v2/botty-landing"']
@@ -66,7 +71,9 @@ def check(path, ref_tokens):
 
     if not balance(s): fails.append('unbalanced tags')
     if ref_tokens and tokens(s) != ref_tokens: fails.append('design tokens differ from reference')
-    if s.count('<script>') != 1: fails.append('expected exactly one plain <script>')
+    gtm = s.count(GTM_OPEN)
+    if gtm > 1: fails.append('multiple GTM snippets found')
+    if s.count('<script>') - gtm != 1: fails.append('expected exactly one plain <script> (GTM snippet exempted)')
     if '<script src' in s: fails.append('external <script src> forbidden')
     if '`' in s: fails.append('backtick found')
     if '${' in s: fails.append('${ found (template literal)')

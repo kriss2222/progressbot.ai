@@ -52,7 +52,9 @@ top-of-file `Deploy as:` comment do. Quirks to know:
 
 - HTML + CSS + vanilla JS, all inline, one file per page.
 - Exactly one plain `<style>` and one plain `<script>` per file
-  (`<script type="application/ld+json">` allowed as data). No `<script src>`.
+  (`<script type="application/ld+json">` allowed as data; the Google Tag
+  Manager loader snippet in `<head>` is also exempt - install it verbatim as
+  Google recommends, don't merge it into the page script). No `<script src>`.
 - Only external request: the Google Fonts URL (+ own-domain audio where used).
 - **No backticks or `${}` in JS** (heredoc-generation safety + codebase
   convention) — string concatenation only. **No emoji. No raster images** —

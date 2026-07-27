@@ -49,12 +49,7 @@ top-of-file `Deploy as:` comment define its live path — filenames don't. Known
 
 ## Open questions (resolve before related work)
 
-1. **Analytics.** GTM (GTM-5FQDM29P) is installed on every page, but it adds a
-   second bare `<script>` tag which currently fails `scripts/verify.py`'s
-   "exactly one plain `<script>`" hosting rule sitewide (pre-existing, not
-   caused by the root cutover) — needs a decision: merge into the main script
-   block, or special-case GTM in verify.py.
-2. **og:images.** Every head carries a TODO for a 1200×630 image.
+1. **og:images.** Every head carries a TODO for a 1200×630 image.
 
 ## Suggested first terminal session
 
@@ -62,4 +57,6 @@ top-of-file `Deploy as:` comment define its live path — filenames don't. Known
 2. Fetch `https://progressbot.ai/sitemap.xml` (or crawl the old nav) and complete
    MIGRATION-MAP.md so the mission has a full checklist.
 3. ~~Delete legacy home files~~ — done 2026-07-08. ~~Resolve phone number
-   policy~~ — done 2026-07-23. ~~Root cutover~~ — done 2026-07-27.
+   policy~~ — done 2026-07-23. ~~Root cutover~~ — done 2026-07-27. ~~GTM double-
+   `<script>` verify.py failure~~ — resolved 2026-07-27 (GTM exempted, see
+   CLAUDE.md hosting constraints).
