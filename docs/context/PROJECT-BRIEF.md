@@ -7,10 +7,12 @@ this file is the *why* and the *state*.
 
 Translate **every page of the old progressbot.ai site** into the v2 design system —
 one self-contained HTML file per page, same verified facts, new skin and structure —
-until v2 IS the site. The homepage ships to the **root** (`public_html/index.html`);
-everything else lives under `/v2/<name>/index.html`. `docs/context/MIGRATION-MAP.md`
-is the checklist; a page is *done* when it passes `scripts/verify.py`, is deployed,
-and everything that linked to the old page links to the new one.
+until v2 IS the site. Every page ships to **site root** on hosting.com
+(`public_html/<name>/index.html`; homepage is `public_html/index.html`).
+**Root cutover for every page completed 2026-07-27** — the `/v2/` prefix is fully
+retired, repo-wide. `docs/context/MIGRATION-MAP.md` is the checklist; a page is
+*done* when it passes `scripts/verify.py`, is deployed, and everything that linked
+to the old page links to the new one.
 
 ## Who's who
 
@@ -26,39 +28,38 @@ and everything that linked to the old page links to the new one.
 Flat `.html` files at repo root. Each file's `<link rel="canonical">` and its
 top-of-file `Deploy as:` comment define its live path — filenames don't. Known quirks:
 
-- `home4.html` = the CURRENT homepage (canonical `/`). Legacy `home3.html` and
-  byte-duplicate `progressbot-home2.html` were deleted 2026-07-08 (git history
-  has them). The live `/v2/home3` URL still serves an old deploy — v2 nav links
-  point there until the root cutover.
-- `savings-calculator.html` deploys to `/v2/calculator` (name ≠ path; canonical rules).
-- `ula-the-ai-updater.html` is a byte-identical copy of `ula.html`, kept so the OLD
-  WordPress URL can serve the new page (its canonical correctly points to `/v2/ula`).
-  When editing Ula, update BOTH or re-copy one over the other.
+- `index.html` = the CURRENT homepage (canonical `/`; cut over from `home4.html`
+  2026-07-23). Legacy `home3.html` and byte-duplicate `progressbot-home2.html`
+  were deleted 2026-07-08 (git history has them).
+- `savings-calculator.html` deploys to `/calculator` (name ≠ path; canonical rules).
+- `ula-the-ai-updater.html` is the only Ula file in the repo (canonical `/ula`);
+  there is no separate `ula.html` to keep in sync despite the filename.
 
-## Current state (2026-07-08)
+## Current state (2026-07-27)
 
-- Built & verified: home (root-ready), botty-landing2, frank, ula, ava, banx,
-  zoe, brenda, faq2, calculator, roofing, solar, hvac, terms, privacy. Live under `/v2/...`; the live `/v2/home3` deployment predates
-  the latest integrations — redeploy pending; root cutover pending client go-ahead.
+- Built & verified: home, botty-landing2, frank, ula, ava, banx, zoe, brenda,
+  faq2, calculator, roofing, solar, hvac, terms, privacy.
+- **Root cutover complete for every page.** All canonical tags, `Deploy as:`
+  comments, and internal links repo-wide point at site root
+  (`public_html/<name>/`) — the `/v2/` prefix no longer appears anywhere in the
+  repo. Deploy step: Enrique uploads each page to its root-level folder on
+  hosting.com cPanel (not `public_html/v2/<name>/` anymore).
 - The Botty demo page keeps its own tracking number and its form protections
   (honeypot, dwell-time, TCPA line) — load-bearing, see CLAUDE.md.
 
 ## Open questions (resolve before related work)
 
-1. **PHONE NUMBERS.** README.md (2026-07-03) says use ONLY (863) 354-1635. Every
-   page built and deployed since uses (863) 356-0181 except the demo landing. One
-   question to the client settles it. Then: set the policy in `scripts/verify.py`
-   (env `PB_PHONE_POLICY`), convert pages if needed, update CLAUDE.md + this file,
-   log the decision in CLIENT-NOTES.
-2. **Root cutover.** When does home4 actually replace the WordPress homepage at `/`?
-3. **Analytics.** No snippet has been confirmed on any page — all UTM work is
-   unmeasured until this is checked/added.
-4. **og:images.** Every head carries a TODO for a 1200×630 image.
+1. **Analytics.** GTM (GTM-5FQDM29P) is installed on every page, but it adds a
+   second bare `<script>` tag which currently fails `scripts/verify.py`'s
+   "exactly one plain `<script>`" hosting rule sitewide (pre-existing, not
+   caused by the root cutover) — needs a decision: merge into the main script
+   block, or special-case GTM in verify.py.
+2. **og:images.** Every head carries a TODO for a 1200×630 image.
 
 ## Suggested first terminal session
 
 1. `git pull`, read this file + CLIENT-NOTES, run `python3 scripts/verify.py`.
 2. Fetch `https://progressbot.ai/sitemap.xml` (or crawl the old nav) and complete
    MIGRATION-MAP.md so the mission has a full checklist.
-3. Resolve open question 1 with the client; execute the outcome.
-4. ~~Delete legacy home files~~ — done 2026-07-08.
+3. ~~Delete legacy home files~~ — done 2026-07-08. ~~Resolve phone number
+   policy~~ — done 2026-07-23. ~~Root cutover~~ — done 2026-07-27.

@@ -94,4 +94,22 @@ caused the divergence (wrong phone, missing PNG, drifted pages). Going forward t
 loose folder is retired: both client and Enrique work from a git clone of this repo
 (pull before, push after). This reconciliation PR is the convergence point.
 
+## 2026-07-27 · Root cutover for every page + final header/footer rollout · STATUS: DONE in repo (deploy pending)
+Client (repo owner) confirmed: ProgressBot.AI is dropping `/v2/` entirely. Every
+page now deploys directly into hosting.com cPanel's `public_html/<name>/` root
+folder, not `public_html/v2/<name>/`. Applied sitewide: every page's
+`<link rel="canonical">`, `Deploy as:` comment, og:url, and every internal link
+(header, footer, hero/CTA buttons, cross-page mentions) had `/v2/` stripped.
+`scripts/verify.py`'s CFG is keyed to the new root paths and now fails any file
+containing a stale `/v2/` reference. Also rolled the homepage's finalized header
+CTA ("Let Botty call you" -> #demo) and footer (LinkedIn/Facebook `foot-social`
+icons, 2-col mobile footer layout) out to every other page - each page kept its
+own contextual nav links and header mascot variant. Fixed two pre-existing
+broken links in frank.html/ula-the-ai-updater.html that pointed at a
+non-existent `botty-landing.html` (client's local-copy leftover); they now point
+at the correct `botty-landing2` page. Deploy step still required: Enrique
+re-uploads every page to its new root-level folder on hosting.com; anything
+still pointing at an old `/v2/...` URL elsewhere (ads, bookmarks, prior emails)
+will need a redirect or manual update, which is outside this repo.
+
 ## (record new decisions above this line)

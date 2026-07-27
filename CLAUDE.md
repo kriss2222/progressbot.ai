@@ -2,7 +2,10 @@
 
 Marketing site for ProgressBot.AI (AI phone agents for home-service contractors).
 **Mission:** translate every old progressbot.ai page into the v2 design system until
-v2 IS the site — homepage at root, everything else under `/v2/<name>/`.
+v2 IS the site — every page deploys at site root (`/<name>/`). **Root cutover
+complete 2026-07-27:** the `/v2/` prefix is retired sitewide; every page's
+canonical, `Deploy as:` path, and every internal link now point at root. See
+`docs/context/CLIENT-NOTES.md`.
 Every page = one self-contained HTML file for hosting.com shared hosting. No build
 step, no framework — ever.
 
@@ -21,29 +24,27 @@ step, no framework — ever.
 
 1. **verify.py green before every commit/deploy.** No exceptions.
 2. **Never retype tokens, phone numbers, stats, or claims from memory** — copy
-   tokens from `home4.html`; facts from the claims inventory below or
+   tokens from `index.html`; facts from the claims inventory below or
    `docs/context/CONTENT-CAPSULES.md`. If a fact isn't in either, fetch the live
    old page first.
 3. **Assert before replace:** count exact occurrences of the target string first;
    abort on surprises. Blind replace has already shipped one regression here.
 4. **No invented facts** — no new stats, quotes, testimonials, or capabilities.
    Missing proof = say so on the page or leave it out.
-5. Phone numbers are an **unresolved client question** — see below. Don't "fix"
-   them without a logged decision in CLIENT-NOTES.
+5. Phone numbers: **resolved** — (863) 354-1635 everywhere, see below. Don't
+   change without a new logged decision in CLIENT-NOTES.
 
 ## Repo layout (flat files; canonical tag = truth)
 
 Filenames don't define URLs — each file's `<link rel="canonical">` and its
 top-of-file `Deploy as:` comment do. Quirks to know:
 
-- `home4.html` = CURRENT homepage (canonical `/`, deploys to root). Legacy
-  `home3.html` + duplicate `progressbot-home2.html` were deleted 2026-07-08
-  (recoverable from git history). The live `/v2/home3` URL still serves an old
-  deploy and is what v2 nav links point to until root cutover.
-- `savings-calculator.html` → `/v2/calculator` (name ≠ path).
-- `ula-the-ai-updater.html` = byte-copy of `ula.html` serving the old URL path
-  (canonical correctly → `/v2/ula`). Edit Ula ⇒ update both (re-copy one over the
-  other), or the alias drifts.
+- `index.html` = CURRENT homepage (canonical `/`, deploys to root; cut over from
+  `home4.html` 2026-07-23). Legacy `home3.html` + duplicate
+  `progressbot-home2.html` were deleted 2026-07-08 (recoverable from git history).
+- `savings-calculator.html` → `/calculator` (name ≠ path).
+- `ula-the-ai-updater.html` is the only Ula file in the repo (canonical → `/ula`);
+  despite the filename there is no separate `ula.html` to keep in sync.
 - `scripts/verify.py` = the quality gate. `docs/context/` = brief, client log,
   migration checklist, content capsules.
 
@@ -73,12 +74,13 @@ paper `#F3F4F1` / card white / ink `#14181D` / `--green #0E7B43` = **action** /
   is deliberately red-free (no published stat → no red).
 - Logo (client decisions 2026-07-09): header `.brand` = inline SVG mascot
   (class `bmark`) + the wordmark text. Per-page variants: **headset** bot =
-  default (canonical copy: `home4.html`) · **hard-hat** bot on roofing + hvac
+  default (canonical copy: `index.html`) · **hard-hat** bot on roofing + hvac
   (copy: `roofing.html`) · **sunglasses** bot on solar (copy: `solar.html`).
   Copy the `<svg class="bmark">` block, never redraw. New industry pages: pick
-  the trade-appropriate variant, default to headset. Footer brand stays
-  text-only. Favicon = simplified fat-stroke headset bot as data-URI SVG
-  `<link rel="icon">`, identical on every page (copy from `home4.html`).
+  the trade-appropriate variant, default to headset. Footer brand uses the
+  raster PNG lockup (`ProgressBot.AI-green-v2-logo.png`), header does not.
+  Favicon = simplified fat-stroke headset bot as data-URI SVG
+  `<link rel="icon">`, identical on every page (copy from `index.html`).
   og:image = mascot lockup PNGs in `og/` (deploy the folder to site root as
   `/og/`): `og.png` default · `og-hardhat.png` roofing+hvac · `og-solar.png`
   solar. Every head points at its variant; twitter:card = summary_large_image.
@@ -92,16 +94,13 @@ paper `#F3F4F1` / card white / ink `#14181D` / `--green #0E7B43` = **action** /
   IntersectionObserver off-screen, go static under `prefers-reduced-motion`.
 - Voice: blunt, money-first, trades-aware. **No em dashes anywhere** (client
   rule 2026-07-08, enforced by verify.py): use a plain "-". Only exemption:
-  verbatim legal body text on /v2/terms + /v2/privacy.
+  verbatim legal body text on /terms + /privacy.
 
-## Phone numbers — OPEN QUESTION (see CLIENT-NOTES)
+## Phone numbers — RESOLVED (see CLIENT-NOTES 2026-07-23)
 
-README.md (2026-07-03): use ONLY **(863) 354-1635**. But every page built and
-deployed since uses **(863) 356-0181**, except the demo landing (354 — tracking
-split). Until the client confirms: verify.py defaults to the split
-(`PB_PHONE_POLICY=split`); the README directive is one env var away
-(`PB_PHONE_POLICY=single_354`). Whatever is decided: log it, set the policy,
-convert pages, update this section.
+Client confirmed: use **(863) 354-1635** everywhere, no split. `verify.py`
+defaults to `PB_PHONE_POLICY=single_354`; pass `PB_PHONE_POLICY=split` only to
+check the pre-resolution legacy state intentionally.
 
 ## Claims inventory (the ONLY permitted facts)
 
@@ -141,21 +140,21 @@ prefiller MUST match that trade's calculator chip: Roofing `tab=calls&cr=35&jv=1
 
 | Canonical | File | CTA | Signature |
 |---|---|---|---|
-| `/` | home4.html | Demo | dispatch board + crew board |
-| `/v2/botty-landing2` | botty-landing2.html | 2-step form | phone sim; honeypot+dwell; TCPA |
-| `/v2/frank` | frank.html | Tel | contract check (red mismatch) |
-| `/v2/ula` | ula.html (+alias) | Tel | project timeline (red-free) |
-| `/v2/ava` | ava.html | Tel | call-log timeline (red-free) |
-| `/v2/banx` | banx.html | Tel | outbound-run timeline + real cold-call player (red-free) |
-| `/v2/zoe` | zoe.html | Tel | 11:52 PM inbound timeline; one $10k redline |
-| `/v2/brenda` | brenda.html | Tel | web-chat timeline (red-free) |
-| `/v2/terms` | terms.html | - | legal restyle, text verbatim |
-| `/v2/privacy` | privacy.html | - | legal restyle, text verbatim |
-| `/v2/faq2` | faq.html | Demo | accordions + mirrored FAQPage JSON-LD |
-| `/v2/calculator` | savings-calculator.html | Demo/Tel | URL-state sliders, copy-link |
-| `/v2/roofing` | roofing.html | **Demo** (script match) | roofing dispatch; $520k eq |
-| `/v2/solar` | solar.html | **Tel** (mismatch→disclosed) | red 33% burn; Frank mini |
-| `/v2/hvac` | hvac.html | **Tel** (disclosed) | emergency lens; $520k eq |
+| `/` | index.html | Demo | dispatch board + crew board |
+| `/botty-landing2` | botty-landing2.html | 2-step form | phone sim; honeypot+dwell; TCPA |
+| `/frank` | frank.html | Tel | contract check (red mismatch) |
+| `/ula` | ula-the-ai-updater.html | Tel | project timeline (red-free) |
+| `/ava` | ava.html | Tel | call-log timeline (red-free) |
+| `/banx` | banx.html | Tel | outbound-run timeline + real cold-call player (red-free) |
+| `/zoe` | zoe.html | Tel | 11:52 PM inbound timeline; one $10k redline |
+| `/brenda` | brenda.html | Tel | web-chat timeline (red-free) |
+| `/terms` | terms.html | - | legal restyle, text verbatim |
+| `/privacy` | privacy.html | - | legal restyle, text verbatim |
+| `/faq2` | faq.html | Demo | accordions + mirrored FAQPage JSON-LD |
+| `/calculator` | savings-calculator.html | Demo/Tel | URL-state sliders, copy-link |
+| `/roofing` | roofing.html | **Demo** (script match) | roofing dispatch; $520k eq |
+| `/solar` | solar.html | **Tel** (mismatch→disclosed) | red 33% burn; Frank mini |
+| `/hvac` | hvac.html | **Tel** (disclosed) | emergency lens; $520k eq |
 
 Old pages still live (linkable): `/franks-welcome-call-faq` (rebuild pending),
 `/terms-and-conditions/`, `/privacy.html` — **never rewrite legal text**.
