@@ -3,13 +3,14 @@
 
 Usage:  python3 scripts/verify.py [file.html ...]     (no args = all *.html in repo root)
 Exit 0 = shippable. Any FAIL = exit 1. See CLAUDE.md for the rules encoded here.
-Phone policy: env PB_PHONE_POLICY = 'split' (default: 354 on demo landing, 356 elsewhere)
-or 'single_354' (README directive). OPEN QUESTION - see docs/context/CLIENT-NOTES.md.
+Phone policy: env PB_PHONE_POLICY = 'single_354' (default - client-resolved 2026-07-23,
+see docs/context/CLIENT-NOTES.md: 354-1635 everywhere) or 'split' (pre-resolution legacy,
+354 on demo landing / 356 elsewhere).
 """
 import sys, os, re, json, glob
 from html.parser import HTMLParser
 
-POLICY = os.environ.get('PB_PHONE_POLICY', 'split')
+POLICY = os.environ.get('PB_PHONE_POLICY', 'single_354')
 P356, P354 = '(863) 356-0181', '(863) 354-1635'
 EMOJI = re.compile('[\U0001F300-\U0001FAFF\u2600-\u27BF]')
 # page-link forms only (trailing quote) - asset subpaths like .../voice-bot/file.mp3 are legit
@@ -17,24 +18,24 @@ STALE = ['progressbot.ai/frank-confirmation-voice-bot/"', 'progressbot.ai/ula-th
          'progressbot.ai/faq.html"', 'progressbot.ai/v2/botty-landing?', 'progressbot.ai/v2/botty-landing"']
 VOID = {'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
 
-# keyed by canonical path
+# keyed by canonical path (root cutover 2026-07-27: all pages moved off /v2/)
 CFG = {
  '/':                  dict(utm='homepage',        must=['startDispatch', 'Built for roofing']),
- '/v2/botty-landing2': dict(utm=None, phone=P354,  must=['id="website"', 'isHuman', 'By submitting, you agree to receive a phone call']),
- '/v2/frank':          dict(utm='frank_page',      must=['runCheck']),
- '/v2/ula':            dict(utm='ula_page',        must=['runTimeline'], red_free=True),
- '/v2/ava':            dict(utm='ava_page',        must=['runAvaLog'], red_free=True),
- '/v2/banx':           dict(utm='banx_page',       must=['runBanxLog', 'initPlayer'], red_free=True),
- '/v2/zoe':            dict(utm='zoe_page',        must=['runZoeLog', '$10,000']),
- '/v2/brenda':         dict(utm='brenda_page',     must=['runBrendaLog'], red_free=True),
- '/v2/faq2':           dict(utm='faq_page',        must=[]),
- '/v2/frank-faq':       dict(utm='frank_faq_page',  must=[]),
- '/v2/calculator':     dict(utm='calculator_page', must=['URLSearchParams', '$468,000']),
- '/v2/roofing':        dict(utm='roofing_page',    must=[], industry=True),
- '/v2/solar':          dict(utm='solar_page',      must=['NREL', 'tab=cancel'], industry=True),
- '/v2/hvac':           dict(utm='hvac_page',       must=[], industry=True, forbid=['NREL', '33%']),
- '/v2/terms':          dict(utm='terms_page',      must=['Roof Bear SMS Alerts', 'reply STOP'], legal=True),
- '/v2/privacy':        dict(utm='privacy_page',    must=['SimplyBook.me', 'Device Information'], legal=True),
+ '/botty-landing2':    dict(utm=None, phone=P354,  must=['id="website"', 'isHuman', 'By submitting, you agree to receive a phone call']),
+ '/frank':             dict(utm='frank_page',      must=['runCheck']),
+ '/ula':                dict(utm='ula_page',        must=['runTimeline'], red_free=True),
+ '/ava':               dict(utm='ava_page',        must=['runAvaLog'], red_free=True),
+ '/banx':              dict(utm='banx_page',       must=['runBanxLog', 'initPlayer'], red_free=True),
+ '/zoe':               dict(utm='zoe_page',        must=['runZoeLog', '$10,000']),
+ '/brenda':            dict(utm='brenda_page',     must=['runBrendaLog'], red_free=True),
+ '/faq2':              dict(utm='faq_page',        must=[]),
+ '/frank-faq':          dict(utm='frank_faq_page',  must=[]),
+ '/calculator':        dict(utm='calculator_page', must=['URLSearchParams', '$468,000']),
+ '/roofing':           dict(utm='roofing_page',    must=[], industry=True),
+ '/solar':             dict(utm='solar_page',      must=['NREL', 'tab=cancel'], industry=True),
+ '/hvac':              dict(utm='hvac_page',       must=[], industry=True, forbid=['NREL', '33%']),
+ '/terms':             dict(utm='terms_page',      must=['Roof Bear SMS Alerts', 'reply STOP'], legal=True),
+ '/privacy':           dict(utm='privacy_page',    must=['SimplyBook.me', 'Device Information'], legal=True),
 }
 RED_CLASSES = ['class="leak-n"', 'class="mr-flag"', '<p class="eq', 'class="redline']
 
@@ -75,6 +76,8 @@ def check(path, ref_tokens):
     if s.count('<h1') != 1: fails.append('expected exactly one <h1>')
     for u in STALE:
         if u in s: fails.append('stale URL: ' + u)
+    # root cutover 2026-07-27: no page should reference the old /v2/ path prefix anymore
+    if '/v2/' in s: fails.append('stale /v2/ path reference found')
 
     phone = cfg.get('phone', P356)
     if POLICY == 'single_354': phone = P354
@@ -120,9 +123,9 @@ def main():
     if ref is None: ref = tokens(open(files[0], encoding='utf-8').read())
     bad = 0
     if POLICY == 'split':
-        print('NOTE: phone policy = split (356 default / 354 on demo landing).')
-        print('      README.md says only 354-1635 - unresolved, see docs/context/CLIENT-NOTES.md.')
-        print('      To enforce README: PB_PHONE_POLICY=single_354 python3 scripts/verify.py')
+        print('NOTE: phone policy = split (356 default / 354 on demo landing) - this is the')
+        print('      pre-2026-07-23 legacy policy. Client resolved on single 354-1635 everywhere;')
+        print('      the default is single_354. Only pass PB_PHONE_POLICY=split intentionally.')
     for f in files:
         canon, fails, warns = check(f, ref)
         tag = 'OK  ' if not fails else 'FAIL'
