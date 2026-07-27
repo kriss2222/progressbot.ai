@@ -2,7 +2,7 @@
 <!--
   ProgressBot.AI - Roofing industry page (FINAL)
   Static, self-contained: HTML + CSS + vanilla JS inline. No build step.
-  Deploy as: public_html/v2/roofing/index.html
+  Deploy as: public_html/roofing/index.html
   TEMPLATE NOTE: industry-specific zones are marked with
   "[industry capsule]" comments - swap those blocks to produce the
   Solar or HVAC versions without touching structure or design.
@@ -22,10 +22,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <title>AI Answering Service &amp; Phone Agents for Roofing Companies | ProgressBot.AI</title>
 <meta name="description" content="Six AI agents built for roofing companies: answer the 7 AM leak call, survive storm-week volume, qualify and book inspections, and follow up until the last shingle - 24/7. Hear one take a roofing call live.">
 <meta name="theme-color" content="#F3F4F1">
-<!-- Canonical assumes deployment at /v2/roofing - adjust if the path changes -->
-<link rel="canonical" href="https://progressbot.ai/v2/roofing">
+<!-- Canonical assumes deployment at /roofing - adjust if the path changes -->
+<link rel="canonical" href="https://progressbot.ai/roofing">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://progressbot.ai/v2/roofing">
+<meta property="og:url" content="https://progressbot.ai/roofing">
 <meta property="og:site_name" content="ProgressBot.AI">
 <meta property="og:title" content="Crews on Roofs. Calls Answered. - AI Phone Agents for Roofers">
 <meta property="og:description" content="Storm week, every crew on a roof, phones melting down - six AI agents answer, qualify, book, and follow up, 24/7. The live demo already runs a roofing script.">
@@ -417,6 +417,13 @@ h2{
 .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding:64px 0 48px}
 .foot-brand .brand{color:#fff;font-size:24px}
 .foot-brand p{margin-top:12px;max-width:280px;line-height:1.55}
+.foot-social{display:flex;gap:10px;margin-top:16px}
+.foot-social a{
+  width:36px;height:36px;border:1px solid #2A313A;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;color:#B7BEB8;
+}
+.foot-social a:hover{color:var(--green-br);border-color:var(--green-br)}
+.foot-social svg{width:17px;height:17px}
 .site-foot h4{
   font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.16em;
   text-transform:uppercase;color:#68716B;margin-bottom:16px;
@@ -501,7 +508,8 @@ h2{
   .ptime{grid-row:auto;grid-column:2;justify-self:start}
   .pbar{grid-column:1 / 3}
   .redline a{margin-left:0}
-  .foot-grid{grid-template-columns:1fr;gap:30px}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:26px}
+  .foot-brand{grid-column:1 / -1}
 }
 
 /* ============ REDUCED MOTION ============ */
@@ -588,13 +596,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a class="brand" href="https://progressbot.ai/"><svg class="bmark" viewBox="0 0 120 120" width="42" height="42" aria-hidden="true" focusable="false"><g fill="none" stroke="#14181D" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><rect x="22" y="30" width="76" height="62" rx="20" fill="#FFFFFF"/><path d="M34 25C36 11 52 7 60 7c8 0 24 4 26 18Z" fill="#0E7B43"/><rect x="24" y="24" width="72" height="9" rx="4.5" fill="#0E7B43"/><rect x="9" y="48" width="16" height="30" rx="8" fill="#0E7B43"/><rect x="95" y="48" width="16" height="30" rx="8" fill="#0E7B43"/><circle cx="76" cy="58" r="9.5" fill="#FFFFFF"/><circle cx="76" cy="58" r="4.2" fill="#0E7B43" stroke="none"/><circle cx="77.8" cy="56.2" r="1.5" fill="#FFFFFF" stroke="none"/><path d="M36 57c3.5 5.5 11.5 5.5 15 0"/><path d="M50 76c4 5 16 5 20 0"/></g></svg>ProgressBot<span>.AI</span></a>
     <nav class="nav" aria-label="Main">
       <a href="https://progressbot.ai/">Home</a>
-      <a href="https://progressbot.ai/v2/faq2">FAQ</a>
+      <a href="https://progressbot.ai/faq2">FAQ</a>
       <a href="#crew">The crew</a>
     </nav>
     <div class="head-right">
       <span class="onshift"><i class="pdot" aria-hidden="true"></i>7 agents on shift</span>
       <a class="head-tel" href="tel:+18633541635">(863) 354-1635</a>
-      <a class="btn btn-primary btn-sm" href="https://progressbot.ai/v2/botty-landing2?utm_source=roofing_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=header#top">Get started</a>
+      <a class="btn btn-primary btn-sm" href="https://progressbot.ai/botty-landing2?utm_source=roofing_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=header#demo">Let Botty call you</a>
     </div>
   </div>
 </header>
@@ -610,7 +618,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h1>Crews on roofs.<br><span>Calls answered.</span></h1>
       <p class="lede">It’s the morning after a hailstorm. Every homeowner in the county is calling, every crew you’ve got is on a roof - and voicemail is quietly handing your best jobs to the next roofer on the list. <strong>Six AI agents answer, qualify, book, and follow up. 24/7, tuned to roofing.</strong></p>
       <div class="hero-btns">
-        <a class="btn btn-primary" href="https://progressbot.ai/v2/botty-landing2?utm_source=roofing_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=hero#top">Hear it answer a roofing call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+        <a class="btn btn-primary" href="https://progressbot.ai/botty-landing2?utm_source=roofing_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=hero#top">Hear it answer a roofing call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
         <a class="btn btn-ghost" href="tel:+18633541635">Talk with us · (863) 354-1635</a>
       </div>
     </div>
@@ -666,7 +674,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="sec-cta rv" style="margin-top:0;border-top:none;padding-top:0">
       <p class="sc-note">Those are our numbers. Run yours - the calculator opens pre-set for roofing.</p>
       <!-- [industry capsule] calculator prefill (jv/cr match this trade) -->
-      <a class="btn btn-primary" href="https://progressbot.ai/v2/calculator?tab=calls&amp;mc=3&amp;cr=35&amp;jv=12000&amp;utm_source=roofing_page&amp;utm_medium=internal&amp;utm_campaign=calculator&amp;utm_content=math#calc">Run your roofing numbers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a class="btn btn-primary" href="https://progressbot.ai/calculator?tab=calls&amp;mc=3&amp;cr=35&amp;jv=12000&amp;utm_source=roofing_page&amp;utm_medium=internal&amp;utm_campaign=calculator&amp;utm_content=math#calc">Run your roofing numbers <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     </div>
   </div>
 </section>
@@ -691,7 +699,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="agent-role">The cold caller</p>
           <p>Works your storm lists and aged estimates - qualifies the homeowner and books the inspection while your team installs.</p>
           <p class="agent-status"><i aria-hidden="true"></i><span>On shift · 24/7</span></p>
-          <a class="alink" href="https://progressbot.ai/v2/banx">Meet Banx <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a class="alink" href="https://progressbot.ai/banx">Meet Banx <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </article>
       </div>
 
@@ -704,21 +712,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="agent-role">The phone receptionist</p>
           <p>Answers the 7 AM leak call and the 11 PM panic call - routes it, books it, or handles it herself. Every ring, storm or not.</p>
           <p class="agent-status"><i aria-hidden="true"></i><span>On shift · 24/7</span></p>
-          <a class="alink" href="https://progressbot.ai/v2/zoe">Meet Zoe <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a class="alink" href="https://progressbot.ai/zoe">Meet Zoe <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </article>
         <article class="agent-card" data-agent="AVA">
           <h3 class="agent-name">Ava</h3>
           <p class="agent-role">The assistant</p>
           <p>Your cell rings mid tear-off - Ava answers your personal line, books into Google Calendar, and texts you the summary.</p>
           <p class="agent-status"><i aria-hidden="true"></i><span>On shift · 24/7</span></p>
-          <a class="alink" href="https://progressbot.ai/v2/ava">Meet Ava <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a class="alink" href="https://progressbot.ai/ava">Meet Ava <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </article>
         <article class="agent-card" data-agent="BRENDA">
           <h3 class="agent-name">Brenda</h3>
           <p class="agent-role">The web help bot</p>
           <p>Catches homeowners on your site comparing roofers at midnight - answers, collects the details, books the inspection.</p>
           <p class="agent-status"><i aria-hidden="true"></i><span>On shift · 24/7</span></p>
-          <a class="alink" href="https://progressbot.ai/v2/brenda">Meet Brenda <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a class="alink" href="https://progressbot.ai/brenda">Meet Brenda <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </article>
       </div>
 
@@ -737,7 +745,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="mr-book">Booked: Thu 9:00 AM</p>
           </div>
           <p class="agent-status"><i aria-hidden="true"></i><span>On shift · 24/7</span></p>
-          <a class="alink" href="https://progressbot.ai/v2/botty-landing2?utm_source=roofing_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=crew_card#top">Hear her live <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a class="alink" href="https://progressbot.ai/botty-landing2?utm_source=roofing_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=crew_card#top">Hear her live <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </article>
       </div>
 
@@ -750,14 +758,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="agent-role">The welcome bot</p>
           <p>Calls right after the contract - confirms the re-roof scope, notes every rep promise, and catches problems before they cancel.</p>
           <p class="agent-status"><i aria-hidden="true"></i><span>On shift · 24/7</span></p>
-          <a class="alink" href="https://progressbot.ai/v2/frank">Meet Frank <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a class="alink" href="https://progressbot.ai/frank">Meet Frank <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </article>
         <article class="agent-card" data-agent="ULA">
           <h3 class="agent-name">Ula</h3>
           <p class="agent-role">The updater</p>
           <p>Permit cleared, shingles delivered, crew scheduled - homeowners hear it from you before they have to ask.</p>
           <p class="agent-status"><i aria-hidden="true"></i><span>On shift · 24/7</span></p>
-          <a class="alink" href="https://progressbot.ai/v2/ula">Meet Ula <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a class="alink" href="https://progressbot.ai/ula">Meet Ula <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </article>
       </div>
 
@@ -832,7 +840,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <details class="qa"><summary>Will it work with our CRM and phone system?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">It works with most phone systems, VoIP platforms, and dialers, and integrates with your CRM and calendar - records update automatically after every call. Most companies are live in 1–2 weeks.</div></details>
 <details class="qa"><summary>What if a caller needs a human?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">The AI recognizes it, transfers the call to your team, or schedules a follow-up. Nothing gets dropped - and nothing gets guessed at.</div></details>
 <details class="qa"><summary>What does it cost compared to a receptionist?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></summary><div class="ans">Typically 70–90% less all-in than human reps - with nights, weekends, and storm weeks covered at no extra cost.</div></details>
-      <p class="qa-more"><a href="https://progressbot.ai/v2/faq2">All 19 answers - read the full FAQ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></p>
+      <p class="qa-more"><a href="https://progressbot.ai/faq2">All 19 answers - read the full FAQ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></p>
     </div>
   </div>
 </section>
@@ -844,7 +852,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h2>The next storm<br>is coming.</h2>
     <p class="sub">Botty’s demo already runs a roofing script - enter your number and take the exact call a homeowner with a leak would make. Or talk with us about putting the whole crew on your phones.</p>
     <div class="cta-btns">
-      <a class="btn btn-primary" href="https://progressbot.ai/v2/botty-landing2?utm_source=roofing_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=final_cta#top">Hear it take a roofing call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+      <a class="btn btn-primary" href="https://progressbot.ai/botty-landing2?utm_source=roofing_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=final_cta#top">Hear it take a roofing call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
       <a class="btn btn-ghost on-dark" href="tel:+18633541635">Talk with us · (863) 354-1635</a>
     </div>
   </div>
@@ -859,26 +867,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="foot-brand">
         <a class="brand" href="https://progressbot.ai/"><img class="brand-logo" src="ProgressBot.AI-green-v2-logo.png" alt="" width="34" height="34">ProgressBot<span>.AI</span></a>
         <p>AI phone bots for home service companies. Seven agents on shift, 24/7 - never miss a lead again.</p>
+        <div class="foot-social">
+          <a href="https://www.linkedin.com/company/progress-bot-ai/" aria-label="ProgressBot.AI on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z"/></svg></a>
+          <a href="https://www.facebook.com/ProgressBotAI/" aria-label="ProgressBot.AI on Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21.5v-7.6h2.56l.38-2.97H13.5V9.04c0-.86.24-1.44 1.47-1.44h1.57V4.94c-.27-.04-1.2-.12-2.29-.12-2.27 0-3.82 1.39-3.82 3.93v2.18H7.87v2.97h2.56v7.6h3.07z"/></svg></a>
+        </div>
       </div>
       <div>
         <h4>AI agents</h4>
         <ul>
-          <li><a href="https://progressbot.ai/v2/botty-landing2?utm_source=roofing_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=footer#top">Botty - live demo</a></li>
-          <li><a href="https://progressbot.ai/v2/banx">Banx - the cold caller</a></li>
-          <li><a href="https://progressbot.ai/v2/zoe">Zoe - the receptionist</a></li>
-          <li><a href="https://progressbot.ai/v2/brenda">Brenda - the web bot</a></li>
-          <li><a href="https://progressbot.ai/v2/ava">Ava - the assistant</a></li>
-          <li><a href="https://progressbot.ai/v2/frank">Frank - the welcome bot</a></li>
-          <li><a href="https://progressbot.ai/v2/ula">Ula - the updater</a></li>
+          <li><a href="https://progressbot.ai/botty-landing2?utm_source=roofing_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=footer#top">Botty - live demo</a></li>
+          <li><a href="https://progressbot.ai/banx">Banx - the cold caller</a></li>
+          <li><a href="https://progressbot.ai/zoe">Zoe - the receptionist</a></li>
+          <li><a href="https://progressbot.ai/brenda">Brenda - the web bot</a></li>
+          <li><a href="https://progressbot.ai/ava">Ava - the assistant</a></li>
+          <li><a href="https://progressbot.ai/frank">Frank - the welcome bot</a></li>
+          <li><a href="https://progressbot.ai/ula">Ula - the updater</a></li>
           <li><a href="tel:+18633541635">Full suite - talk with us</a></li>
         </ul>
       </div>
       <div>
         <h4>Resources</h4>
         <ul>
-          <li><a href="https://progressbot.ai/v2/faq2">FAQ</a></li>
-          <li><a href="https://progressbot.ai/v2/calculator">Cost calculator</a></li>
-          <li><a href="https://progressbot.ai/v2/frank-faq">Frank's FAQ</a></li>
+          <li><a href="https://progressbot.ai/faq2">FAQ</a></li>
+          <li><a href="https://progressbot.ai/calculator">Cost calculator</a></li>
+          <li><a href="https://progressbot.ai/frank-faq">Frank's FAQ</a></li>
         </ul>
       </div>
       <div>
@@ -900,7 +912,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ============ STICKY MOBILE CTA ============ -->
 <div class="sticky-cta" id="stickyCta">
-  <a class="btn btn-primary" href="https://progressbot.ai/v2/botty-landing2?utm_source=roofing_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=sticky#top">
+  <a class="btn btn-primary" href="https://progressbot.ai/botty-landing2?utm_source=roofing_page&amp;utm_medium=internal&amp;utm_campaign=botty_demo&amp;utm_content=sticky#top">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
     Hear Botty call you live
   </a>

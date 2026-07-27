@@ -4,9 +4,9 @@
   Static, self-contained: all CSS and vanilla JavaScript are inline in this
   one file. No build step, no frameworks, no server-side runtime - safe for
   any shared host (cPanel / hosting.com): just upload the file.
-  Deploy as: public_html/v2/botty-landing/index.html
+  Deploy as: public_html/botty-landing/index.html
              (folder + index.html serves the extensionless URL
-              https://progressbot.ai/v2/botty-landing2 that all links use)
+              https://progressbot.ai/botty-landing2 that all links use)
   Only external dependency: Google Fonts (plus api.ipify.org at submit time).
   The demo form POSTs JSON to the LIVE n8n production webhook on Railway (see
   WEBHOOK_URL in the script at the bottom). The n8n workflow must be Active
@@ -26,9 +26,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <title>Hear Botty Answer Live - AI Answering &amp; Sales Agent for Roofing, Solar &amp; HVAC | ProgressBot.AI</title>
 <meta name="description" content="Botty answers your roofing, solar, or HVAC calls in 3 rings - 24/7. Enter your number and hear it live: Botty calls you in about 30 seconds, qualifies you like a real lead, and texts you the summary.">
 <meta name="theme-color" content="#F3F4F1">
-<link rel="canonical" href="https://progressbot.ai/v2/botty-landing2">
+<link rel="canonical" href="https://progressbot.ai/botty-landing2">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://progressbot.ai/v2/botty-landing2">
+<meta property="og:url" content="https://progressbot.ai/botty-landing2">
 <meta property="og:site_name" content="ProgressBot.AI">
 <meta property="og:title" content="Hear Botty Answer - She Calls You in ~30 Seconds">
 <meta property="og:description" content="Botty answers roofing, solar &amp; HVAC calls in 3 rings, 24/7 - qualifies the lead, books the inspection, texts the recap. Enter your number and experience the call yourself.">
@@ -368,6 +368,13 @@ h1 .red{color:var(--red)}
 .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding:64px 0 48px}
 .foot-brand .brand{color:#fff;font-size:24px}
 .foot-brand p{margin-top:12px;max-width:280px;line-height:1.55}
+.foot-social{display:flex;gap:10px;margin-top:16px}
+.foot-social a{
+  width:36px;height:36px;border:1px solid #2A313A;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;color:#B7BEB8;
+}
+.foot-social a:hover{color:var(--green-br);border-color:var(--green-br)}
+.foot-social svg{width:17px;height:17px}
 .site-foot h4{
   font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.16em;
   text-transform:uppercase;color:#68716B;margin-bottom:16px;
@@ -418,7 +425,8 @@ h1 .red{color:var(--red)}
   .frow{grid-template-columns:1fr}
   .head-tel{display:none}
   .inc-btns{gap:48px}
-  .foot-grid{grid-template-columns:1fr;gap:30px}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:26px}
+  .foot-brand{grid-column:1 / -1}
   .eq{justify-content:flex-start;text-align:left}
 }
 
@@ -764,29 +772,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="foot-brand">
         <a class="brand" href="https://progressbot.ai/"><img class="brand-logo" src="ProgressBot.AI-green-v2-logo.png" alt="" width="34" height="34">ProgressBot<span>.AI</span></a>
         <p>AI phone bots for home service companies. Seven agents on shift, 24/7 - never miss a lead again.</p>
+        <div class="foot-social">
+          <a href="https://www.linkedin.com/company/progress-bot-ai/" aria-label="ProgressBot.AI on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z"/></svg></a>
+          <a href="https://www.facebook.com/ProgressBotAI/" aria-label="ProgressBot.AI on Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21.5v-7.6h2.56l.38-2.97H13.5V9.04c0-.86.24-1.44 1.47-1.44h1.57V4.94c-.27-.04-1.2-.12-2.29-.12-2.27 0-3.82 1.39-3.82 3.93v2.18H7.87v2.97h2.56v7.6h3.07z"/></svg></a>
+        </div>
       </div>
       <div>
         <h4>AI agents</h4>
         <ul>
           <li><a href="#top">Botty - live demo</a></li>
-          <li><a href="https://progressbot.ai/v2/banx">Banx - the cold caller</a></li>
-          <li><a href="https://progressbot.ai/v2/zoe">Zoe - the receptionist</a></li>
-          <li><a href="https://progressbot.ai/v2/brenda">Brenda - the web bot</a></li>
-          <li><a href="https://progressbot.ai/v2/ava">Ava - the assistant</a></li>
-          <li><a href="https://progressbot.ai/v2/frank">Frank - the welcome bot</a></li>
-          <li><a href="https://progressbot.ai/v2/ula">Ula - the updater</a></li>
+          <li><a href="https://progressbot.ai/banx">Banx - the cold caller</a></li>
+          <li><a href="https://progressbot.ai/zoe">Zoe - the receptionist</a></li>
+          <li><a href="https://progressbot.ai/brenda">Brenda - the web bot</a></li>
+          <li><a href="https://progressbot.ai/ava">Ava - the assistant</a></li>
+          <li><a href="https://progressbot.ai/frank">Frank - the welcome bot</a></li>
+          <li><a href="https://progressbot.ai/ula">Ula - the updater</a></li>
           <li><a href="tel:+18633541635">Full suite - talk with us</a></li>
         </ul>
       </div>
       <div>
         <h4>Resources</h4>
         <ul>
-          <li><a href="https://progressbot.ai/v2/faq2">FAQ</a></li>
-          <li><a href="https://progressbot.ai/v2/calculator">Cost calculator</a></li>
-          <li><a href="https://progressbot.ai/v2/frank-faq">Frank's FAQ</a></li>
-          <li><a href="https://progressbot.ai/v2/roofing">Built for roofing</a></li>
-          <li><a href="https://progressbot.ai/v2/solar">Built for solar</a></li>
-          <li><a href="https://progressbot.ai/v2/hvac">Built for HVAC</a></li>
+          <li><a href="https://progressbot.ai/faq2">FAQ</a></li>
+          <li><a href="https://progressbot.ai/calculator">Cost calculator</a></li>
+          <li><a href="https://progressbot.ai/frank-faq">Frank's FAQ</a></li>
+          <li><a href="https://progressbot.ai/roofing">Built for roofing</a></li>
+          <li><a href="https://progressbot.ai/solar">Built for solar</a></li>
+          <li><a href="https://progressbot.ai/hvac">Built for HVAC</a></li>
         </ul>
       </div>
       <div>
