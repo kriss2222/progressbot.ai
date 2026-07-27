@@ -47,6 +47,8 @@ top-of-file `Deploy as:` comment do. Quirks to know:
   despite the filename there is no separate `ula.html` to keep in sync.
 - `scripts/verify.py` = the quality gate. `docs/context/` = brief, client log,
   migration checklist, content capsules.
+- `robots.txt`, `sitemap.xml`, `llms.txt` deploy verbatim to `public_html/`
+  root (domain-root files, not per-page folders). See SEO section below.
 
 ## Hosting constraints (hard)
 
@@ -97,6 +99,27 @@ paper `#F3F4F1` / card white / ink `#14181D` / `--green #0E7B43` = **action** /
 - Voice: blunt, money-first, trades-aware. **No em dashes anywhere** (client
   rule 2026-07-08, enforced by verify.py): use a plain "-". Only exemption:
   verbatim legal body text on /terms + /privacy.
+
+## SEO + AI discoverability (added 2026-07-27)
+
+- `robots.txt` (repo root) allows every crawler, search and AI alike
+  (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, etc. listed by name),
+  and points at `sitemap.xml`. Client decision: maximize AI-answer-engine
+  visibility over blocking training crawlers - see CLIENT-NOTES.
+- `sitemap.xml` (repo root) lists every canonical URL. **New page = new
+  `<url>` entry here**, or `scripts/verify.py`'s site-level check fails
+  (it diffs every page's canonical tag against the sitemap both ways).
+- `llms.txt` (repo root) is the AI-crawler-facing summary (llmstxt.org
+  convention): company one-liner, the verified claims inventory below, and a
+  link per agent/page. Keep it in sync with the claims inventory and site
+  map - same "no invented facts" rule applies, it's public copy.
+- Every page carries exactly one `<script type="application/ld+json">`
+  block (`verify.py` now fails on a missing one). Pattern: `Service` +
+  `provider: Organization` (+ `FAQPage` mirroring any on-page mini-FAQ,
+  count-checked against `<details class="qa">`) for agent/industry pages;
+  `Organization` + `WebSite` + `ItemList` of the seven agents on the
+  homepage; plain `WebPage` for terms/privacy. Copy the pattern from the
+  nearest matching page - don't invent new schema types without a reason.
 
 ## Phone numbers — RESOLVED (see CLIENT-NOTES 2026-07-23)
 

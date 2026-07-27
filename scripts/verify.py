@@ -75,6 +75,8 @@ def check(path, ref_tokens):
     if gtm > 1: fails.append('multiple GTM snippets found')
     if s.count('<script>') - gtm != 1: fails.append('expected exactly one plain <script> (GTM snippet exempted)')
     if '<script src' in s: fails.append('external <script src> forbidden')
+    # SEO rollout 2026-07-27: every page carries at least one JSON-LD block
+    if 'application/ld+json' not in s: fails.append('missing structured data (JSON-LD)')
     if '`' in s: fails.append('backtick found')
     if '${' in s: fails.append('${ found (template literal)')
     if EMOJI.search(s): fails.append('emoji found')
@@ -120,6 +122,35 @@ def check(path, ref_tokens):
                 if n != d: fails.append('FAQPage JSON-LD (%d) != visible accordions (%d)' % (n, d))
     return canon, fails, warns
 
+def sitemap_check(files):
+    """Site-level SEO check: sitemap.xml/robots.txt exist and stay in sync with
+    every page's canonical tag. Only meaningful when checking the full page set."""
+    fails = []
+    if not os.path.exists('sitemap.xml'):
+        return ['sitemap.xml missing at repo root']
+    if not os.path.exists('robots.txt'):
+        fails.append('robots.txt missing at repo root')
+    elif 'Sitemap: https://progressbot.ai/sitemap.xml' not in open('robots.txt', encoding='utf-8').read():
+        fails.append('robots.txt does not reference sitemap.xml')
+
+    sm = open('sitemap.xml', encoding='utf-8').read()
+    sm_urls = set(re.findall(r'<loc>(https://progressbot\.ai[^<]*)</loc>', sm))
+
+    page_urls = set()
+    for f in files:
+        s = open(f, encoding='utf-8').read()
+        m = re.search(r'rel="canonical" href="https://progressbot\.ai(/[^"]*?)/?"', s)
+        if m:
+            p = m.group(1)
+            if p != '/': p = p.rstrip('/')
+            page_urls.add('https://progressbot.ai' + p)
+
+    missing = page_urls - sm_urls
+    stale = sm_urls - page_urls
+    if missing: fails.append('sitemap.xml missing URL(s): ' + ', '.join(sorted(missing)))
+    if stale: fails.append('sitemap.xml has stale URL(s) with no matching canonical: ' + ', '.join(sorted(stale)))
+    return fails
+
 def main():
     files = sys.argv[1:] or sorted(glob.glob('*.html'))
     if not files: print('no html files found'); return 1
@@ -140,6 +171,11 @@ def main():
         for w in warns: print('        warn: ' + w)
         for x in fails: print('        - ' + x)
         bad += bool(fails)
+    if not sys.argv[1:]:  # only meaningful against the full default page set
+        sm_fails = sitemap_check(files)
+        print('%s %-26s %s' % ('OK  ' if not sm_fails else 'FAIL', 'sitemap.xml/robots.txt', 'site-level'))
+        for x in sm_fails: print('        - ' + x)
+        bad += bool(sm_fails)
     print('\n%d file(s), %d failing' % (len(files), bad))
     return 1 if bad else 0
 

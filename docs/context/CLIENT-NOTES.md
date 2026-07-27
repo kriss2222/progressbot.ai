@@ -112,4 +112,23 @@ re-uploads every page to its new root-level folder on hosting.com; anything
 still pointing at an old `/v2/...` URL elsewhere (ads, bookmarks, prior emails)
 will need a redirect or manual update, which is outside this repo.
 
+## 2026-07-27 · SEO + AI discoverability rollout · STATUS: DONE in repo (deploy pending)
+Client (repo owner) asked to make every page SEO-friendly for both traditional
+search and AI answer engines. Added `robots.txt` (repo root) explicitly
+allowing every crawler, search and AI alike - client confirmed: allow all
+named AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, CCBot,
+Amazonbot, Applebot-Extended, meta-externalagent, Bytespider, etc.) rather
+than blocking AI training bots, since the goal is AI-answer-engine
+visibility. Added `sitemap.xml` (all 16 canonical URLs) and `llms.txt` (an
+llmstxt.org-convention summary for AI crawlers) at repo root. Filled the
+structured-data gaps: `index.html` had zero JSON-LD (added
+Organization + WebSite + an ItemList of the seven agents); `frank.html` and
+`botty-landing2.html` had none (added Service (+FAQPage for frank, mirroring
+its 5 on-page accordions)); `savings-calculator.html`, `terms.html`, and
+`privacy.html` got a lightweight Service/WebPage block each so every page on
+the site now carries structured data. `scripts/verify.py` now fails any page
+missing JSON-LD and cross-checks `sitemap.xml` against every page's canonical
+tag. Deploy step still required: Enrique uploads `robots.txt`, `sitemap.xml`,
+and `llms.txt` to `public_html/` root alongside the per-page folders.
+
 ## (record new decisions above this line)
