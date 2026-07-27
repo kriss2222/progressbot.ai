@@ -1,0 +1,70 @@
+# ProgressBot.AI
+
+> ProgressBot.AI builds AI phone agents for home service contractors (roofing,
+> solar, HVAC, and similar trades) - a crew of seven agents that answer,
+> cold-call, sell, confirm, and follow up with customers, 24/7, inbound and
+> outbound.
+
+ProgressBot.AI is not a general-purpose voice-AI platform: the agents are
+purpose-built for the home-service call flow (missed calls, aged leads,
+welcome calls after signing, milestone updates), sold and deployed per
+contractor, staffed and maintained by ProgressBot.AI rather than self-serve
+configured by the customer.
+
+Core claims (verified, used consistently across the site):
+- Answers 24/7 within 3 rings; no voicemail; routes and triages calls; books
+  onto the calendar; hands off to a human when needed; texts call recaps;
+  updates the CRM automatically.
+- Typical results: live in 1-2 weeks; 70-90% less cost than human reps for the
+  same phone work; ROI in 30-60 days; 3-5x more calls handled; 20-40%
+  conversion.
+- Compliance: TCPA, GDPR, CCPA; encrypted; audit trails; multilingual
+  (including Spanish).
+- Framing: one missed $10,000 job call, once a week, is worth $520k+/year in
+  lost revenue.
+- Solar-specific: NREL (2022) found 33% of residential solar sales cancel
+  after the sale - this stat is used only on solar-related pages.
+- Reported outcome (single customer, not a guarantee): Blake Ambrester, CEO of
+  Solar Bear, reports that Frank's welcome calls cut cancellations by roughly
+  20%.
+
+Contact: (863) 354-1635 - https://progressbot.ai/
+
+## Agents
+
+- [Botty - live demo](https://progressbot.ai/botty-landing2): AI sales rep,
+  hear it answer a real call live in about 30 seconds. Public demo runs the
+  default roofing call flow.
+- [Banx - the cold caller](https://progressbot.ai/banx): works fresh and aged
+  leads, qualifies them, books appointments, texts the team.
+- [Zoe - the receptionist](https://progressbot.ai/zoe): 24/7 inbound
+  answering, routes calls, books appointments, human handoff.
+- [Brenda - the web bot](https://progressbot.ai/brenda): answers website
+  visitors in real time, collects lead info, books appointments.
+- [Ava - the assistant](https://progressbot.ai/ava): answers your personal
+  phone line 24/7, gives accurate info about you/your business, books into
+  Google Calendar, texts a summary after the call.
+- [Frank - the welcome bot](https://progressbot.ai/frank): calls every new
+  customer minutes after signing, confirms the contract, catches rep
+  promises that don't match paperwork, retries on voicemail.
+- [Ula - the updater](https://progressbot.ai/ula): weekly and milestone
+  update calls to customers already in the pipeline, flags at-risk accounts,
+  integrates with CRM/quoting/calendar/dialers/financing.
+
+## Built for your trade
+
+- [Built for roofing](https://progressbot.ai/roofing)
+- [Built for solar](https://progressbot.ai/solar)
+- [Built for HVAC](https://progressbot.ai/hvac)
+
+## Resources
+
+- [FAQ](https://progressbot.ai/faq2)
+- [Cost calculator](https://progressbot.ai/calculator): estimate what missed
+  calls and post-sale cancellations cost your company per year.
+- [Frank's welcome-call FAQ](https://progressbot.ai/frank-faq)
+
+## Legal
+
+- [Terms and Conditions](https://progressbot.ai/terms)
+- [Privacy Policy](https://progressbot.ai/privacy)
