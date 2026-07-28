@@ -18,7 +18,8 @@ step, no framework — ever.
 3. `python3 scripts/verify.py` — know the baseline before touching anything.
 4. Work (rules below) → `python3 scripts/verify.py <changed files>` → commit only
    on green. Commit style: `page: what changed` (e.g. `solar: fix calc prefill`).
-5. Deploying = uploading the file to its `Deploy as:` path on hosting.com.
+5. Deploying = uploading the file to its `Deploy as:` path on hosting.com
+   (see Deploy method below - flat files + `.htaccess`, not per-page folders).
 
 ## Golden rules
 
@@ -47,8 +48,28 @@ top-of-file `Deploy as:` comment do. Quirks to know:
   despite the filename there is no separate `ula.html` to keep in sync.
 - `scripts/verify.py` = the quality gate. `docs/context/` = brief, client log,
   migration checklist, content capsules.
-- `robots.txt`, `sitemap.xml`, `llms.txt` deploy verbatim to `public_html/`
-  root (domain-root files, not per-page folders). See SEO section below.
+- `robots.txt`, `sitemap.xml`, `llms.txt`, `.htaccess` deploy verbatim to
+  `public_html/` root (domain-root files). See SEO section + Deploy method below.
+
+## Deploy method (since 2026-07-28): flat files + .htaccess
+
+Every page uploads **flat** into `public_html/` using its **exact repo
+filename** - no per-page folders, no renaming to `index.html` (`index.html`
+itself is the one exception: it already deploys flat at root). `.htaccess`
+(repo root) maps each page's clean URL to its file via explicit
+`RewriteRule` lines, and 301-redirects anyone who hits the raw `.html` URL
+directly to the clean one. Two filenames don't match their URL
+(`savings-calculator.html` → `/calculator`, `ula-the-ai-updater.html` →
+`/ula`) - `.htaccess` has explicit redirect + rewrite rules for both; **never
+rename these files** to match their URL, the mapping lives in `.htaccess`
+instead.
+
+**New page checklist:** add the file flat at repo root → add its
+`RewriteRule` line to `.htaccess` (both the redirect-if-hit-directly rule if
+its filename won't match a clean strip, and the clean→file rule) → add its
+`<url>` entry to `sitemap.xml`. `scripts/verify.py`'s site-level check fails
+if any page's canonical is missing from either `.htaccess` or `sitemap.xml`,
+or if either has a stale entry with no matching page.
 
 ## Hosting constraints (hard)
 

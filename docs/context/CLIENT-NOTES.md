@@ -165,4 +165,24 @@ hosting.com (the old `public_html/botty-landing/` folder, if still live,
 should eventually be retired/redirected - client is testing uploads manually
 this round, not through this repo's automated checklist).
 
+## 2026-07-28 · Deploy method: flat files + .htaccess, no per-page folders · STATUS: DONE in repo (deploy pending)
+Client wants clean URLs (no `.html`) on hosting.com without the hassle of
+creating a folder per page and renaming each upload to `index.html` (the
+method every page's old `Deploy as:` comment documented). Client chose flat
+files instead: every page uploads to `public_html/` using its exact GitHub
+filename, and a new `.htaccess` (repo root) does the URL rewriting - explicit
+`RewriteRule` per page mapping the clean URL to its file, plus a redirect so
+visiting the raw `.html` URL sends visitors to the clean one instead of
+serving duplicate-content URLs. Updated every page's `Deploy as:` comment to
+match. `scripts/verify.py` now cross-checks `.htaccess` against every page's
+canonical tag (same pattern as the existing `sitemap.xml` check) so a new
+page without a matching rewrite rule fails the gate.
+Two filenames don't match their clean URL - `savings-calculator.html` →
+`/calculator`, `ula-the-ai-updater.html` → `/ula` - handled with explicit
+redirect rules in `.htaccess`; these files must NOT be renamed to match their
+URL. Deploy step: upload `.htaccess` to `public_html/` root alongside every
+page (same place as `robots.txt`/`sitemap.xml`/`llms.txt`). Client is
+uploading and testing manually this round, not through this repo's automated
+checklist.
+
 ## (record new decisions above this line)

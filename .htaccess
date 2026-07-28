@@ -1,0 +1,45 @@
+# ProgressBot.AI - clean URLs (no .html) on hosting.com / cPanel.
+# Every page from the repo uploads flat into public_html/ using its exact
+# GitHub filename (savings-calculator.html, ula-the-ai-updater.html, etc.) -
+# no renaming, no per-page folders. This file maps each clean URL to its
+# matching file internally; the browser address bar keeps showing the clean
+# URL. New page = add one RewriteRule line below AND a matching <url> entry
+# in sitemap.xml (scripts/verify.py checks both against every page's
+# canonical tag).
+RewriteEngine On
+
+# Visiting the raw index.html or <name>.html URL directly redirects to the
+# clean URL, so there's only ever one indexable address per page. Checked
+# against THE_REQUEST (the original request line) rather than the rewritten
+# URI, so this never re-fires on the internal rewrites below and loops.
+RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+RewriteRule ^ /? [R=301,L]
+
+# Two filenames don't match their clean URL - redirect these explicitly
+# before the generic strip-.html rule below, which would otherwise send
+# them to the wrong (filename-shaped) address.
+RewriteCond %{THE_REQUEST} \s/+savings-calculator\.html[\s?] [NC]
+RewriteRule ^ /calculator [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+ula-the-ai-updater\.html[\s?] [NC]
+RewriteRule ^ /ula [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+([a-zA-Z0-9-]+)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# Clean URL -> matching file (explicit map, kept in sync with sitemap.xml)
+RewriteRule ^ava/?$ ava.html [L]
+RewriteRule ^banx/?$ banx.html [L]
+RewriteRule ^botty/?$ botty.html [L]
+RewriteRule ^brenda/?$ brenda.html [L]
+RewriteRule ^faq/?$ faq.html [L]
+RewriteRule ^frank-faq/?$ frank-faq.html [L]
+RewriteRule ^frank/?$ frank.html [L]
+RewriteRule ^hvac/?$ hvac.html [L]
+RewriteRule ^privacy/?$ privacy.html [L]
+RewriteRule ^roofing/?$ roofing.html [L]
+RewriteRule ^calculator/?$ savings-calculator.html [L]
+RewriteRule ^solar/?$ solar.html [L]
+RewriteRule ^terms/?$ terms.html [L]
+RewriteRule ^ula/?$ ula-the-ai-updater.html [L]
+RewriteRule ^zoe/?$ zoe.html [L]

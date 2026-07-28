@@ -149,6 +149,28 @@ def sitemap_check(files):
     stale = sm_urls - page_urls
     if missing: fails.append('sitemap.xml missing URL(s): ' + ', '.join(sorted(missing)))
     if stale: fails.append('sitemap.xml has stale URL(s) with no matching canonical: ' + ', '.join(sorted(stale)))
+
+    # .htaccess: every non-root page needs a RewriteRule mapping its clean
+    # URL to its exact flat filename (deploy method since 2026-07-28).
+    if not os.path.exists('.htaccess'):
+        fails.append('.htaccess missing at repo root')
+    else:
+        ht = open('.htaccess', encoding='utf-8').read()
+        ht_map = dict(re.findall(r'RewriteRule \^([a-zA-Z0-9_-]+)/\?\$ ([a-zA-Z0-9_.-]+\.html) \[L\]', ht))
+        page_files = {}
+        for f in files:
+            s = open(f, encoding='utf-8').read()
+            m = re.search(r'rel="canonical" href="https://progressbot\.ai(/[^"]*?)/?"', s)
+            if m and m.group(1) not in ('', '/'):
+                page_files[m.group(1).lstrip('/').rstrip('/')] = os.path.basename(f)
+        for path, fname in page_files.items():
+            if path not in ht_map:
+                fails.append('.htaccess missing RewriteRule for /%s -> %s' % (path, fname))
+            elif ht_map[path] != fname:
+                fails.append('.htaccess maps /%s to %s, but canonical file is %s' % (path, ht_map[path], fname))
+        for path, fname in ht_map.items():
+            if path not in page_files:
+                fails.append('.htaccess has stale RewriteRule for /%s -> %s (no page has that canonical)' % (path, fname))
     return fails
 
 def main():
