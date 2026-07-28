@@ -185,4 +185,23 @@ page (same place as `robots.txt`/`sitemap.xml`/`llms.txt`). Client is
 uploading and testing manually this round, not through this repo's automated
 checklist.
 
+## 2026-07-28 · Google Calendar booking link added sitewide · STATUS: DONE in repo (deploy pending)
+Client provided a Google Calendar booking page
+(`https://calendar.app.google/XUoJuoe7KfdcS4S28`) and asked for it in every
+footer plus sprinkled through the pages as a CTA, with permission to swap
+some existing phone-number buttons over to it. Added a "Book a call" link to
+every page's footer Contact column (phone → book a call → email, all 16
+pages, external link opens in a new tab). Swapped two button families
+sitewide: the `btn-primary` "Book a strategy call · (863) 354-1635" final-CTA
+buttons on agent/industry pages, and the ghost-styled "Talk with us · (863)
+354-1635" secondary buttons on Demo-primary pages - both now read "Book a
+call" and link to the booking page instead of dialing. Deliberately left
+untouched: each page's primary hero "Book a strategy call" button (the main
+above-the-fold conversion action), the sticky mobile CTA (always-available
+one-tap call), and the one `btn-primary` "Talk with us" button on the
+homepage tied to "step 1 starts with a phone call" copy - changing that one's
+destination without changing the sentence next to it would read wrong.
+Added the booking link to `llms.txt`'s contact line too. Deploy step still
+required: Enrique/client uploads the updated pages.
+
 ## (record new decisions above this line)

@@ -148,6 +148,24 @@ Client confirmed: use **(863) 354-1635** everywhere, no split. `verify.py`
 defaults to `PB_PHONE_POLICY=single_354`; pass `PB_PHONE_POLICY=split` only to
 check the pre-resolution legacy state intentionally.
 
+## Booking link (added 2026-07-28)
+
+Google Calendar booking page: `https://calendar.app.google/XUoJuoe7KfdcS4S28`
+(external, always `target="_blank" rel="noopener"`). Every footer's Contact
+column has a "Book a call" link (phone → book a call → email). It also
+replaces the phone number on two specific existing button families - swap
+the label to **"Book a call"** and the href to the booking link, keep
+everything else (class, position) as-is:
+- `btn-primary` "Book a strategy call · (863) 354-1635" (agent/industry page
+  final-CTA sections).
+- `btn-ghost` / `btn-ghost.on-dark` "Talk with us · (863) 354-1635" (hero
+  secondary + final-CTA secondary on Demo-primary pages).
+**Left as tel: intentionally** - don't swap these without a new client
+decision: the hero *primary* "Book a strategy call" button (bare, no phone
+suffix, the main conversion action), the sticky mobile CTA, and the one
+`btn-primary` "Talk with us · (863) 354-1635" on index.html tied to the "step
+1 starts with a phone call" section copy.
+
 ## Claims inventory (the ONLY permitted facts)
 
 - Answers 24/7 within 3 rings; no voicemail; routes & triages; books onto
