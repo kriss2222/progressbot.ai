@@ -32,7 +32,7 @@ Contact: (863) 354-1635 - https://progressbot.ai/
 
 ## Agents
 
-- [Botty - live demo](https://progressbot.ai/botty-landing2): AI sales rep,
+- [Botty - live demo](https://progressbot.ai/botty): AI sales rep,
   hear it answer a real call live in about 30 seconds. Public demo runs the
   default roofing call flow.
 - [Banx - the cold caller](https://progressbot.ai/banx): works fresh and aged

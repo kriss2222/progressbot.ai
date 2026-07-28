@@ -15,7 +15,7 @@ folders on hosting.com are now `public_html/<name>/`, not `public_html/v2/<name>
 | Old URL | v2 target | Repo file | Status |
 |---|---|---|---|
 | `/` (WordPress home) | `/` (root) | index.html | DONE — root cutover live in repo |
-| `/v2/demo2` (old demo) | `/botty-landing2` | botty-landing2.html | DONE (live) |
+| `/v2/demo2` (old demo) | `/botty` | botty.html | DONE (live) |
 | `/frank-confirmation-voice-bot/` | `/frank` | frank.html | BUILT — deploy latest |
 | `/ula-the-ai-updater/` | `/ula` | ula-the-ai-updater.html | BUILT — deploy |
 | `/faq.html` | `/faq` | faq.html | BUILT — deploy latest |
@@ -24,7 +24,7 @@ folders on hosting.com are now `public_html/<name>/`, not `public_html/v2/<name>
 | `/privacy.html` | `/privacy` (restyle only) | privacy.html | BUILT 2026-07-08 — legal text verbatim from live page (text-node integrity asserted); deploy pending |
 | — (new) | `/calculator` | savings-calculator.html | DONE concept — deploy latest |
 | — (new) | `/roofing` `/solar` `/hvac` | roofing/solar/hvac.html | BUILT — deploy |
-| `/ava-the-assistant` | `/ava` | ava.html | BUILT 2026-07-08 (live copy captured in CONTENT-CAPSULES; Ava added to claims inventory; red-free, Tel CTA) — deploy pending; every footer links to it, incl. botty-landing2 (Product list) |
+| `/ava-the-assistant` | `/ava` | ava.html | BUILT 2026-07-08 (live copy captured in CONTENT-CAPSULES; Ava added to claims inventory; red-free, Tel CTA) — deploy pending; every footer links to it, incl. botty (Product list) |
 | `/solar-ai-team/` | TBD — overlaps `/solar` | — | **NOT BUILT** — found via nav crawl 2026-07-08. Agent-roster page for solar (Botty/Banx/Frank/Ava/Ula), headline "In 5 Years, there won't be any human solar sales reps." Decide: rebuild vs. redirect to `/solar`. |
 | — (new) | `/banx` `/zoe` `/brenda` | banx/zoe/brenda.html | BUILT 2026-07-08 from homepage crew-board copy + claims inventory only (no old pages existed). Banx carries the real Natalie cold-call recording; Zoe carries the $10k missed-call redline; Brenda red-free. Deploy pending. Crew boards on home + roofing/solar/hvac now show all seven agents (Ava card added, counts updated, cards link to agent pages) |
 | — (new, backlog) | Spanish versions, post-demo page | — | NOT BUILT |

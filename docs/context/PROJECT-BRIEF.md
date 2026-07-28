@@ -37,7 +37,7 @@ top-of-file `Deploy as:` comment define its live path — filenames don't. Known
 
 ## Current state (2026-07-27)
 
-- Built & verified: home, botty-landing2, frank, ula, ava, banx, zoe, brenda,
+- Built & verified: home, botty, frank, ula, ava, banx, zoe, brenda,
   faq, calculator, roofing, solar, hvac, terms, privacy.
 - **Root cutover complete for every page.** All canonical tags, `Deploy as:`
   comments, and internal links repo-wide point at site root

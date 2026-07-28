@@ -166,7 +166,7 @@ prefiller MUST match that trade's calculator chip: Roofing `tab=calls&cr=35&jv=1
 | Canonical | File | CTA | Signature |
 |---|---|---|---|
 | `/` | index.html | Demo | dispatch board + crew board |
-| `/botty-landing2` | botty-landing2.html | 2-step form | phone sim; honeypot+dwell; TCPA |
+| `/botty` | botty.html | 2-step form | phone sim; honeypot+dwell; TCPA |
 | `/frank` | frank.html | Tel | contract check (red mismatch) |
 | `/ula` | ula-the-ai-updater.html | Tel | project timeline (red-free) |
 | `/ava` | ava.html | Tel | call-log timeline (red-free) |

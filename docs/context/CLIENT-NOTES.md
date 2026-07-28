@@ -151,4 +151,18 @@ Full audit and fix confirmed 0 broken links remain across all 447 links
 sitewide. Deploy step still required for both changes: Enrique re-uploads the
 affected pages to hosting.com.
 
+## 2026-07-28 · Botty demo page renamed /botty-landing2 -> /botty · STATUS: DONE in repo (deploy pending)
+Client (repo owner) confirmed: the Botty demo page will be just `/botty` going
+forward - "landing2" was a leftover working name. Renamed the repo file
+`botty-landing2.html` -> `botty.html` (git history preserved via `git mv`),
+and its canonical, `Deploy as:` path, and og:url from `/botty-landing2` to
+`/botty`. Updated every link to it sitewide (header/hero/final-CTA buttons,
+footer "Botty - live demo" links, mid-page mentions) across all other pages,
+plus `sitemap.xml`, `llms.txt`, and `scripts/verify.py`'s CFG key. Re-ran the
+full link audit afterward: 0 broken links, 447 checked. Deploy step still
+required: Enrique uploads the renamed page to `public_html/botty/` on
+hosting.com (the old `public_html/botty-landing/` folder, if still live,
+should eventually be retired/redirected - client is testing uploads manually
+this round, not through this repo's automated checklist).
+
 ## (record new decisions above this line)

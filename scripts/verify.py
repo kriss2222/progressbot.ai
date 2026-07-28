@@ -26,7 +26,7 @@ VOID = {'area','base','br','col','embed','hr','img','input','link','meta','param
 # keyed by canonical path (root cutover 2026-07-27: all pages moved off /v2/)
 CFG = {
  '/':                  dict(utm='homepage',        must=['startDispatch', 'Built for roofing']),
- '/botty-landing2':    dict(utm=None, phone=P354,  must=['id="website"', 'isHuman', 'By submitting, you agree to receive a phone call']),
+ '/botty':             dict(utm=None, phone=P354,  must=['id="website"', 'isHuman', 'By submitting, you agree to receive a phone call']),
  '/frank':             dict(utm='frank_page',      must=['runCheck']),
  '/ula':                dict(utm='ula_page',        must=['runTimeline'], red_free=True),
  '/ava':               dict(utm='ava_page',        must=['runAvaLog'], red_free=True),
