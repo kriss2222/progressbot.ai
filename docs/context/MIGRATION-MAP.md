@@ -18,7 +18,7 @@ folders on hosting.com are now `public_html/<name>/`, not `public_html/v2/<name>
 | `/v2/demo2` (old demo) | `/botty-landing2` | botty-landing2.html | DONE (live) |
 | `/frank-confirmation-voice-bot/` | `/frank` | frank.html | BUILT — deploy latest |
 | `/ula-the-ai-updater/` | `/ula` | ula-the-ai-updater.html | BUILT — deploy |
-| `/faq.html` | `/faq2` | faq.html | BUILT — deploy latest |
+| `/faq.html` | `/faq` | faq.html | BUILT — deploy latest |
 | `/franks-welcome-call-faq` | `/frank-faq` | frank-faq.html | BUILT 2026-07-08 (20 Q&As from live page, verbatim copy in CONTENT-CAPSULES) — deploy pending; footers retargeted |
 | `/terms-and-conditions/` | `/terms` (restyle only) | terms.html | BUILT 2026-07-08 — legal text verbatim from live page (text-node integrity asserted); deploy pending. NOTE: live legal text cites (863) 654-1635 + kristen@progressbot.ai — third number, resolved as a typo, converted to 354-1635 2026-07-23 |
 | `/privacy.html` | `/privacy` (restyle only) | privacy.html | BUILT 2026-07-08 — legal text verbatim from live page (text-node integrity asserted); deploy pending |

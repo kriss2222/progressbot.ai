@@ -175,7 +175,7 @@ prefiller MUST match that trade's calculator chip: Roofing `tab=calls&cr=35&jv=1
 | `/brenda` | brenda.html | Tel | web-chat timeline (red-free) |
 | `/terms` | terms.html | - | legal restyle, text verbatim |
 | `/privacy` | privacy.html | - | legal restyle, text verbatim |
-| `/faq2` | faq.html | Demo | accordions + mirrored FAQPage JSON-LD |
+| `/faq` | faq.html | Demo | accordions + mirrored FAQPage JSON-LD |
 | `/calculator` | savings-calculator.html | Demo/Tel | URL-state sliders, copy-link |
 | `/roofing` | roofing.html | **Demo** (script match) | roofing dispatch; $520k eq |
 | `/solar` | solar.html | **Tel** (mismatch→disclosed) | red 33% burn; Frank mini |

@@ -33,7 +33,7 @@ CFG = {
  '/banx':              dict(utm='banx_page',       must=['runBanxLog', 'initPlayer'], red_free=True),
  '/zoe':               dict(utm='zoe_page',        must=['runZoeLog', '$10,000']),
  '/brenda':            dict(utm='brenda_page',     must=['runBrendaLog'], red_free=True),
- '/faq2':              dict(utm='faq_page',        must=[]),
+ '/faq':               dict(utm='faq_page',        must=[]),
  '/frank-faq':          dict(utm='frank_faq_page',  must=[]),
  '/calculator':        dict(utm='calculator_page', must=['URLSearchParams', '$468,000']),
  '/roofing':           dict(utm='roofing_page',    must=[], industry=True),

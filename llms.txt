@@ -59,7 +59,7 @@ Contact: (863) 354-1635 - https://progressbot.ai/
 
 ## Resources
 
-- [FAQ](https://progressbot.ai/faq2)
+- [FAQ](https://progressbot.ai/faq)
 - [Cost calculator](https://progressbot.ai/calculator): estimate what missed
   calls and post-sale cancellations cost your company per year.
 - [Frank's welcome-call FAQ](https://progressbot.ai/frank-faq)

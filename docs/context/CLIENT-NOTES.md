@@ -131,4 +131,24 @@ missing JSON-LD and cross-checks `sitemap.xml` against every page's canonical
 tag. Deploy step still required: Enrique uploads `robots.txt`, `sitemap.xml`,
 and `llms.txt` to `public_html/` root alongside the per-page folders.
 
+## 2026-07-27 · FAQ page renamed /faq2 -> /faq; stale legal footer links fixed · STATUS: DONE in repo (deploy pending)
+Client (repo owner) confirmed: the FAQ page will be just `/faq` going forward
+(the "2" suffix was a leftover from when the old WordPress `/faq.html` still
+existed alongside the new page during migration - no longer needed now that
+`/faq.html` is retired). Renamed `faq.html`'s canonical, `Deploy as:` comment,
+og:url, and every link to it sitewide (nav, mini-FAQ "read the full FAQ"
+links, footers) from `/faq2` to `/faq`. Also updated `sitemap.xml`, `llms.txt`,
+and `scripts/verify.py`'s CFG key to match.
+
+Separately, a link audit (prompted by the client asking to double-check
+`/faq2` wasn't broken - it wasn't) turned up a real sitewide bug: every
+page's footer "Terms and Conditions" / "Privacy Policy" links pointed at the
+old dead WordPress URLs `/terms-and-conditions/` and `/privacy.html` instead
+of the live `/terms` and `/privacy` pages (32 broken link instances across
+all 16 pages, plus one more inside terms.html's own body text pointing to the
+old privacy URL - fixed without touching the surrounding legal wording).
+Full audit and fix confirmed 0 broken links remain across all 447 links
+sitewide. Deploy step still required for both changes: Enrique re-uploads the
+affected pages to hosting.com.
+
 ## (record new decisions above this line)
